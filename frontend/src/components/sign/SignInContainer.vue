@@ -1,11 +1,27 @@
 <template>
-  <div class="FormContainer RegisterFormContainer">
-    <form v-on:submit.prevent="onSubmit" class="RegisterFormContainer__FormTag">
-      <transition name="slide-left">
-        <div class="EmailInputContainer">
-          <label
-            class="FormContainer__label RegisterFormContainer__EmailLabel"
-            for="email"
+  <div>
+    <section class="RightCorner">
+      <div class="RightCorner__img"></div>
+    </section>
+
+    <section class="UpperLeft">
+      <div class="UpperLeft__img"></div>
+    </section>
+    <section class="LowerLeft">
+      <div class="LowerLeft__img"></div>
+    </section>
+
+    <section class="Character">
+      <div class="Character__img"></div>
+    </section>
+
+    <div class="FormContainer LoginFormContainer">
+      <div class="LoginFormContainer_HeaderText">
+        <span>오늘도 반가워요!</span>
+      </div>
+      <form v-on:submit.prevent="onSubmit" class="LoginFormContainer__FormTag">
+        <div class="InputContainer">
+          <label class="FormContainer__label LoginForm__Label" for="email"
             >이메일</label
           >
           <input
@@ -22,19 +38,9 @@
             </p>
           </div>
         </div>
-      </transition>
 
-      <transition name="slide-left">
-        <div class="PWInputContainer">
-          <div class="RegisterErrorContainer">
-            <p class="RegisterErrorContainer__Text">
-              {{ logMessage }}
-            </p>
-          </div>
-
-          <label
-            class="FormContainer__label RegisterFormContainer__labelPassword RegisterFormContainer__label-darkgreen"
-            for="password"
+        <div class="InputContainer">
+          <label class="FormContainer__label  LoginForm__Label" for="password"
             >비밀번호
           </label>
           <input
@@ -43,16 +49,32 @@
             type="text"
             v-model="password"
           />
+          <div class="ForgetPWContainer">
+            <p class="ForgetPWContainer__Text">
+              비밀번호를 잊으셨나요?
+            </p>
+          </div>
         </div>
-      </transition>
 
-      <button
-        class="FormContainer__button RegisterFormContainer__button"
-        @submit.prevent="submitForm"
-      >
-        로그인
-      </button>
-    </form>
+        <button
+          class="FormContainer__button LoginFormContainer__button"
+          @submit.prevent="submitForm"
+        >
+          로그인
+        </button>
+        <div class="RegisterTextContainer">
+          <p class="RegisterTextContainer__Text">
+            아직 회원이 아니신가요?
+          </p>
+        </div>
+        <button
+          class="FormContainer__button RegisterFormContainer__button"
+          @submit.prevent="submitForm"
+        >
+          가입하러 가기:)
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -79,4 +101,91 @@ export default Vue.extend({
 });
 </script>
 
-<style></style>
+<style lang="scss">
+.RightCorner__img {
+  width: 50vw;
+  height: 50vh;
+  margin-right: 0;
+  margin-left: 50vw;
+  position: absolute;
+  background-position: -21px -212px;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/upperrightcornerPlanet.svg");
+}
+.UpperLeft__img {
+  width: 50vw;
+  height: 50vh;
+  margin-right: 0;
+  position: absolute;
+  background-position: -44px 60px;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/upperleftPlanet.svg");
+}
+
+.LowerLeft__img {
+  width: 82vw;
+  z-index: -1;
+  height: 50vh;
+  margin-right: 0;
+  position: absolute;
+  background-position: -245px 117px;
+  background-repeat: no-repeat;
+  background-image: url(/img/lowerleftPlanet.a11a022d.svg);
+  margin-top: 50vh;
+}
+
+.Character__img {
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  margin-left: 25vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/img/group_404.c2f607ec.svg);
+}
+
+.LoginFormContainer {
+  height: 100vh;
+  .LoginFormContainer_HeaderText {
+    margin-top: 36vh;
+    color: #2b4f46;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4vh;
+  }
+  .LoginFormContainer__FormTag {
+    width: 280px;
+  }
+  .LoginForm__Label {
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    color: #579d8d;
+  }
+
+  .InputContainer {
+    margin-bottom: 2vh;
+
+    .ForgetPWContainer {
+      text-align: right;
+      font-size: 9px;
+      padding: 1em;
+    }
+  }
+  .RegisterTextContainer {
+    text-align: center;
+    font-size: 9px;
+    padding: 1em;
+  }
+
+  button.LoginFormContainer__button {
+    box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.5);
+    background-image: linear-gradient(to bottom, #3b7266, #2b4f46 172%);
+  }
+}
+</style>
