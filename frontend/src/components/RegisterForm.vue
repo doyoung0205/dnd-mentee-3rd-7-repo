@@ -26,7 +26,7 @@
         v-bind:class="{
           'ImageContainer__final-show': stage === 3
         }"
-        src="@/assets/register/leaf.svg"
+        src="@/assets/images/leaf.svg"
       />
 
       <img
@@ -34,7 +34,7 @@
         v-bind:class="{
           'ImageContainer__final-show': stage === 3
         }"
-        src="@/assets/register/hand.svg"
+        src="@/assets/images/hand.svg"
       />
 
       <img
@@ -42,21 +42,21 @@
         v-bind:class="{
           'ImageContainer__final-show': stage === 3
         }"
-        src="@/assets/register/light.svg"
+        src="@/assets/images/light.svg"
       />
 
       <transition name="trash-disappear">
         <img
           v-if="stage < 2"
           class="ImageContainer__rm ImageContainer__rm1"
-          src="@/assets/register/except_1.svg"
+          src="@/assets/images/except_1.svg"
         />
       </transition>
       <transition name="trash-disappear">
         <img
           v-if="stage < 1"
           class="ImageContainer__rm ImageContainer__rm2"
-          src="@/assets/register/pass_934.svg"
+          src="@/assets/images/pass_934.svg"
         />
       </transition>
 
@@ -64,7 +64,7 @@
         <img
           v-if="stage < 3"
           class="ImageContainer__rm ImageContainer__spoon"
-          src="@/assets/register/spoon.svg"
+          src="@/assets/images/spoon.svg"
         />
       </transition>
 
@@ -72,7 +72,7 @@
         <img
           v-if="stage < 1"
           class="ImageContainer__rm ImageContainer__straw"
-          src="@/assets/register/straw.svg"
+          src="@/assets/images/straw.svg"
         />
       </transition>
 
@@ -80,7 +80,7 @@
         <img
           v-if="stage < 3"
           class="ImageContainer__rm ImageContainer__bottle"
-          src="@/assets/register/bottle.svg"
+          src="@/assets/images/bottle.svg"
         />
       </transition>
 
@@ -88,7 +88,7 @@
         <img
           v-if="stage < 2"
           class="ImageContainer__rm ImageContainer__shampoo"
-          src="@/assets/register/shampoo.svg"
+          src="@/assets/images/shampoo.svg"
         />
       </transition>
 
@@ -96,7 +96,7 @@
         <img
           v-if="stage < 1"
           class="ImageContainer__rm ImageContainer__BigBottle"
-          src="@/assets/register/BigBottle.svg"
+          src="@/assets/images/BigBottle.svg"
         />
       </transition>
 
@@ -104,7 +104,7 @@
         <img
           v-if="stage < 1"
           class="ImageContainer__rm ImageContainer__pet"
-          src="@/assets/register/pet.svg"
+          src="@/assets/images/pet.svg"
         />
       </transition>
 
@@ -112,7 +112,7 @@
         <img
           v-if="stage < 2"
           class="ImageContainer__rm ImageContainer__fork"
-          src="@/assets/register/fork.svg"
+          src="@/assets/images/fork.svg"
         />
       </transition>
 
@@ -120,7 +120,7 @@
         <img
           v-if="stage < 3"
           class="ImageContainer__rm ImageContainer__lightspoon"
-          src="@/assets/register/lightspoon.svg"
+          src="@/assets/images/lightspoon.svg"
         />
       </transition>
     </header>
@@ -131,7 +131,7 @@
           'RegisterContainer__character-shrink': stage >= 1,
           'RegisterContainer__character-final_position': stage === 3
         }"
-        src="@/assets/register/group_404.svg"
+        src="@/assets/images/group_404.svg"
       />
       <transition name="slide-left">
         <div v-if="stage === 0" class="TextContainer">
@@ -260,10 +260,10 @@ export default {
       nickname: "",
       stage: 0,
       headerImg: [
-        require(`@/assets/register/FirstStageEarth.svg`),
-        require(`@/assets/register/TwoStageEarth.svg`),
-        require(`@/assets/register/ThreeStageEarth.svg`),
-        require(`@/assets/register/FourthStageEarth.svg`)
+        require(`@/assets/images/FirstStageEarth.svg`),
+        require(`@/assets/images/TwoStageEarth.svg`),
+        require(`@/assets/images/ThreeStageEarth.svg`),
+        require(`@/assets/images/FourthStageEarth.svg`)
       ],
       buttonText: ["가입하기", "다음", "다음", "회원가입 끝!"],
       logMessage: "올바른 이메일 형식이 아니에요",
