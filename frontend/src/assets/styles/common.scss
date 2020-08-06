@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "Godo";
+    font-style: normal;
+    font-weight: 700;
+    src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2")
+        format("woff2"),
+      url("//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff")
+        format("woff");
+  }
+  
+  * {
+    font-family: "GodoB";
+    font-weight: 700;
+  }
+
+.FormContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 10.8vw;
+    margin-right: 10.8vw;
+
+  .FormContainer__label {
+        display: block;
+        text-align: left;
+        width: 70%;
+        font-size: 16px;
+        color: #76d4bc;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        line-height: 18px;
+        margin-bottom: 9px;
+      }
+
+
+      .FormContainer__input {
+        display: inline-block;
+        text-align: left;
+        width: 100%;
+        height: 6.4vh;
+        border: solid 1.5px #6ec8b1;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.57);
+        background-color: white;
+        border-radius: 6px;
+        margin-left: 0;
+      }
+
+
+
+    .FormContainer__button {
+
+        width: 100%;
+        border: none;
+        border-radius: 31px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(to left, #73d2ba, #559a8b);
+        font-size: 16px;
+        color: white;
+      
+
+    }
+}
