@@ -146,18 +146,20 @@
         </div>
       </transition>
 
-      <div class="RegisterFormContainer">
+      <div class="FormContainer RegisterFormContainer">
         <form
           v-on:submit.prevent="onSubmit"
           class="RegisterFormContainer__FormTag"
         >
           <transition name="slide-left">
             <div v-if="stage === 0" class="EmailInputContainer">
-              <label class="RegisterFormContainer__label" for="email"
+              <label
+                class="FormContainer__label RegisterFormContainer__EmailLabel"
+                for="email"
                 >이메일</label
               >
               <input
-                class="RegisterFormContainer__input RegisterFormContainer__Emailinput"
+                class="FormContainer__input"
                 id="email"
                 type="text"
                 v-model="email"
@@ -175,12 +177,12 @@
           <transition name="go-up">
             <div v-if="stage === 1" class="NickNameInputContainer">
               <label
-                class="RegisterFormContainer__label RegisterFormContainer__label-darkgreen"
+                class="FormContainer__label RegisterFormContainer__label-darkgreen"
                 for="nickname"
                 >닉네임</label
               >
               <input
-                class="RegisterFormContainer__input"
+                class="FormContainer__input"
                 id="nickname"
                 type="text"
                 v-model="nickname"
@@ -191,7 +193,7 @@
           <transition name="slide-left">
             <div v-if="stage === 2" class="PWInputContainer">
               <label
-                class="RegisterFormContainer__label RegisterFormContainer__label-green RegisterFormContainer__label-noBottomMargin"
+                class="FormContainer__label RegisterFormContainer__label-noBottomMargin"
                 for="password"
                 >비밀번호
               </label>
@@ -208,7 +210,7 @@
               </div>
 
               <input
-                class="RegisterFormContainer__input RegisterFormContainer__Passwordinput"
+                class="FormContainer__input RegisterFormContainer__Passwordinput"
                 id="password"
                 type="text"
                 v-model="password"
@@ -221,12 +223,12 @@
               </div>
 
               <label
-                class="RegisterFormContainer__label RegisterFormContainer__labelPassword RegisterFormContainer__label-darkgreen"
+                class="FormContainer__label RegisterFormContainer__labelPassword RegisterFormContainer__label-darkgreen"
                 for="passwordCheck"
                 >비밀번호 확인</label
               >
               <input
-                class="RegisterFormContainer__input"
+                class="FormContainer__input"
                 id="passwordCheck"
                 type="text"
                 v-model="passwordCheck"
@@ -238,7 +240,10 @@
             <p class="FinalTextContainer__Text">그리니 님의</p>
             <p class="FinalTextContainer__Text">회원가입을 축하합니다!</p>
           </div>
-          <button class="RegisterFormContainer__button" @click="onClick">
+          <button
+            class="FormContainer__button RegisterFormContainer__button"
+            @click="nextStage"
+          >
             {{ buttonText[stage] }}
           </button>
         </form>
@@ -247,7 +252,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {
@@ -268,7 +273,7 @@ export default {
     };
   },
   methods: {
-    onClick() {
+    nextStage() {
       this.stage = this.stage + 1;
       console.log("clicking");
     },
@@ -280,23 +285,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/common.scss";
 $email-input-location: 71vh;
 $nickname-input-location: 34vh;
 
-@font-face {
-  font-family: "Godo";
-  font-style: normal;
-  font-weight: 700;
-  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2")
-      format("woff2"),
-    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff")
-      format("woff");
-}
-
-* {
-  font-family: "GodoB";
-  font-weight: 700;
-}
 .slide-left-leave-active,
 .go-up-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
@@ -349,7 +341,6 @@ $nickname-input-location: 34vh;
     top: 0;
     left: 0;
   }
-
   .ImageContainer__Earth {
     position: absolute;
     width: 100%;
@@ -357,7 +348,6 @@ $nickname-input-location: 34vh;
     visibility: hidden;
     left: 0;
   }
-
   .ImageContainer__Light {
     position: absolute;
     left: 10vw;
@@ -471,9 +461,7 @@ $nickname-input-location: 34vh;
       left: 10.8vw;
       .TextContainer_text {
         text-align: left;
-
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-        font-family: GodoB;
         font-size: 20px;
         font-stretch: normal;
         font-style: normal;
@@ -491,17 +479,14 @@ $nickname-input-location: 34vh;
     }
 
     .RegisterFormContainer {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      height: 100%;
-      margin-left: 10.8vw;
-      margin-right: 10.8vw;
-
       .RegisterFormContainer__FormTag {
         position: relative;
         width: 100%;
         height: 100%;
+      }
+
+      .RegisterFormContainer__EmailLabel {
+        color: white;
       }
 
       .EmailInputContainer {
@@ -521,21 +506,6 @@ $nickname-input-location: 34vh;
         width: 100%;
       }
 
-      .RegisterFormContainer__label {
-        display: block;
-        text-align: left;
-        width: 70%;
-        font-size: 16px;
-        color: white;
-        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-        line-height: 18px;
-        margin-bottom: 9px;
-      }
-
-      .RegisterFormContainer__label-green {
-        color: #76d4bc;
-      }
-
       .RegisterFormContainer__label-darkgreen {
         color: #5fad9b;
       }
@@ -546,25 +516,6 @@ $nickname-input-location: 34vh;
 
       .RegisterFormContainer__labelPassword {
         margin-top: 11px;
-      }
-
-      .RegisterFormContainer__input {
-        display: inline-block;
-        text-align: left;
-        width: 100%;
-        height: 6.4vh;
-        border: solid 1.5px #6ec8b1;
-        background-color: white;
-        border-radius: 6px;
-        margin-left: 0;
-        .RegisterFormContainer__input-error {
-          border: solid 1.5px #ff5b5b;
-        }
-      }
-
-      .RegisterFormContainer__Emailinput {
-        background-color: rgba(255, 255, 255, 0.51);
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.57);
       }
 
       .RegisterErrorContainer {
@@ -585,13 +536,6 @@ $nickname-input-location: 34vh;
         top: 87vh;
         left: 0;
         height: 6.4vh;
-        width: 100%;
-        border: none;
-        border-radius: 31px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-        background: linear-gradient(to left, #73d2ba, #559a8b);
-        font-size: 16px;
-        color: white;
       }
 
       .PasswordTextBlock {
