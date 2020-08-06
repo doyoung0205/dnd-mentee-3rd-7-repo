@@ -11,10 +11,12 @@
       </template>
       <template #content> <SignInContainer></SignInContainer></template
     ></SignLayout>
+    <Doast></Doast>
   </div>
 </template>
 
 <script lang="ts">
+import Doast from "@/components/common/Doast.vue";
 import SignInContainer from "@/components/sign/SignInContainer.vue";
 import SignLayout from "@/components/sign/SignLayout.vue";
 import Vue from "vue";
@@ -22,7 +24,8 @@ export default Vue.extend({
   name: "SignModal",
   components: {
     SignLayout,
-    SignInContainer
+    SignInContainer,
+    Doast
   }
 });
 </script>
