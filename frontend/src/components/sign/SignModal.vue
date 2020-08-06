@@ -1,16 +1,16 @@
 <template>
   <div class="SignModal">
-    <SignModal></SignModal>
+    <SignInContainer></SignInContainer>
   </div>
 </template>
 
 <script lang="ts">
-import SignModal from "@/components/sign/SignModal.vue";
+import SignInContainer from "@/components/sign/SignInContainer.vue";
 import Vue from "vue";
 export default Vue.extend({
-  name: "asda",
+  name: "SignModal",
   components: {
-    SignModal
+    SignInContainer
   }
 });
 </script>

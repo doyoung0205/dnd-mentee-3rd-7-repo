@@ -14,7 +14,7 @@ export default Vue.extend({
     SignLayout
   },
   created() {
-    alert("asdf");
+    // alert("asdf");
   }
 });
 </script>
