@@ -16,7 +16,7 @@
           v-if="isSignInView"
           @showSignUp="showSignUp"
         ></SignInContainer>
-        <RegisterForm v-if="isSignUpView"></RegisterForm> </template
+        <SignUpContainer v-if="isSignUpView"></SignUpContainer> </template
     ></SignLayout>
     <Toast></Toast>
   </div>
@@ -26,7 +26,7 @@
 import Toast from "@/components/common/Toast.vue";
 import SignInContainer from "@/components/sign/SignInContainer.vue";
 import SignLayout from "@/components/sign/SignLayout.vue";
-import RegisterForm from "@/components/RegisterForm.vue";
+import SignUpContainer from "@/components/sign/SignUpContainer.vue";
 import Vue from "vue";
 
 const signModalNameSpace = "signModal/";
@@ -36,7 +36,7 @@ export default Vue.extend({
   components: {
     SignLayout,
     SignInContainer,
-    RegisterForm,
+    SignUpContainer,
     Toast
   },
   methods: {
