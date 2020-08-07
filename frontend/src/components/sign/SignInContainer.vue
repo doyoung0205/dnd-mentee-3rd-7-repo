@@ -1,18 +1,18 @@
 <template>
   <div>
-    <section class="RightCorner">
-      <div class="RightCorner__img"></div>
+    <section class="IMGBLOCK">
+      <div class="IMGBLOCK__RightCorner"></div>
     </section>
 
-    <section class="UpperLeft">
-      <div class="UpperLeft__img"></div>
+    <section class="IMGBLOCK">
+      <div class="IMGBLOCK__UpperLeft"></div>
     </section>
-    <section class="LowerLeft">
-      <div class="LowerLeft__img"></div>
+    <section class="IMGBLOCK">
+      <div class="IMGBLOCK__LowerLeft"></div>
     </section>
 
-    <section class="Character">
-      <div class="Character__img"></div>
+    <section class="IMGBLOCK">
+      <div class="IMGBLOCK__Character"></div>
     </section>
 
     <div class="FormContainer LoginFormContainer">
@@ -102,7 +102,11 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.RightCorner__img {
+.IMGBLOCK {
+  z-index: -1;
+}
+.IMGBLOCK__RightCorner {
+  z-index: -1;
   width: 50vw;
   height: 50vh;
   margin-right: 0;
@@ -112,7 +116,8 @@ export default Vue.extend({
   background-repeat: no-repeat;
   background-image: url("../../assets/images/upperrightcornerPlanet.svg");
 }
-.UpperLeft__img {
+.IMGBLOCK__UpperLeft {
+  z-index: -1;
   width: 50vw;
   height: 50vh;
   margin-right: 0;
@@ -122,7 +127,8 @@ export default Vue.extend({
   background-image: url("../../assets/images/upperleftPlanet.svg");
 }
 
-.LowerLeft__img {
+.IMGBLOCK__LowerLeft {
+  z-index: -1;
   width: 82vw;
   z-index: -1;
   height: 50vh;
@@ -130,11 +136,12 @@ export default Vue.extend({
   position: absolute;
   background-position: -245px 117px;
   background-repeat: no-repeat;
-  background-image: url(/img/lowerleftPlanet.a11a022d.svg);
+  background-image: url("../../assets/images/lowerleftPlanet.svg");
   margin-top: 50vh;
 }
 
-.Character__img {
+.IMGBLOCK__Character {
+  z-index: -1;
   width: 50vw;
   height: 50vh;
   position: absolute;

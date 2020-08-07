@@ -1,14 +1,14 @@
 <template>
   <div class="Register">
-    <RegisterForm></RegisterForm>
+    <SignUpContainer></SignUpContainer>
   </div>
 </template>
 
 <script>
-import RegisterForm from "@/components/RegisterForm";
+import SignUpContainer from "@/components/sign/SignUpContainer";
 export default {
   components: {
-    RegisterForm
+    SignUpContainer
   }
 };
 </script>
