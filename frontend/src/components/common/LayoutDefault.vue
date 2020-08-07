@@ -1,5 +1,8 @@
 <template>
-  <div class="SignModal">
+  <div id="app">
+    <main>
+      <slot />
+    </main>
     <SignModal></SignModal>
   </div>
 </template>
@@ -7,12 +10,12 @@
 <script lang="ts">
 import SignModal from "@/components/sign/SignModal.vue";
 import Vue from "vue";
+
 export default Vue.extend({
-  name: "asda",
   components: {
     SignModal
   }
 });
 </script>
 
-<style></style>
+<style scoped></style>

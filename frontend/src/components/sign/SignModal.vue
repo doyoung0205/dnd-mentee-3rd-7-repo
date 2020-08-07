@@ -1,40 +1,78 @@
 <template>
-  <div class="signModal">
+  <div id="signModal" v-if="$store.state.signModal.show">
     <SignLayout>
       <template #header>
         <div id="signModal__header__wrap">
           <div class="signModal__header__container">
             <div class="signModal__header__logo"><span>logo</span></div>
-            <div class="signModal__header__close"><span>close</span></div>
+            <div class="signModal__header__close" @click.prevent="close">
+              <span>close</span>
+            </div>
           </div>
         </div>
       </template>
-      <template #content> <SignInContainer></SignInContainer></template
+      <template #content>
+        <SignInContainer
+          v-if="isSignInView"
+          @showSignUp="showSignUp"
+        ></SignInContainer>
+        <RegisterForm v-if="isSignUpView"></RegisterForm> </template
     ></SignLayout>
-    <Doast></Doast>
+    <Toast></Toast>
   </div>
 </template>
 
 <script lang="ts">
-import Doast from "@/components/common/Doast.vue";
+import Toast from "@/components/common/Toast.vue";
 import SignInContainer from "@/components/sign/SignInContainer.vue";
 import SignLayout from "@/components/sign/SignLayout.vue";
+import RegisterForm from "@/components/RegisterForm.vue";
 import Vue from "vue";
+
+const signModalNameSpace = "signModal/";
+
 export default Vue.extend({
   name: "SignModal",
   components: {
     SignLayout,
     SignInContainer,
-    Doast
+    RegisterForm,
+    Toast
+  },
+  methods: {
+    close() {
+      this.$store.commit(`${signModalNameSpace}close`);
+    },
+    showSignUp() {
+      this.$store.commit(`${signModalNameSpace}showSignUp`);
+    }
+  },
+  computed: {
+    isSignInView() {
+      return this.$store.getters[`${signModalNameSpace}isSignInView`];
+    },
+    isSignUpView() {
+      return this.$store.getters[`${signModalNameSpace}isSignUpView`];
+    }
   }
 });
 </script>
 
 <style lang="scss">
+#signModal {
+  width: 100%;
+  z-index: 9999;
+  position: absolute;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+}
+
 #signModal__header__wrap {
   width: 100%;
   position: fixed;
   top: 17px;
+  z-index: 3333;
   .signModal__header__container {
     position: relative;
     width: 100%;

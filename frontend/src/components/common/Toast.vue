@@ -59,8 +59,6 @@ export default Vue.extend({
         doast.type = "ERROR";
       }
 
-      console.log("doast", doast);
-
       this.doasts.push(doast);
       const index = this.doasts.length - 1 === 0 ? 0 : this.doasts.length - 1;
 

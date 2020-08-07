@@ -69,7 +69,7 @@
         </div>
         <button
           class="FormContainer__button RegisterFormContainer__button"
-          @submit.prevent="submitForm"
+          @click.prevent="showSignUp"
         >
           가입하러 가기:)
         </button>
@@ -93,10 +93,10 @@ export default Vue.extend({
   methods: {
     submitForm() {
       //
+    },
+    showSignUp() {
+      this.$emit("showSignUp");
     }
-  },
-  created() {
-    // alert("asdf");
   }
 });
 </script>

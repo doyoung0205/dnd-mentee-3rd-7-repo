@@ -1,13 +1,25 @@
 <template>
   <div>
-    HELLO 7조 <br />
-    <router-link to="/signUp">회원가입</router-link>
-    <router-link to="/signIn">회원가입</router-link>
+    HELLO 7조
+    <button @click="showSignUp">회원가입 보기</button>
+    <button @click="showSignIn">로그인 보기</button>
   </div>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import Vue from "vue";
+
+const signModalNameSpace = "signModal/";
+export default Vue.extend({
+  methods: {
+    showSignIn() {
+      this.$store.commit(`${signModalNameSpace}showSignIn`);
+    },
+    showSignUp() {
+      this.$store.commit(`${signModalNameSpace}showSignUp`);
+    }
+  }
+});
 </script>
 
 <style></style>
