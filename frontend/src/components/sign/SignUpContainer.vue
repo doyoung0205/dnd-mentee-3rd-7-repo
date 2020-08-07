@@ -160,6 +160,7 @@
               >
               <input
                 class="FormContainer__input"
+                :class="{ FormInputError: logMessage.EmailError }"
                 id="email"
                 type="text"
                 v-model="email"
@@ -168,7 +169,7 @@
                 <p
                   class="RegisterErrorContainer__Text RegisterErrorContainer__Text-shadow"
                 >
-                  {{ logMessage }}
+                  {{ logMessage.EmailError }}
                 </p>
               </div>
             </div>
@@ -211,6 +212,7 @@
 
               <input
                 class="FormContainer__input RegisterFormContainer__Passwordinput"
+                :class="{ FormInputError: logMessage.PWError }"
                 id="password"
                 type="text"
                 v-model="password"
@@ -218,7 +220,7 @@
 
               <div class="RegisterErrorContainer">
                 <p class="RegisterErrorContainer__Text">
-                  {{ logMessage }}
+                  {{ logMessage.PWError }}
                 </p>
               </div>
 
@@ -266,7 +268,10 @@ export default {
         require(`@/assets/images/FourthStageEarth.svg`)
       ],
       buttonText: ["가입하기", "다음", "다음", "회원가입 끝!"],
-      logMessage: "올바른 이메일 형식이 아니에요",
+      logMessage: {
+        EmailError: "올바른 이메일이 아니에요:(",
+        PWError: "올바른 비밀번호 형식이 아니에요:("
+      },
       password: "",
       passwordCheck: "",
       showpassword: false
@@ -285,7 +290,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/common.scss";
 $email-input-location: 71vh;
 $nickname-input-location: 34vh;
 
@@ -333,7 +337,7 @@ $nickname-input-location: 34vh;
 .RegisterContainer {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   .ImageContainer__Cover {
     width: 100%;
@@ -479,7 +483,7 @@ $nickname-input-location: 34vh;
     .RegisterFormContainer {
       .RegisterFormContainer__FormTag {
         position: relative;
-        width: 100%;
+        width: 80%;
         height: 100%;
       }
 
@@ -514,6 +518,7 @@ $nickname-input-location: 34vh;
 
       .RegisterFormContainer__labelPassword {
         margin-top: 11px;
+        text-shadow: rgba(255, 255, 255, 0.4);
       }
 
       .RegisterErrorContainer {
@@ -523,10 +528,11 @@ $nickname-input-location: 34vh;
         font-size: 11px;
         .RegisterErrorContainer__Text {
           margin: 0;
+          margin-top: 0.5em;
         }
-      }
-      .RegisterErrorContainer__Text-shadow {
-        text-shadow: 0px 3px 6px #000000;
+        .RegisterErrorContainer__Text-shadow {
+          text-shadow: 0px 3px 6px #000000;
+        }
       }
 
       .RegisterFormContainer__button {

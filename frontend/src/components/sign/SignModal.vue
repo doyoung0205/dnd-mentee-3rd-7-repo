@@ -59,6 +59,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/sign.scss";
 #signModal {
   width: 100%;
   z-index: 9999;
