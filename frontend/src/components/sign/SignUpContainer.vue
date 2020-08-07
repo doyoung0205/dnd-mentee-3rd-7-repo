@@ -193,7 +193,7 @@
           <transition name="slide-left">
             <div v-if="stage === 2" class="PWInputContainer">
               <label
-                class="FormContainer__label RegisterFormContainer__label-noBottomMargin"
+                class="FormContainer__label RegisterFormContainer__label-noBottomMargin RegisterFormContainer__label-darkgreen"
                 for="password"
                 >비밀번호
               </label>
@@ -358,13 +358,13 @@ $nickname-input-location: 34vh;
   .ImageContainer__Leaf {
     position: absolute;
     top: 18vh;
-    left: 25vh;
+    left: 46vw;
     opacity: 0;
   }
 
   .ImageContainer__Hand {
     position: absolute;
-    top: 45vh;
+    top: 40vh;
     left: 28vw;
     opacity: 0;
   }
@@ -375,10 +375,8 @@ $nickname-input-location: 34vh;
   }
   .ImageContainer__Earth-drop {
     position: absolute;
-    width: 100%;
-    top: 10vh;
-    left: 0;
-    transform: scale(0.5);
+    top: 23vh;
+    left: 28vw;
     transition: all 0.5s ease;
   }
 
