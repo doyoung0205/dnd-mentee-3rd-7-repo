@@ -290,8 +290,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/sign.scss";
-
 $email-input-location: 71vh;
 $nickname-input-location: 34vh;
 
@@ -485,7 +483,7 @@ $nickname-input-location: 34vh;
     .RegisterFormContainer {
       .RegisterFormContainer__FormTag {
         position: relative;
-        width: 100%;
+        width: 80%;
         height: 100%;
       }
 

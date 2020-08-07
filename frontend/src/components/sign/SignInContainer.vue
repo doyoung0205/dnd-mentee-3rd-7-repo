@@ -102,8 +102,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/sign.scss";
-
 .IMGBLOCK {
   z-index: -1;
 }
