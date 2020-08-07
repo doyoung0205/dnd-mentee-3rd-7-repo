@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="437.936" height="347.528" viewBox="0 0 437.936 347.528">
+    <defs>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fdffe2"/>
+            <stop offset="1" stop-color="#79d8c0"/>
+        </radialGradient>
+        <style>
+            .cls-3{fill:#77d6be}
+        </style>
+    </defs>
+    <g id="그룹_477" data-name="그룹 477" transform="translate(-134.388 223.764)">
+        <circle id="타원_67" cx="142" cy="142" r="142" fill="url(#radial-gradient)" data-name="타원 67" opacity="0.646" transform="translate(218 -176)"/>
+        <g id="타원_70" fill="none" stroke="#77d6be" data-name="타원 70" transform="rotate(-30 33.113 -259.903)">
+            <ellipse cx="205.5" cy="82" stroke="none" rx="205.5" ry="82"/>
+            <ellipse cx="205.5" cy="82" rx="205" ry="81.5"/>
+        </g>
+        <circle id="타원_72" cx="7" cy="7" r="7" class="cls-3" data-name="타원 72" transform="translate(303 52)"/>
+        <circle id="타원_73" cx="4" cy="4" r="4" class="cls-3" data-name="타원 73" transform="translate(283 62)"/>
+    </g>
+</svg>
