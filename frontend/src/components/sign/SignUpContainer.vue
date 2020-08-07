@@ -290,7 +290,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/common.scss";
 @import "@/assets/styles/sign.scss";
 
 $email-input-location: 71vh;
@@ -340,7 +339,7 @@ $nickname-input-location: 34vh;
 .RegisterContainer {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   .ImageContainer__Cover {
     width: 100%;
