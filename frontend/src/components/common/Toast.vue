@@ -40,12 +40,11 @@ export default Vue.extend({
     };
   },
   mounted() {
-    const doastOption = {
-      title: "로그인에 실패했어요:(",
-      content: "이메일과 비밀번호를 다시한번 확인해 보세요!"
-    } as DoastType;
-
-    this.add(doastOption);
+    // const doastOption = {
+    //   title: "로그인에 실패했어요:(",
+    //   content: "이메일과 비밀번호를 다시한번 확인해 보세요!"
+    // } as DoastType;
+    // this.add(doastOption);
   },
   methods: {
     add(doast: DoastType) {
