@@ -4,7 +4,11 @@
       <template #header>
         <div id="signModal__header__wrap">
           <div class="signModal__header__container">
-            <div class="signModal__header__logo"><span>logo</span></div>
+            <div class="signModal__header__logo">
+              <router-link to="/" class="logo">
+                <span>logo</span>
+              </router-link>
+            </div>
             <div class="signModal__header__close" @click.prevent="close">
               <span>close</span>
             </div>

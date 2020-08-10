@@ -80,6 +80,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { UserSignIn } from "../../api/sign/type";
 export default Vue.extend({
   name: "SignInContainer",
   components: {},
@@ -91,8 +92,25 @@ export default Vue.extend({
     };
   },
   methods: {
-    submitForm() {
-      //
+    async submitForm() {
+      try {
+        // 비즈니스 로직
+        const signInData: UserSignIn = {
+          username: this.email,
+          password: this.password
+        };
+        await this.$store.dispatch("SIGN_IN", signInData);
+      } catch (error) {
+        // 에러 핸들링할 코드
+        console.log(error.response.data);
+        this.logMessage = error.response.data;
+      } finally {
+        this.initForm();
+      }
+    },
+    initForm() {
+      this.email = "";
+      this.password = "";
     },
     showSignUp() {
       this.$emit("showSignUp");
