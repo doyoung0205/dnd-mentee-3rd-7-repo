@@ -255,6 +255,8 @@
 </template>
 
 <script>
+// import { UserSignUp } from "../../api/sign/type";
+import { signUp } from "../../api/sign";
 export default {
   data() {
     return {
@@ -280,7 +282,22 @@ export default {
   methods: {
     nextStage() {
       this.stage = this.stage + 1;
-      console.log("clicking");
+    },
+    async submitForm() {
+      // const userData: UserSignUp = {
+      const userData = {
+        username: this.email,
+        password: this.password,
+        nickname: this.nickname
+      };
+      const { data } = await signUp(userData);
+      console.log(data);
+      this.initForm();
+    },
+    initForm() {
+      this.email = "";
+      this.password = "";
+      this.nickname = "";
     },
     onSubmit() {
       console.log("submit form");

@@ -1,13 +1,24 @@
 <template>
-  <div>
-    HELLO 7조
-    <button @click="showSignUp">회원가입 보기</button>
-    <button @click="showSignIn">로그인 보기</button>
-  </div>
+  <header>
+    <div class="navigations">
+      <!-- 1 -->
+      <template v-if="isUserLogin">
+        <span v-if="isUserLogin">by {{ $store.state.username }}</span>
+        <a href="javascript:;" @click="logoutUser" class="logout-button">
+          Logout
+        </a>
+      </template>
+      <!-- 2 -->
+      <template v-else>
+        <button @click="showSignIn">로그인</button>
+        <button @click="showSignUp">회원가입</button>
+      </template>
+    </div>
+  </header>
 </template>
-
 <script lang="ts">
 import Vue from "vue";
+import { deleteCookie } from "@/utils/cookies";
 
 const signModalNameSpace = "signModal/";
 export default Vue.extend({
@@ -17,6 +28,17 @@ export default Vue.extend({
     },
     showSignUp() {
       this.$store.commit(`${signModalNameSpace}showSignUp`);
+    },
+    logoutUser() {
+      this.$store.commit("clearUsername");
+      this.$store.commit("clearToken");
+      deleteCookie("greene_auth");
+      deleteCookie("greene_user");
+    }
+  },
+  computed: {
+    isUserLogin() {
+      return this.$store.getters.isLogin;
     }
   }
 });
