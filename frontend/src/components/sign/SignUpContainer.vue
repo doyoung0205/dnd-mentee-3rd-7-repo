@@ -18,7 +18,7 @@
           ImageContainer__Earth: stage < 3,
           'ImageContainer__Earth-drop': stage === 3
         }"
-        :src="headerImg[stage]"
+        :src="headerImg[3]"
       />
 
       <img
@@ -159,7 +159,7 @@
                 >이메일</label
               >
               <input
-                class="FormContainer__input"
+                class="FormContainer__input FormContainer__EmailInput"
                 :class="{ FormInputError: logMessage.EmailError }"
                 id="email"
                 type="text"
@@ -194,7 +194,7 @@
           <transition name="slide-left">
             <div v-if="stage === 2" class="PWInputContainer">
               <label
-                class="FormContainer__label RegisterFormContainer__label-noBottomMargin RegisterFormContainer__label-darkgreen"
+                class="FormContainer__label RegisterFormContainer__labelPassword"
                 for="password"
                 >비밀번호
               </label>
@@ -225,7 +225,7 @@
               </div>
 
               <label
-                class="FormContainer__label RegisterFormContainer__labelPassword RegisterFormContainer__label-darkgreen"
+                class="FormContainer__label RegisterFormContainer__labelPassword"
                 for="passwordCheck"
                 >비밀번호 확인</label
               >
@@ -363,11 +363,14 @@ $nickname-input-location: 34vh;
     left: 0;
   }
   .ImageContainer__Earth {
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: -30vh;
+    // left: 0;
+    left: 28vw;
+    transform: scale(2);
     visibility: hidden;
-    left: 0;
+    z-index: 1;
   }
   .ImageContainer__Light {
     position: absolute;
@@ -512,6 +515,9 @@ $nickname-input-location: 34vh;
         position: absolute;
         top: 72vh;
         width: 100%;
+        .FormContainer__EmailInput {
+          background-color: rgba(255, 255, 255, 0.51);
+        }
       }
 
       .NickNameInputContainer {
@@ -529,13 +535,11 @@ $nickname-input-location: 34vh;
         color: #5fad9b;
       }
 
-      .RegisterFormContainer__label-noBottomMargin {
-        margin-bottom: 0;
-      }
-
       .RegisterFormContainer__labelPassword {
         margin-top: 11px;
-        text-shadow: rgba(255, 255, 255, 0.4);
+        text-shadow: 0 3px 6px rgba(255, 255, 255, 0.4);
+        color: #5fad9b;
+        margin-bottom: 0.5em;
       }
 
       .RegisterErrorContainer {
