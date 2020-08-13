@@ -163,7 +163,7 @@
                 :class="{ FormInputError: logMessage.EmailError }"
                 id="email"
                 type="text"
-                v-model="email"
+                v-model="userData.email"
               />
               <div class="RegisterErrorContainer">
                 <p
@@ -186,7 +186,7 @@
                 class="FormContainer__input"
                 id="nickname"
                 type="text"
-                v-model="nickname"
+                v-model="userData.nickname"
               />
             </div>
           </transition>
@@ -215,7 +215,7 @@
                 :class="{ FormInputError: logMessage.PWError }"
                 id="password"
                 type="text"
-                v-model="password"
+                v-model="userData.password"
               />
 
               <div class="RegisterErrorContainer">
@@ -260,8 +260,7 @@ import { signUp } from "../../api/sign";
 export default {
   data() {
     return {
-      email: "",
-      nickname: "",
+      userData: { email: "", nickname: "", password: "" },
       stage: 0,
       headerImg: [
         require(`@/assets/images/FirstStageEarth.svg`),
@@ -275,7 +274,6 @@ export default {
         EmailError: "올바른 이메일이 아니에요:(",
         PWError: "올바른 비밀번호 형식이 아니에요:("
       },
-      password: "",
       passwordCheck: "",
       showpassword: false
     };
@@ -294,18 +292,18 @@ export default {
     async submitForm() {
       // const userData: UserSignUp = {
       const userData = {
-        username: this.email,
-        password: this.password,
-        nickname: this.nickname
+        username: this.userData.email,
+        password: this.userData.password,
+        nickname: this.userData.nickname
       };
       const { data } = await signUp(userData);
       console.log(data);
       this.initForm();
     },
     initForm() {
-      this.email = "";
-      this.password = "";
-      this.nickname = "";
+      this.userData.email = "";
+      this.userData.password = "";
+      this.userData.nickname = "";
     },
     onSubmit() {
       console.log("submit form");
