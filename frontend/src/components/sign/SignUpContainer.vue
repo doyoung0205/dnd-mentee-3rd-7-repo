@@ -9,22 +9,22 @@
   >
     <header class="ImageContainer">
       <img
-        v-if="stage < 3"
+        v-if="stage < 4"
         class="ImageContainer__Cover"
         :src="headerImg[stage]"
       />
       <img
         v-bind:class="{
-          ImageContainer__Earth: stage < 3,
-          'ImageContainer__Earth-drop': stage === 3
+          ImageContainer__Earth: stage < 4,
+          'ImageContainer__Earth-drop': stage === 4
         }"
-        :src="headerImg[3]"
+        :src="headerImg[4]"
       />
 
       <img
         class="ImageContainer__Leaf"
         v-bind:class="{
-          'ImageContainer__final-show': stage === 3
+          'ImageContainer__final-show': stage === 4
         }"
         src="@/assets/images/leaf.svg"
       />
@@ -32,7 +32,7 @@
       <img
         class="ImageContainer__Hand"
         v-bind:class="{
-          'ImageContainer__final-show': stage === 3
+          'ImageContainer__final-show': stage === 4
         }"
         src="@/assets/images/hand.svg"
       />
@@ -40,7 +40,7 @@
       <img
         class="ImageContainer__Light"
         v-bind:class="{
-          'ImageContainer__final-show': stage === 3
+          'ImageContainer__final-show': stage === 4
         }"
         src="@/assets/images/light.svg"
       />
@@ -62,7 +62,7 @@
 
       <transition name="trash-disappear">
         <img
-          v-if="stage < 3"
+          v-if="stage < 4"
           class="ImageContainer__rm ImageContainer__spoon"
           src="@/assets/images/spoon.svg"
         />
@@ -78,7 +78,7 @@
 
       <transition name="trash-disappear">
         <img
-          v-if="stage < 3"
+          v-if="stage < 4"
           class="ImageContainer__rm ImageContainer__bottle"
           src="@/assets/images/bottle.svg"
         />
@@ -118,7 +118,7 @@
 
       <transition name="trash-disappear">
         <img
-          v-if="stage < 3"
+          v-if="stage < 4"
           class="ImageContainer__rm ImageContainer__lightspoon"
           src="@/assets/images/lightspoon.svg"
         />
@@ -129,7 +129,7 @@
         class="RegisterContainer__character"
         :class="{
           'RegisterContainer__character-shrink': stage >= 1,
-          'RegisterContainer__character-final_position': stage === 3
+          'RegisterContainer__character-final_position': stage === 4
         }"
         src="@/assets/images/group_404.svg"
       />
@@ -192,7 +192,7 @@
           </transition>
 
           <transition name="slide-left">
-            <div v-if="stage === 2" class="PWInputContainer">
+            <div v-if="stage === 2 || stage === 3" class="PWInputContainer">
               <label
                 class="FormContainer__label RegisterFormContainer__labelPassword"
                 for="password"
@@ -238,7 +238,7 @@
             </div>
           </transition>
 
-          <div class="FinalTextContainer" v-if="stage === 3">
+          <div class="FinalTextContainer" v-if="stage === 4">
             <p class="FinalTextContainer__Text">그리니 님의</p>
             <p class="FinalTextContainer__Text">회원가입을 축하합니다!</p>
           </div>
@@ -254,7 +254,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // import { UserSignUp } from "../../api/sign/type";
 import { signUp } from "../../api/sign";
 export default {
@@ -267,9 +267,10 @@ export default {
         require(`@/assets/images/FirstStageEarth.svg`),
         require(`@/assets/images/TwoStageEarth.svg`),
         require(`@/assets/images/ThreeStageEarth.svg`),
-        require(`@/assets/images/FourthStageEarth.svg`)
+        require(`@/assets/images/FourthStageEarth.svg`),
+        require(`@/assets/images/FifthStageEarth.svg`)
       ],
-      buttonText: ["가입하기", "다음", "다음", "회원가입 끝!"],
+      buttonText: ["가입하기", "다음", "다음", "다음", "회원가입 끝!"],
       logMessage: {
         EmailError: "올바른 이메일이 아니에요:(",
         PWError: "올바른 비밀번호 형식이 아니에요:("
@@ -278,6 +279,13 @@ export default {
       passwordCheck: "",
       showpassword: false
     };
+  },
+  watch: {
+    passwordCheck: function(newVal: string, oldVal: string) {
+      if (newVal && this.stage === 2) {
+        this.stage += 1;
+      }
+    }
   },
   methods: {
     nextStage() {
@@ -579,9 +587,6 @@ $nickname-input-location: 34vh;
       .FinalTextContainer__Text {
         top: 66vh;
         position: relative;
-      }
-
-      .FinalTextContainer__Text {
         margin: 0;
         font-size: 20px;
         font-stretch: normal;
