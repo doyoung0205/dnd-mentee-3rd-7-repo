@@ -179,14 +179,14 @@
             <div v-if="stage === 1" class="NickNameInputContainer">
               <label
                 class="FormContainer__label RegisterFormContainer__label-darkgreen"
-                for="nickname"
+                for="username"
                 >닉네임</label
               >
               <input
                 class="FormContainer__input"
-                id="nickname"
+                id="username"
                 type="text"
-                v-model="userData.nickname"
+                v-model="userData.username"
               />
             </div>
           </transition>
@@ -255,12 +255,14 @@
 </template>
 
 <script lang="ts">
-// import { UserSignUp } from "../../api/sign/type";
+import Vue from "vue";
 import { signUp } from "../../api/sign";
-export default {
+import { UserSignUp } from "@/api/sign/type";
+export default Vue.extend({
+  name: "SignUpContainer",
   data() {
     return {
-      userData: { email: "", nickname: "", password: "" },
+      userData: {} as UserSignUp,
       stage: 0,
       headerImg: [
         require(`@/assets/images/FirstStageEarth.svg`),
@@ -286,30 +288,34 @@ export default {
     }
   },
   methods: {
-    nextStage() {
+    nextStage(): number {
       this.stage = this.stage + 1;
+      return this.stage;
     },
     async submitForm() {
       // const userData: UserSignUp = {
       const userData = {
-        username: this.userData.email,
+        email: this.userData.email,
         password: this.userData.password,
-        nickname: this.userData.nickname
+        username: this.userData.username
       };
       const { data } = await signUp(userData);
       console.log(data);
       this.initForm();
     },
-    initForm() {
+    initForm(): void {
       this.userData.email = "";
       this.userData.password = "";
-      this.userData.nickname = "";
+      this.userData.username = "";
     },
     onSubmit() {
+      if (this.stage === 4) {
+        this.submitForm();
+      }
       console.log("submit form");
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
