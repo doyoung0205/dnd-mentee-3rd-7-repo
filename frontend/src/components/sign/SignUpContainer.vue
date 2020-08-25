@@ -263,7 +263,7 @@ export default Vue.extend({
   data() {
     return {
       userData: {} as UserSignUp,
-      stage: 0 as number,
+      stage: 0,
       headerImg: [
         require(`@/assets/images/FirstStageEarth.svg`),
         require(`@/assets/images/TwoStageEarth.svg`),
