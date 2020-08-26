@@ -275,7 +275,7 @@
                 <input
                   class="FormContainer__input"
                   id="passwordCheck"
-                  type="text"
+                  :type="passwordType"
                   v-model="passwordCheck"
                 />
                 <img
