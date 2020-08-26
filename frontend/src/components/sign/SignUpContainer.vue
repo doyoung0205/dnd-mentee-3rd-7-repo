@@ -298,6 +298,14 @@
             <p class="FinalTextContainer__Text">그리니 님의</p>
             <p class="FinalTextContainer__Text">회원가입을 축하합니다!</p>
           </div>
+
+          <div class="FinalTextContainer" v-if="stage === 1">
+            <p class="FinalTextContainer__Text"></p>
+            <p class="FinalTextContainer__Text FinalTextContainer__Text-white">
+              조금 더 깨끗해지는 중!!
+            </p>
+          </div>
+
           <button
             class="FormContainer__button RegisterFormContainer__button"
             @click="nextStage"
@@ -722,6 +730,12 @@ $nickname-input-location: 34vh;
         letter-spacing: 0.4px;
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         color: #39675d;
+      }
+      .FinalTextContainer__Text-white {
+        color: white;
+        text-align: center;
+        position: relative;
+        top: 80vh;
       }
     }
   }
