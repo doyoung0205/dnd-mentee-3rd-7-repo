@@ -160,7 +160,7 @@
               >
               <input
                 class="FormContainer__input FormContainer__EmailInput"
-                :class="{ FormInputError: logMessage.EmailError }"
+                :class="{ FormInputError: error }"
                 id="email"
                 type="text"
                 v-model="userData.email"
@@ -169,7 +169,7 @@
                 <p
                   class="RegisterErrorContainer__Text RegisterErrorContainer__Text-shadow"
                 >
-                  {{ logMessage.EmailError }}
+                  {{ error ? logMessage.EmailError : "" }}
                 </p>
               </div>
             </div>
@@ -184,10 +184,16 @@
               >
               <input
                 class="FormContainer__input"
+                :class="{ FormInputError: error }"
                 id="username"
                 type="text"
                 v-model="userData.username"
               />
+              <div class="RegisterErrorContainer">
+                <p class="RegisterErrorContainer__Text">
+                  {{ error ? logMessage.userNameError : "" }}
+                </p>
+              </div>
             </div>
           </transition>
 
@@ -197,44 +203,94 @@
                 class="FormContainer__label RegisterFormContainer__labelPassword"
                 for="password"
                 >비밀번호
+                <img
+                  v-if="isValidPWD"
+                  class="PWInputContainer__check"
+                  src="@/assets/images/Yes.svg"
+                />
+                <img
+                  v-else
+                  class="PWInputContainer__check"
+                  src="@/assets/images/No.svg"
+                />
               </label>
               <div class="PasswordTextBlock">
                 <span class="PasswordTextBlock__Text">
                   영어숫자를 포함한 4자리 이상!
                 </span>
-
+                <!-- 
                 <span
                   class="PasswordTextBlock__Text PasswordTextBlock__LeftText"
                   >비밀번호 보기</span
                 >
-                <input type="checkbox" id="checkbox" v-model="showpassword" />
+                <input type="checkbox" id="checkbox" v-model="showpassword" /> -->
               </div>
 
-              <input
-                class="FormContainer__input RegisterFormContainer__Passwordinput"
-                :class="{ FormInputError: logMessage.PWError }"
-                id="password"
-                type="text"
-                v-model="userData.password"
-              />
+              <div class="PasswordContainer">
+                <input
+                  class="FormContainer__input RegisterFormContainer__Passwordinput"
+                  :class="{ FormInputError: error }"
+                  id="password"
+                  :type="passwordType"
+                  v-model="userData.password"
+                />
+
+                <img
+                  v-if="passwordType === 'password'"
+                  @click="TogglePWD"
+                  class="PWInputContainer__eyes"
+                  src="@/assets/images/NoEyes.svg"
+                />
+                <img
+                  v-else
+                  @click="TogglePWD"
+                  class="PWInputContainer__eyes"
+                  src="@/assets/images/Eyes.svg"
+                />
+              </div>
 
               <div class="RegisterErrorContainer">
                 <p class="RegisterErrorContainer__Text">
-                  {{ logMessage.PWError }}
+                  {{ error ? logMessage.PWError : "" }}
                 </p>
               </div>
 
               <label
                 class="FormContainer__label RegisterFormContainer__labelPassword"
                 for="passwordCheck"
-                >비밀번호 확인</label
-              >
-              <input
-                class="FormContainer__input"
-                id="passwordCheck"
-                type="text"
-                v-model="passwordCheck"
-              />
+                >비밀번호 확인
+                <img
+                  v-if="isValidPwdCheck"
+                  class="PWInputContainer__check"
+                  src="@/assets/images/Yes.svg"
+                />
+                <img
+                  v-else
+                  class="PWInputContainer__check"
+                  src="@/assets/images/No.svg"
+                />
+              </label>
+
+              <div class="PasswordContainer">
+                <input
+                  class="FormContainer__input"
+                  id="passwordCheck"
+                  type="text"
+                  v-model="passwordCheck"
+                />
+                <img
+                  v-if="passwordType === 'password'"
+                  @click="TogglePWD"
+                  class="PWInputContainer__eyes"
+                  src="@/assets/images/NoEyes.svg"
+                />
+                <img
+                  v-else
+                  @click="TogglePWD"
+                  class="PWInputContainer__eyes"
+                  src="@/assets/images/Eyes.svg"
+                />
+              </div>
             </div>
           </transition>
 
@@ -258,12 +314,14 @@
 import Vue from "vue";
 import { signUp } from "../../api/sign";
 import { UserSignUp } from "@/api/sign/type";
+import { validateEmail } from "@/utils/validation";
 export default Vue.extend({
   name: "SignUpContainer",
   data() {
     return {
-      userData: {} as UserSignUp,
+      userData: { email: "", username: "", password: "" },
       stage: 0,
+      error: false,
       headerImg: [
         require(`@/assets/images/FirstStageEarth.svg`),
         require(`@/assets/images/TwoStageEarth.svg`),
@@ -274,10 +332,11 @@ export default Vue.extend({
       buttonText: ["가입하기", "다음", "다음", "다음", "회원가입 끝!"],
       logMessage: {
         EmailError: "올바른 이메일이 아니에요:(",
-        PWError: "올바른 비밀번호 형식이 아니에요:("
+        PWError: "올바른 비밀번호 형식이 아니에요:(",
+        userNameError: "올바른 사용자 이름이 아니에요:("
       },
       passwordCheck: "",
-      showpassword: false
+      passwordType: "password"
     };
   },
   watch: {
@@ -287,10 +346,49 @@ export default Vue.extend({
       }
     }
   },
+  computed: {
+    isValidPWD: function(): boolean {
+      return this.userData.password.length < 6 ? false : true;
+    },
+    isValidPwdCheck: function(): boolean {
+      return this.passwordCheck && this.userData.password === this.passwordCheck
+        ? true
+        : false;
+    },
+    isValidEmail: function(): boolean {
+      return validateEmail(this.userData.email);
+    },
+    isValidUsername: function(): boolean {
+      return this.userData.username.length < 6 ? false : true;
+    }
+  },
+  created() {
+    this.initForm();
+  },
   methods: {
-    nextStage(): number {
+    nextStage() {
+      switch (this.stage) {
+        case 0: //email
+          if (this.isError(!this.isValidEmail)) {
+            return;
+          }
+          break;
+        case 1: //nickname
+          if (this.isError(!this.isValidUsername)) {
+            return;
+          }
+          break;
+        case 2: //pwd
+        case 3: //pwd check
+          if (this.isError(!this.validatePWD())) {
+            return;
+          }
+          break;
+        default:
+          break;
+      }
       this.stage = this.stage + 1;
-      return this.stage;
+      this.error = false;
     },
     async submitForm() {
       // const userData: UserSignUp = {
@@ -299,8 +397,9 @@ export default Vue.extend({
         password: this.userData.password,
         username: this.userData.username
       };
-      const { data } = await signUp(userData);
-      console.log(data);
+      //const { data } = await signUp(userData);
+      const data = await signUp(userData);
+      console.log("data", data);
       this.initForm();
     },
     initForm(): void {
@@ -312,7 +411,17 @@ export default Vue.extend({
       if (this.stage === 4) {
         this.submitForm();
       }
-      console.log("submit form");
+    },
+    validatePWD(): boolean {
+      return this.isValidPWD && this.isValidPwdCheck;
+    },
+    isError(condition: boolean) {
+      this.error = condition;
+      return this.error;
+    },
+    TogglePWD(): void {
+      this.passwordType =
+        this.passwordType === "password" ? "text" : "password";
     }
   }
 });
@@ -541,6 +650,11 @@ $nickname-input-location: 34vh;
         position: absolute;
         top: $nickname-input-location;
         width: 100%;
+
+        .PWInputContainer__check {
+          position: relative;
+          top: 1px;
+        }
       }
 
       .RegisterFormContainer__label-darkgreen {
@@ -573,6 +687,15 @@ $nickname-input-location: 34vh;
         top: 87vh;
         left: 0;
         height: 6.4vh;
+      }
+
+      .PasswordContainer {
+        position: relative;
+        .PWInputContainer__eyes {
+          position: absolute;
+          top: 0.5em;
+          right: 1em;
+        }
       }
 
       .PasswordTextBlock {
