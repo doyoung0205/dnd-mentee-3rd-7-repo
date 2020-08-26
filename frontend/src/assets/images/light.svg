@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="323" height="367" viewBox="0 0 323 367">
+    <defs>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".52" gradientTransform="matrix(1 0 0 .888 0 .056)" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#f6ff90"/>
+            <stop offset="1" stop-color="#fffba2" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+    <path id="교차_7" fill="url(#radial-gradient)" d="M0 290.081V76.919C35.978 30.351 94.9 0 161.5 0S287.022 30.351 323 76.919v213.162C287.022 336.649 228.095 367 161.5 367S35.978 336.649 0 290.081z" data-name="교차 7"/>
+</svg>

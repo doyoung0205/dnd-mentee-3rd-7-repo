@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.137" height="21" viewBox="0 0 21.137 21">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#73d2ba"/>
+            <stop offset="1" stop-color="#559a8b"/>
+        </linearGradient>
+    </defs>
+    <g id="그룹_372" data-name="그룹 372" transform="translate(.604 .776)">
+        <path id="합치기_1" fill="url(#linear-gradient)" stroke="#fff" d="M16.186 19.487L10 13.3l-6.188 6.187a1.75 1.75 0 0 1-2.475 0l-.825-.825a1.75 1.75 0 0 1 0-2.475L6.7 10 .513 3.812a1.75 1.75 0 0 1 0-2.475l.826-.824a1.749 1.749 0 0 1 2.474 0L10 6.7 16.186.513a1.75 1.75 0 0 1 2.476 0l.825.825a1.749 1.749 0 0 1 0 2.475L13.3 10l6.187 6.188a1.748 1.748 0 0 1 0 2.475l-.825.825a1.75 1.75 0 0 1-2.475 0z" data-name="합치기 1" transform="translate(.033 -.276)"/>
+    </g>
+</svg>
