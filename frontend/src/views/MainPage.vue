@@ -1,47 +1,17 @@
 <template>
-  <header>
-    <div class="navigations">
-      <!-- 1 -->
-      <template v-if="isUserLogin">
-        <span v-if="isUserLogin">by {{ $store.state.username }}</span>
-        <a href="javascript:;" @click="logoutUser" class="logout-button">
-          Logout
-        </a>
-      </template>
-      <!-- 2 -->
-      <template v-else>
-        <button @click="showSignIn">로그인</button>
-        <button @click="showSignUp">회원가입</button>
-      </template>
-    </div>
-  </header>
+  <!-- HEADER -->
+  <AppHeader></AppHeader>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import { deleteCookie } from "@/utils/cookies";
-
-const signModalNameSpace = "signModal/";
+import AppHeader from "../components/common/AppHeader.vue";
 export default Vue.extend({
-  methods: {
-    showSignIn() {
-      this.$store.commit(`${signModalNameSpace}showSignIn`);
-    },
-    showSignUp() {
-      this.$store.commit(`${signModalNameSpace}showSignUp`);
-    },
-    logoutUser() {
-      this.$store.commit("clearUsername");
-      this.$store.commit("clearToken");
-      deleteCookie("greene_auth");
-      deleteCookie("greene_user");
-    }
+  components: {
+    AppHeader
   },
-  computed: {
-    isUserLogin() {
-      return this.$store.getters.isLogin;
-    }
-  }
+  methods: {},
+  computed: {}
 });
 </script>
 
-<style></style>
+<style lang="scss"></style>
