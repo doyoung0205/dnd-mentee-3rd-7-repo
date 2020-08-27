@@ -122,6 +122,8 @@ export default Vue.extend({
 <style lang="scss">
 .IMGBLOCK {
   z-index: -1;
+  position: absolute;
+  top: 0;
 }
 .IMGBLOCK__RightCorner {
   z-index: -1;
