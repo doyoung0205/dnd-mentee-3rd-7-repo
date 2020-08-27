@@ -4,7 +4,7 @@ import { UserSignUp, UserSignIn } from "./type";
 
 // 회원가입 API
 export function signUp(userSignUp: UserSignUp) {
-  return instance.post("signup", userSignUp);
+  return instance.post("user/signup/", userSignUp, { withCredentials: true });
 }
 
 // 로그인 API
