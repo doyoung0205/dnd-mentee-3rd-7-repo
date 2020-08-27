@@ -332,7 +332,7 @@ export default Vue.extend({
   }
   .search__overlay {
     z-index: 9998;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;

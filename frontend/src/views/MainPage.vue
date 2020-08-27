@@ -44,7 +44,10 @@
           </div>
         </div>
         <div class="tipList__contents">
-          <div class="tip__item">
+          <div
+            class="tip__item"
+            :style="{ backgroundImage: `url(${dummyBackgroundImg})` }"
+          >
             <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
             <span class="tip__previewContent"
               >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
@@ -63,7 +66,10 @@
               >
             </div>
           </div>
-          <div class="tip__item">
+          <div
+            class="tip__item"
+            :style="{ backgroundImage: `url(${dummyBackgroundImg})` }"
+          >
             <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
             <span class="tip__previewContent"
               >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
@@ -82,7 +88,10 @@
               >
             </div>
           </div>
-          <div class="tip__item">
+          <div
+            class="tip__item"
+            :style="{ backgroundImage: `url(${dummyBackgroundImg})` }"
+          >
             <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
             <span class="tip__previewContent"
               >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
@@ -101,7 +110,10 @@
               >
             </div>
           </div>
-          <div class="tip__item">
+          <div
+            class="tip__item"
+            :style="{ backgroundImage: `url(${dummyBackgroundImg})` }"
+          >
             <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
             <span class="tip__previewContent"
               >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
@@ -120,7 +132,10 @@
               >
             </div>
           </div>
-          <div class="tip__item">
+          <div
+            class="tip__item"
+            :style="{ backgroundImage: `url(${dummyBackgroundImg})` }"
+          >
             <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
             <span class="tip__previewContent"
               >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
@@ -139,7 +154,10 @@
               >
             </div>
           </div>
-          <div class="tip__item">
+          <div
+            class="tip__item"
+            :style="{ backgroundImage: `url(${dummyBackgroundImg})` }"
+          >
             <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
             <span class="tip__previewContent"
               >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
@@ -171,6 +189,11 @@ export default Vue.extend({
   components: {
     AppHeader,
     MainCarocel
+  },
+  data() {
+    return {
+      dummyBackgroundImg: require(`@/assets/images/dummy.png`)
+    };
   },
   methods: {},
   computed: {}
@@ -262,6 +285,10 @@ div#tipList {
           &:last-child {
             margin-right: 0;
           }
+          &:hover {
+            box-shadow: inset 6px -6px 18px #ffffff,
+              inset 6px 6px 18px rgba(0, 0, 0, 0.17);
+          }
           span {
             font-size: 24px;
             line-height: 28px;
@@ -281,7 +308,9 @@ div#tipList {
     box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.15), -12px -12px 18px #ffffff;
     border-radius: 14px;
     margin-bottom: 35px;
-
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
     h3.tip__subject {
       font-size: 36px;
       line-height: 42px;
