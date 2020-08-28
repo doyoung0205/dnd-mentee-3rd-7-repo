@@ -2,13 +2,15 @@
   <!-- HEADER -->
   <header id="header">
     <div class="header__contents">
-      <div class="header__logo">
-        <router-link to="">로고이미지</router-link>
-      </div>
+      <router-link to="/">
+        <div class="header__logo">
+          로고이미지
+        </div>
+      </router-link>
       <div class="header__navigations">
         <ul>
           <li class="header__nav__item__intro">
-            <router-link to="">그린이소개</router-link>
+            <router-link to="/intro">그린이소개</router-link>
           </li>
           <li class="header__nav__item__tip">
             <router-link to="">팁쓰기</router-link>

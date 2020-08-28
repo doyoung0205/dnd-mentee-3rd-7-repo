@@ -1,7 +1,5 @@
 <template>
   <div class="main">
-    <!-- HEADER -->
-    <AppHeader></AppHeader>
     <!-- 메인 캐러셀 -->
     <MainCarocel></MainCarocel>
     <!-- 실시간 인기 팁 -->
@@ -183,11 +181,10 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import AppHeader from "../components/common/AppHeader.vue";
+
 import MainCarocel from "../components/main/MainCarocel.vue";
 export default Vue.extend({
   components: {
-    AppHeader,
     MainCarocel
   },
   data() {
