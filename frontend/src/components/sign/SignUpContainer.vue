@@ -218,12 +218,6 @@
                 <span class="PasswordTextBlock__Text">
                   영어숫자를 포함한 4자리 이상!
                 </span>
-                <!-- 
-                <span
-                  class="PasswordTextBlock__Text PasswordTextBlock__LeftText"
-                  >비밀번호 보기</span
-                >
-                <input type="checkbox" id="checkbox" v-model="showpassword" /> -->
               </div>
 
               <div class="PasswordContainer">
@@ -251,7 +245,7 @@
 
               <div class="RegisterErrorContainer">
                 <p class="RegisterErrorContainer__Text">
-                  {{ error ? logMessage.PWError : "" }}
+                  {{ error && !isValidPWD ? logMessage.PWError : "" }}
                 </p>
               </div>
 
@@ -274,6 +268,9 @@
               <div class="PasswordContainer">
                 <input
                   class="FormContainer__input"
+                  :class="{
+                    FormInputError: error && !isValidPwdCheck
+                  }"
                   id="passwordCheck"
                   :type="passwordType"
                   v-model="passwordCheck"
@@ -290,6 +287,14 @@
                   class="PWInputContainer__eyes"
                   src="@/assets/images/Eyes.svg"
                 />
+
+                <div class="RegisterErrorContainer">
+                  <p class="RegisterErrorContainer__Text">
+                    {{
+                      error && !isValidPwdCheck ? logMessage.PWCheckError : ""
+                    }}
+                  </p>
+                </div>
               </div>
             </div>
           </transition>
@@ -323,6 +328,7 @@ import Vue from "vue";
 import { signUp } from "../../api/sign";
 import { UserSignUp } from "@/api/sign/type";
 import { validateEmail } from "@/utils/validation";
+import { genErrorMessage } from "@/utils/errors";
 export default Vue.extend({
   name: "SignUpContainer",
   data() {
@@ -339,9 +345,10 @@ export default Vue.extend({
       ],
       buttonText: ["가입하기", "다음", "다음", "다음", "회원가입 끝!"],
       logMessage: {
-        EmailError: "올바른 이메일이 아니에요:(",
-        PWError: "올바른 비밀번호 형식이 아니에요:(",
-        userNameError: "올바른 사용자 이름이 아니에요:("
+        EmailError: genErrorMessage("이메일이"),
+        PWError: genErrorMessage("비밀번호가"),
+        PWCheckError: "비밀번호가 일치하지 않아요:(",
+        userNameError: "닉네임이은 6자리 이상이에요:("
       },
       passwordCheck: "",
       passwordType: "password"
