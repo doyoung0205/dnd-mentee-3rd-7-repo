@@ -1,76 +1,67 @@
 <template>
   <div id="loadingModal" v-if="$store.state.loadingModal.show">
-    <section class="IMGBLOCK">
-      <div class="IMGBLOCK__RightCorner"></div>
-    </section>
+    <SignLayout>
+      <template #header> </template>
+      <template #content>
+        <section class="IMGBLOCK">
+          <div class="IMGBLOCK__RightCorner"></div>
+        </section>
 
-    <section class="IMGBLOCK">
-      <div class="IMGBLOCK__UpperLeft"></div>
-    </section>
-    <section class="IMGBLOCK">
-      <div class="IMGBLOCK__LowerLeft"></div>
-    </section>
+        <section class="IMGBLOCK">
+          <div class="IMGBLOCK__UpperLeft"></div>
+        </section>
+        <section class="IMGBLOCK">
+          <div class="IMGBLOCK__LowerLeft IMGBLOCK__LowerLeft-loading"></div>
+        </section>
 
-    <section class="IMGBLOCK">
-      <div class="IMGBLOCK__Character"></div>
-    </section>
+        <section class="IMGBLOCK">
+          <div
+            class="IMGBLOCK__Character IMGBLOCK__Character-loading"
+          ></div></section
+      ></template>
+    </SignLayout>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-export default Vue.extend({});
+import SignLayout from "@/components/sign/SignLayout.vue";
+export default Vue.extend({
+  name: "LoadingModal",
+  components: {
+    SignLayout
+  }
+});
 </script>
 
 <style lang="scss">
-.IMGBLOCK {
-  z-index: -1;
+@import "@/assets/styles/background.scss";
+@keyframes MoveUpDown {
+  100% {
+    transform: translateY(90px);
+  }
+  0% {
+    transform: translateY(250px);
+  }
+}
+
+#loadingModal {
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: white;
   position: absolute;
   top: 0;
-}
-.IMGBLOCK__RightCorner {
-  z-index: -1;
-  width: 50vw;
-  height: 50vh;
-  margin-right: 0;
-  margin-left: 50vw;
-  position: absolute;
-  background-position: -21px -212px;
-  background-repeat: no-repeat;
-  background-image: url("../../assets/images/upperrightcornerPlanet.svg");
-}
-.IMGBLOCK__UpperLeft {
-  z-index: -1;
-  width: 50vw;
-  height: 50vh;
-  margin-right: 0;
-  position: absolute;
-  background-position: -44px 60px;
-  background-repeat: no-repeat;
-  background-image: url("../../assets/images/upperleftPlanet.svg");
+  left: 0;
 }
 
-.IMGBLOCK__LowerLeft {
-  z-index: -1;
-  width: 82vw;
-  z-index: -1;
-  height: 50vh;
-  margin-right: 0;
-  position: absolute;
-  background-position: -245px 117px;
-  background-repeat: no-repeat;
-  background-image: url("../../assets/images/lowerleftPlanet.svg");
-  margin-top: 50vh;
+.IMGBLOCK__LowerLeft-loading {
+  width: 100vw;
+  background-position: -89px 47px;
 }
 
-.IMGBLOCK__Character {
-  z-index: -1;
-  width: 50vw;
-  height: 50vh;
-  position: absolute;
-  margin-left: 25vw;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(/img/group_404.c2f607ec.svg);
+.IMGBLOCK__Character-loading {
+  animation: MoveUpDown 0.8s linear infinite;
+  background-size: 50% 50%;
 }
 </style>
