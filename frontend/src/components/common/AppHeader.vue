@@ -39,6 +39,11 @@
             <div class="search__input__container">
               <div class="search__input">
                 <input type="text" />
+                <img
+                  class="searchIcon"
+                  src="../../assets/images/search-icon.svg"
+                  alt=""
+                />
               </div>
             </div>
             <div class="search__history">
@@ -69,21 +74,23 @@
                 </li>
               </ul>
             </div>
-            <hr />
-            <div class="search__recommend">
-              <h3 class="search_comment">추천 해시태그로 검색해 보세요</h3>
-              <div class="search__hashTags">
-                <div class="search__hashTag">
-                  #키워드
-                </div>
-                <div class="search__hashTag">
-                  #키워드
-                </div>
-                <div class="search__hashTag">
-                  #키워드
-                </div>
-                <div class="search__hashTag">
-                  #키워드
+            <!-- <hr /> -->
+            <div class="search__recommend__container">
+              <div class="search__recommend">
+                <h3 class="search_comment">추천 해시태그로 검색해 보세요</h3>
+                <div class="search__hashTags">
+                  <div class="search__hashTag">
+                    #키워드
+                  </div>
+                  <div class="search__hashTag">
+                    #키워드
+                  </div>
+                  <div class="search__hashTag">
+                    #키워드
+                  </div>
+                  <div class="search__hashTag">
+                    #키워드
+                  </div>
                 </div>
               </div>
             </div>
@@ -146,10 +153,10 @@ export default Vue.extend({
 /* ============================= HEADER  ============================= */
 #header {
   width: 100%;
-  height: 70px;
+  height: 50px;
   .header__contents {
     margin: 0 auto;
-    max-width: 1180px;
+    max-width: 1194px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -159,21 +166,21 @@ export default Vue.extend({
   .header__logo {
     @extend .text--hidden;
     @extend .image--center;
-    width: 75px;
-    height: 25px;
+    width: 60px;
+    height: 21px;
     cursor: pointer;
     background-image: url("../../assets/images/logo.svg");
   }
 
   .header__navigations {
-    font-size: 21px;
-    line-height: 25px;
+    font-size: 18px;
+    line-height: 21px;
 
     ul {
       display: flex;
       align-items: center;
       li {
-        margin-left: 80px;
+        margin-left: 65px;
         &:first-child {
           margin-left: 0;
         }
@@ -182,10 +189,9 @@ export default Vue.extend({
           @extend .text--hidden;
           @extend .image--center;
           cursor: pointer;
-          margin-left: 60px;
-          margin-top: 10px;
-          width: 38px;
-          height: 38px;
+          margin-top: 8px;
+          width: 35px;
+          height: 35px;
           background-image: url("../../assets/images/search-icon.svg");
         }
         a {
@@ -228,7 +234,7 @@ export default Vue.extend({
     }
     .search__input {
       width: 100%;
-      height: 76px;
+      height: 58px;
       background: #f5f5f5;
       box-shadow: inset -4px -4px 6px #ffffff,
         inset 4px 4px 6px rgba(0, 0, 0, 0.17);
@@ -243,23 +249,19 @@ export default Vue.extend({
           inset 4px 4px 6px rgba(0, 0, 0, 0.17);
         border-radius: 38px;
         caret-color: #5fac9a;
-        font-size: 28px;
-        line-height: 33px;
+        font-size: 21px;
+        line-height: 25px;
         color: #37444a;
       }
-      &::before {
+      .searchIcon {
         content: "";
         display: inline-block;
         position: absolute;
         top: 50%;
         right: 13px;
-        width: 50px;
-        height: 50px;
-        margin-top: -21px;
-        background-image: url("../../assets/images/search-icon.svg");
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        background-size: contain;
+        width: 35px;
+        height: 35px;
+        margin-top: -14px;
         cursor: pointer;
       }
     }
@@ -269,16 +271,17 @@ export default Vue.extend({
       @extend .search__padding;
       display: flex;
       flex-direction: column;
-      padding-bottom: 40px;
+      padding-bottom: 15px;
       ul {
+        margin-top: 5px;
         li {
           display: flex;
           align-items: center;
-          margin-top: 33px;
+          margin-top: 15px;
           cursor: pointer;
           span {
-            font-size: 28px;
-            line-height: 33px;
+            font-size: 18px;
+            line-height: 21px;
             color: #37444a;
           }
           img {
@@ -296,14 +299,18 @@ export default Vue.extend({
       background-color: #cccccc;
     }
     // 추천 키워드
+    .search__recommend__container {
+      width: 100%;
+      background-color: #eeeeee;
+    }
     .search__recommend {
       @extend .search__width;
       @extend .search__padding;
-      padding-top: 29px;
-      padding-bottom: 44px;
+      padding-top: 23px;
+      padding-bottom: 26px;
       h3 {
-        font-size: 28px;
-        line-height: 33px;
+        font-size: 15px;
+        line-height: 18px;
         color: #37444a;
       }
       .search__hashTags {
@@ -311,17 +318,17 @@ export default Vue.extend({
         flex-wrap: wrap;
         .search__hashTag {
           cursor: pointer;
-          margin-top: 36px;
-          width: 164px;
-          height: 59px;
+          margin-top: 23px;
+          width: 114px;
+          height: 41px;
           border-radius: 34.5px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 30px;
-          line-height: 35px;
+          font-size: 18px;
+          line-height: 21px;
           color: #5fac9a;
-          margin-right: 23px;
+          margin-right: 21px;
           background: #f5f5f5;
           box-shadow: -6px -6px 18px #ffffff, 6px 6px 18px rgba(0, 0, 0, 0.17);
           &:hover {

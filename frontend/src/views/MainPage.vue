@@ -181,7 +181,6 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-
 import MainCarocel from "../components/main/MainCarocel.vue";
 export default Vue.extend({
   components: {
@@ -203,26 +202,28 @@ body {
 }
 div#tipList {
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 1194px;
   width: 100%;
-  margin-top: 68px;
+  margin-top: 44px;
   .tipList__h__caption {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     h3 {
-      font-size: 36px;
-      line-height: 42px;
+      font-size: 24px;
+      line-height: 28px;
       color: #333333;
     }
     img {
-      margin-top: 16px;
+      margin-top: 7px;
+      width: 35px;
+      height: 35px;
       cursor: pointer;
     }
   }
   .tipList__searchOption__contents {
-    margin-top: 22px;
+    margin-top: 9px;
     .tipList__search__contents {
       display: flex;
       align-items: flex-end;
@@ -238,19 +239,20 @@ div#tipList {
       );
       box-shadow: -6px -6px 18px #ffffff, 6px 6px 18px rgba(0, 0, 0, 0.17);
       border-radius: 53px;
-      width: 237px;
-      height: 81px;
+      padding: 13px 18px 14px 32px;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       span {
-        font-size: 36px;
-        line-height: 42px;
+        font-size: 21px;
+        line-height: 25px;
         color: #ffffff;
       }
       img {
         margin-left: 8px;
+        width: 23px;
+        height: 23px;
       }
     }
     // 추천 관련
@@ -259,8 +261,8 @@ div#tipList {
       display: flex;
       align-items: flex-end;
       h3 {
-        font-size: 28px;
-        line-height: 33px;
+        font-size: 18px;
+        line-height: 21px;
         color: #37444a;
         margin-right: 21px;
       }
@@ -269,10 +271,13 @@ div#tipList {
         align-items: flex-end;
 
         .tag__item {
-          width: 137px;
-          height: 50px;
-          background: #f5f5f5;
-          box-shadow: -6px -6px 18px #ffffff, 6px 6px 18px rgba(0, 0, 0, 0.17);
+          padding: 7px 16px;
+          background: linear-gradient(
+              0deg,
+              rgba(55, 68, 74, 0.09),
+              rgba(55, 68, 74, 0.09)
+            ),
+            #f3f3f3;
           border-radius: 34.5px;
           display: flex;
           align-items: center;
@@ -287,10 +292,10 @@ div#tipList {
               inset 6px 6px 18px rgba(0, 0, 0, 0.17);
           }
           span {
-            font-size: 24px;
-            line-height: 28px;
+            font-size: 15px;
+            line-height: 160%;
             text-align: center;
-            color: #5fac9a;
+            color: #37444a;
           }
         }
       }
@@ -304,52 +309,56 @@ div#tipList {
     background: #f3f3f3;
     box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.15), -12px -12px 18px #ffffff;
     border-radius: 14px;
-    margin-bottom: 35px;
+    margin-bottom: 23px;
     background-repeat: no-repeat;
     background-position: right;
     background-size: contain;
     h3.tip__subject {
-      font-size: 36px;
-      line-height: 42px;
+      font-size: 21px;
+      line-height: 25px;
       color: #272727;
     }
 
     span.tip__previewContent {
       font-weight: normal;
-      font-size: 24px;
-      line-height: 29px;
+      font-size: 15px;
+      line-height: 150%;
       color: #737373;
-      margin-top: 15px;
-      margin-bottom: 25px;
+      margin-top: 18px;
+      margin-bottom: 18px;
     }
 
     .tip__info__contents {
       font-weight: normal;
-      font-size: 23px;
-      line-height: 31px;
+      font-size: 15px;
+      line-height: 25px;
       color: #737373;
       line-height: 25px;
       display: flex;
       align-items: flex-end;
 
       span.tip__createdAt {
-        margin-left: 54px;
+        margin-left: 28px;
       }
       span.tip__heartCount,
       .tip__commentCount {
         display: flex;
         align-items: flex-end;
+        img {
+          width: 24px;
+          height: 24px;
+        }
       }
       span.tip__heartCount {
-        margin-left: 54px;
+        margin-left: 28px;
         img {
-          margin-right: 18px;
+          margin-right: 16px;
         }
       }
       span.tip__commentCount {
         margin-left: 34px;
         img {
-          margin-right: 22px;
+          margin-right: 16px;
         }
       }
     }

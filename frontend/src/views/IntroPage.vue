@@ -116,7 +116,7 @@ div#intro__contents {
     background: #fff;
     .intro__service__container {
       margin: 0 auto;
-      max-width: 1180px;
+      max-width: 1194px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -147,7 +147,7 @@ div#intro__contents {
   .intro__members {
     padding: 90px 0;
     margin: 0 auto;
-    max-width: 1180px;
+    max-width: 1194px;
     width: 100%;
     display: flex;
     .intro__members__header {
