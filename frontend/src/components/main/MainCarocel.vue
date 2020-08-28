@@ -14,7 +14,8 @@
             />
             <h3>오늘의 베스트 팁</h3>
             <h1>환경을 새각하는 한 걸음</h1>
-            <p>그린이와 함께 생활 속 유용 팁! 음식물 쓰레기</p>
+            <p>그린이와 함께 생활 속 유용 팁!</p>
+            <p>음식물 쓰레기 버리는 법에 대해 알아볼까요?</p>
             <button>
               더 알아보기
             </button>
@@ -72,10 +73,10 @@ export default Vue.extend({
     return {
       swiperOption: {
         loop: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false
-        },
+        // autoplay: {
+        //   delay: 2500,
+        //   disableOnInteraction: false
+        // },
         pagination: {
           el: "#swiper__indicate__contents",
           clickable: true,
@@ -111,47 +112,47 @@ export default Vue.extend({
     position: absolute;
     left: 50%;
     width: 100%;
-    max-width: 1180px;
+    max-width: 1194px;
     top: 50%;
     transform: translate(-50%, -50%);
     .cloud {
-      margin-bottom: 13px;
+      margin-bottom: 14px;
     }
     h3 {
       font-size: 27px;
       line-height: 32px;
       color: #ffffff;
-      margin-bottom: 20px;
+      margin-bottom: 21px;
     }
     h1 {
       font-size: 48px;
       line-height: 56px;
       color: #333333;
-      margin-bottom: 44px;
+      margin-bottom: 27px;
     }
     p {
-      font-size: 21px;
-      line-height: 24px;
+      font-size: 18px;
+      line-height: 160%;
       color: #333333;
-      margin-bottom: 84px;
     }
     button {
+      margin-top: 41px;
       cursor: pointer;
       border: none;
       background: #f7f7f7;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 29px 122px 28px 92px;
+      padding: 22px 82px 22px 72px;
       border-radius: 40px;
-      font-size: 25px;
-      line-height: 29px;
+      font-size: 21px;
+      line-height: 25px;
       color: #5fac9a;
       position: relative;
       &::after {
         content: "";
         position: absolute;
-        right: 37px;
+        right: 33px;
         height: 27px;
         width: 14px;
         background-image: url("../../assets/images/right-arrow.svg");
@@ -172,11 +173,11 @@ export default Vue.extend({
     justify-content: center;
     .swiper__indicator {
       @extend .mot3;
-      width: 17px;
-      height: 17px;
+      width: 11px;
+      height: 11px;
       background: rgba(39, 39, 39, 0.13);
       border-radius: 17px;
-      margin-right: 50px;
+      margin-right: 33px;
       border: none;
       z-index: 3;
       @extend .txt-hidden;
