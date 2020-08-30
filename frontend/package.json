@@ -5,8 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve-integration-tests": "vue-cli-service serve --integration-test",
+    "test:acceptance": "cypress run --browser chrome",
+    "test:acceptance-open": "cypress open",
+    "test:integration": "cypress_mode=integration cypress run --browser chrome",
+    "test:integration-open": "cypress_mode=integration cypress open",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "core-js": "^3.6.5",
