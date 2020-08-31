@@ -325,15 +325,23 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { signUp } from "../../api/sign";
-import { UserSignUp } from "@/api/sign/type";
+import { signUp, signIn } from "../../api/sign";
+import { UserSignUp, UserSignIn } from "@/api/sign/type";
+import { getToken, getRefToken } from "@/api/token";
+import { TokenData } from "@/api/token/type";
 import { validateEmail } from "@/utils/validation";
 import { genErrorMessage } from "@/utils/errors";
+import {
+  saveAuthToCookie,
+  saveUserToCookie,
+  getAuthFromCookie
+} from "@/utils/cookies";
+
 export default Vue.extend({
   name: "SignUpContainer",
   data() {
     return {
-      userData: { email: "", username: "", password: "" },
+      userData: { email: "", username: "", password: "", token: "" },
       stage: 0,
       error: false,
       headerImg: [
@@ -406,15 +414,19 @@ export default Vue.extend({
       this.error = false;
     },
     async submitForm() {
-      // const userData: UserSignUp = {
-      const userData = {
-        email: this.userData.email,
-        password: this.userData.password,
-        username: this.userData.username
-      };
       //const { data } = await signUp(userData);
-      const data = await signUp(userData);
-      console.log("data", data);
+      try {
+        await signUp(this.userData);
+        const signInData: UserSignIn = {
+          username: this.userData.username,
+          password: this.userData.password
+        };
+        await this.$store.dispatch("SIGN_IN", signInData);
+        this.$store.commit("signModal/close");
+      } catch (error) {
+        console.log("error", error);
+      }
+
       this.initForm();
     },
     initForm(): void {
