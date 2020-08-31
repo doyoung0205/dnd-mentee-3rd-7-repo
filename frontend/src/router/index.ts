@@ -20,6 +20,11 @@ const routes: Array<RouteConfig> = [
     path: "/intro",
     name: "Intro",
     component: () => import("@/views/IntroPage.vue")
+  },
+  {
+    path: "/mypage",
+    name: "MyPage",
+    component: () => import("@/views/MyPage.vue")
   }
 ];
 
