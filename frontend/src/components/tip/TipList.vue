@@ -151,60 +151,61 @@ export default Vue.extend({
 .tip__item {
   display: flex;
   flex-direction: column;
-  padding: 21px 43px;
+  padding: 1.0938vw 2.2396vw;
   background: #f3f3f3;
-  box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.15), -12px -12px 18px #ffffff;
-  border-radius: 14px;
-  margin-bottom: 23px;
+  box-shadow: 0.625vw 0.625vw 0.9375vw rgba(0, 0, 0, 0.15),
+    -0.625vw -0.625vw 0.9375vw #ffffff;
+  border-radius: 0.7292vw;
+  margin-bottom: 1.1979vw;
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
   h3.tip__subject {
-    font-size: 21px;
-    line-height: 25px;
+    font-size: 1.0938vw;
+    line-height: 1.3021vw;
     color: #272727;
   }
-
+  span {
+    font-size: 0.7813vw;
+    line-height: 1.3021vw;
+  }
   span.tip__previewContent {
-    font-weight: normal;
-    font-size: 15px;
+    font-size: 0.7813vw;
     line-height: 150%;
-    color: #737373;
-    margin-top: 18px;
-    margin-bottom: 18px;
+    margin-top: 0.9375vw;
+    margin-bottom: 0.9375vw;
   }
 
   .tip__info__contents {
     font-weight: normal;
-    font-size: 15px;
-    line-height: 25px;
+    font-size: 0.7813vw;
+    line-height: 1.3021vw;
     color: #737373;
-    line-height: 25px;
     display: flex;
     align-items: flex-end;
 
     span.tip__createdAt {
-      margin-left: 28px;
+      margin-left: 1.4583vw;
     }
     span.tip__heartCount,
     .tip__commentCount {
       display: flex;
       align-items: flex-end;
       img {
-        width: 24px;
-        height: 24px;
+        width: 1.25vw;
+        height: 1.25vw;
       }
     }
     span.tip__heartCount {
-      margin-left: 28px;
+      margin-left: 1.4583vw;
       img {
-        margin-right: 16px;
+        margin-right: 0.8333vw;
       }
     }
     span.tip__commentCount {
-      margin-left: 34px;
+      margin-left: 1.7708vw;
       img {
-        margin-right: 16px;
+        margin-right: 0.8333vw;
       }
     }
   }

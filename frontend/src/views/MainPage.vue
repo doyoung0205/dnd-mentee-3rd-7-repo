@@ -35,7 +35,7 @@ body {
 }
 div#tipList {
   margin: 0 auto;
-  max-width: 1194px;
+  max-width: 62.1875vw;
   width: 100%;
   margin-top: 44px;
 }

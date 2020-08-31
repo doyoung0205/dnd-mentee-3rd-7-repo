@@ -112,49 +112,50 @@ export default Vue.extend({
     position: absolute;
     left: 50%;
     width: 100%;
-    max-width: 1194px;
+    max-width: 62.1875vw;
     top: 50%;
     transform: translate(-50%, -50%);
     .cloud {
-      margin-bottom: 14px;
+      width: 4.4vw;
+      margin-bottom: 0.7vw;
     }
     h3 {
-      font-size: 27px;
-      line-height: 32px;
+      font-size: 1.4vw;
+      line-height: 1.7vw;
       color: #ffffff;
       margin-bottom: 21px;
     }
     h1 {
-      font-size: 48px;
-      line-height: 56px;
+      font-size: 2.5vw;
+      line-height: 2.9167vw;
+      margin-bottom: 1.4063vw;
       color: #333333;
-      margin-bottom: 27px;
     }
     p {
-      font-size: 18px;
+      font-size: 0.9375vw;
       line-height: 160%;
       color: #333333;
     }
     button {
-      margin-top: 41px;
+      margin-top: 2.1354vw;
       cursor: pointer;
       border: none;
       background: #f7f7f7;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 22px 82px 22px 72px;
-      border-radius: 40px;
-      font-size: 21px;
-      line-height: 25px;
+      padding: 1.1458vw 4.2708vw 1.1458vw 3.75vw;
+      border-radius: 2.0833vw;
+      font-size: 1.0938vw;
+      line-height: 1.3021vw;
       color: #5fac9a;
       position: relative;
       &::after {
         content: "";
         position: absolute;
-        right: 33px;
-        height: 27px;
-        width: 14px;
+        right: 1.7188vw;
+        height: 1.4063vw;
+        width: 0.7292vw;
         background-image: url("../../assets/images/right-arrow.svg");
         background-position: center;
         background-size: contain;
@@ -167,17 +168,17 @@ export default Vue.extend({
   #swiper__indicate__contents {
     position: absolute;
     width: 100%;
-    bottom: 24px;
+    bottom: 1.25vw;
     display: flex;
     align-items: center;
     justify-content: center;
     .swiper__indicator {
       @extend .mot3;
-      width: 11px;
-      height: 11px;
       background: rgba(39, 39, 39, 0.13);
-      border-radius: 17px;
-      margin-right: 33px;
+      width: 0.5729vw;
+      height: 0.5729vw;
+      border-radius: 0.8854vw;
+      margin-right: 1.7188vw;
       border: none;
       z-index: 3;
       @extend .txt-hidden;
@@ -195,15 +196,17 @@ export default Vue.extend({
     img {
       position: absolute;
       cursor: pointer;
+      width: 2.7604vw;
+      height: 4.8438vw;
       top: 50%;
       transform: translate(0, -50%);
       z-index: 3;
     }
     .swiper--next {
-      right: 38px;
+      right: 1.9792vw;
     }
     .swiper--prev {
-      left: 38px;
+      left: 1.9792vw;
     }
   }
 }

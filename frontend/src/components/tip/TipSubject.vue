@@ -22,14 +22,14 @@ export default Vue.extend({});
   flex-direction: column;
   align-items: center;
   h3 {
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1.25vw;
+    line-height: 1.4583vw;
     color: #333333;
   }
   img {
-    margin-top: 7px;
-    width: 35px;
-    height: 35px;
+    margin-top: 0.3646vw;
+    width: 1.8229vw;
+    height: 1.8229vw;
     cursor: pointer;
   }
 }

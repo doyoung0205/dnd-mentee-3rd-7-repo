@@ -50,62 +50,64 @@ export default Vue.extend({});
       #65b8a4 35.41%,
       #72d1b9 80.51%
     );
-    box-shadow: -6px -6px 18px #ffffff, 6px 6px 18px rgba(0, 0, 0, 0.17);
-    border-radius: 53px;
-    padding: 13px 18px 14px 32px;
+    box-shadow: -0.3125vw -0.3125vw 0.9375vw #ffffff,
+      0.3125vw 0.3125vw 0.9375vw rgba(0, 0, 0, 0.17);
+    border-radius: 2.7604vw;
+    padding: 0.6771vw 0.9375vw 0.7292vw 1.6667vw;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     span {
-      font-size: 21px;
-      line-height: 25px;
+      font-size: 1.0938vw;
+      line-height: 1.3021vw;
       color: #ffffff;
     }
     img {
-      margin-left: 8px;
-      width: 23px;
-      height: 23px;
+      margin-left: 0.4167vw;
+      width: 1.1979vw;
+      height: 1.1979vw;
     }
   }
   // 추천 관련
   .tipList__associative__contents {
-    margin-left: 50px;
+    margin-left: 2.6042vw;
     display: flex;
     align-items: flex-end;
     h3 {
-      font-size: 18px;
-      line-height: 21px;
+      font-size: 0.9375vw;
+      line-height: 1.0938vw;
+      margin-right: 1.0938vw;
       color: #37444a;
-      margin-right: 21px;
     }
     .tagList {
       display: flex;
       align-items: flex-end;
 
       .tag__item {
-        padding: 7px 16px;
+        padding: 0.3646vw 0.8333vw;
+        border-radius: 1.7969vw;
         background: linear-gradient(
             0deg,
             rgba(55, 68, 74, 0.09),
             rgba(55, 68, 74, 0.09)
           ),
           #f3f3f3;
-        border-radius: 34.5px;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 18px;
+        margin-right: 0.9375vw;
         cursor: pointer;
         &:last-child {
           margin-right: 0;
         }
         &:hover {
-          box-shadow: inset 6px -6px 18px #ffffff,
-            inset 6px 6px 18px rgba(0, 0, 0, 0.17);
+          box-shadow: inset 0.3125vw -0.3125vw 0.9375vw #ffffff,
+            inset 0.3125vw 0.3125vw 0.9375vw rgba(0, 0, 0, 0.17);
         }
         span {
-          font-size: 15px;
+          font-size: 0.7813vw;
           line-height: 160%;
           text-align: center;
           color: #37444a;
