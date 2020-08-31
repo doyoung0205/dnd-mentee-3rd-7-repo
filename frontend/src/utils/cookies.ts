@@ -2,6 +2,10 @@ function saveAuthToCookie(value: string) {
   document.cookie = `greene_auth=${value}`;
 }
 
+function saveRefreshToLocal(value: string) {
+  localStorage.setItem("refreshToken", value);
+}
+
 function saveUserToCookie(value: string) {
   document.cookie = `greene_user=${value}`;
 }
@@ -26,6 +30,7 @@ function deleteCookie(value: string) {
 
 export {
   saveAuthToCookie,
+  saveRefreshToLocal,
   saveUserToCookie,
   getAuthFromCookie,
   getUserFromCookie,

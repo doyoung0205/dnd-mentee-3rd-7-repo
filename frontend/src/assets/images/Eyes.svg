@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+    <defs>
+        <style>
+            .cls-1{fill:#70cdb6}
+        </style>
+    </defs>
+    <g id="그룹_824" data-name="그룹 824" transform="translate(-284 -238)">
+        <g id="그룹_811" data-name="그룹 811" transform="translate(.707 -.5)">
+            <g id="eye" transform="translate(283.293 122.475)">
+                <g id="그룹_808" data-name="그룹 808" transform="translate(1.999 121)">
+                    <g id="그룹_807" data-name="그룹 807">
+                        <path id="패스_1074" d="M22.513 127.241c-.228-.255-3.287-6.241-10.161-6.241s-9.933 5.987-10.161 6.241a.749.749 0 0 0 0 1c.228.255 3.287 6.241 10.161 6.241s9.933-5.987 10.161-6.241a.749.749 0 0 0 0-1zm-10.161 5.742a5.243 5.243 0 1 1 5.243-5.243 5.249 5.249 0 0 1-5.243 5.243z" class="cls-1" data-name="패스 1074" transform="translate(-1.999 -121)"/>
+                    </g>
+                </g>
+                <g id="그룹_810" data-name="그룹 810" transform="translate(8.607 123.996)">
+                    <g id="그룹_809" data-name="그룹 809">
+                        <path id="패스_1075" d="M185.494 183.247a2.24 2.24 0 0 1 .943-1.824 3.7 3.7 0 0 0-1.692-.423 3.745 3.745 0 1 0 3.681 4.376 2.234 2.234 0 0 1-2.932-2.129z" class="cls-1" data-name="패스 1075" transform="translate(-181 -181)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path id="사각형_1580" fill="none" d="M0 0H25V25H0z" data-name="사각형 1580" transform="translate(284 238)"/>
+    </g>
+</svg>
