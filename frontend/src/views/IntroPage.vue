@@ -41,6 +41,7 @@
             <div class="name"><span>최하윤</span></div>
             <div class="email"><span>tjstos16@gmail.com</span></div>
             <div class="actions">
+              <img src="../assets/images/instagram.svg" alt="" />
               <img src="../assets/images/mail.svg" alt="" />
             </div>
           </div>
@@ -49,7 +50,10 @@
             <div class="name"><span>김도영</span></div>
             <div class="email"><span>doyoung0205@naver.com</span></div>
             <div class="actions">
-              <img src="../assets/images/mail.svg" alt="" />
+              <div class="actions__icons">
+                <img src="../assets/images/instagram.svg" alt="" />
+                <img src="../assets/images/mail.svg" alt="" />
+              </div>
             </div>
           </div>
           <div class="member__table__row">
@@ -57,7 +61,10 @@
             <div class="name"><span>임한동</span></div>
             <div class="email"><span>limaries30@gmail.com</span></div>
             <div class="actions">
-              <img src="../assets/images/mail.svg" alt="" />
+              <div class="actions__icons">
+                <img src="../assets/images/instagram.svg" alt="" />
+                <img src="../assets/images/mail.svg" alt="" />
+              </div>
             </div>
           </div>
           <div class="member__table__row">
@@ -65,7 +72,10 @@
             <div class="name"><span>박정욱</span></div>
             <div class="email"><span>dnr1105@gmail.com</span></div>
             <div class="actions">
-              <img src="../assets/images/mail.svg" alt="" />
+              <div class="actions__icons">
+                <img src="../assets/images/instagram.svg" alt="" />
+                <img src="../assets/images/mail.svg" alt="" />
+              </div>
             </div>
           </div>
           <div class="member__table__row">
@@ -73,7 +83,10 @@
             <div class="name"><span>이정훈</span></div>
             <div class="email"><span>ljh9032a@naver.com</span></div>
             <div class="actions">
-              <img src="../assets/images/mail.svg" alt="" />
+              <div class="actions__icons">
+                <img src="../assets/images/instagram.svg" alt="" />
+                <img src="../assets/images/mail.svg" alt="" />
+              </div>
             </div>
           </div>
         </div>
@@ -94,6 +107,12 @@ div#intro__contents {
   .banner {
     position: relative;
     width: 100%;
+    @include mobileVersion {
+      height: 78px;
+      img {
+        height: 100%;
+      }
+    }
     img {
       width: 100%;
     }
@@ -104,26 +123,54 @@ div#intro__contents {
       transform: translate(-50%, -50%);
 
       span {
-        font-size: 2vw;
+        font-size: 36px;
         line-height: 42px;
         color: #ffffff;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        @include mobileVersion {
+          font-size: 24px;
+          line-height: 27px;
+          color: #ffffff;
+          text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
       }
     }
   }
   .intro__service {
     padding: 76px 0;
     background: #fff;
+    @include mobileVersion {
+      padding: 25px 0;
+      background: inherit;
+    }
     .intro__service__container {
       @extend .container;
       display: flex;
       justify-content: space-between;
+      @include mobileVersion {
+        flex-direction: column;
+      }
       .intro__service__header {
-        margin-right: 8vw;
+        max-width: 254px;
+        width: 100%;
+        @include mobileVersion {
+          display: flex;
+          align-items: center;
+          margin-bottom: 11px;
+          img {
+            width: 26px;
+            height: 27px;
+            margin-left: 9px;
+          }
+        }
         h3 {
           font-size: 21px;
           line-height: 25px;
           color: #333333;
+          @include mobileVersion {
+            font-size: 13px;
+            line-height: 15px;
+          }
         }
       }
       .intro__service__content {
@@ -132,11 +179,23 @@ div#intro__contents {
           line-height: 25px;
           color: #37444a;
           margin-bottom: 31px;
+          @include mobileVersion {
+            font-size: 13px;
+            line-height: 19px;
+            margin-bottom: 14px;
+          }
         }
         h3 {
           font-size: 15px;
           line-height: 25px;
           color: #37444a;
+          font-weight: normal;
+          @include mobileVersion {
+            font-size: 11px;
+            line-height: 18px;
+            margin-bottom: 20px;
+            font-weight: normal;
+          }
         }
       }
     }
@@ -144,15 +203,30 @@ div#intro__contents {
 
   .intro__members {
     @extend .container;
-    padding: 90px 0;
+    padding-top: 90px;
+    padding-bottom: 90px;
     display: flex;
+    @include mobileVersion {
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
     .intro__members__header {
-      margin-right: 8vw;
+      max-width: 254px;
+      width: 100%;
       word-break: keep-all;
+      @include mobileVersion {
+        display: flex;
+      }
       h3 {
         font-size: 21px;
         line-height: 25px;
         color: #333333;
+        @include mobileVersion {
+          font-size: 13px;
+          line-height: 15px;
+          margin-bottom: 16px;
+        }
       }
     }
     .intro__members__content {
@@ -168,7 +242,13 @@ div#intro__contents {
         > div {
           border-top: 1px solid rgba(55, 68, 74, 0.32);
           display: table-cell;
+          vertical-align: middle;
           padding: 21px;
+          @include mobileVersion {
+            padding: 0;
+            padding-left: 6px;
+            height: 31px;
+          }
           &.clear {
             border-top: none;
           }
@@ -183,6 +263,11 @@ div#intro__contents {
           font-size: 21px;
           line-height: 25px;
           color: #37444a;
+          @include mobileVersion {
+            font-weight: normal;
+            font-size: 11px;
+            line-height: 12px;
+          }
         }
         .job {
           &.designer {
@@ -202,7 +287,35 @@ div#intro__contents {
           }
         }
         .actions {
+          position: relative;
           cursor: pointer;
+          img {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            &:nth-child(1) {
+              left: -32px;
+            }
+            &:nth-child(2) {
+              width: 26px;
+              height: 26px;
+              left: 20px;
+            }
+            @include mobileVersion {
+              width: 10px;
+              height: 10px;
+              &:nth-child(1) {
+                left: -28px;
+              }
+              &:nth-child(2) {
+                width: 13px;
+                height: 13px;
+                left: -6px;
+              }
+            }
+          }
         }
       }
     }
