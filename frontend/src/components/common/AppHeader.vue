@@ -153,10 +153,10 @@ export default Vue.extend({
 /* ============================= HEADER  ============================= */
 #header {
   width: 100%;
-  height: 2.6042vw;
+  height: 50px;
   .header__contents {
     margin: 0 auto;
-    max-width: 62.1875vw;
+    max-width: 1194px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -166,21 +166,21 @@ export default Vue.extend({
   .header__logo {
     @extend .text--hidden;
     @extend .image--center;
-    width: 3.125vw;
-    height: 1.0938vw;
+    width: 60px;
+    height: 21px;
     cursor: pointer;
     background-image: url("../../assets/images/logo.svg");
   }
 
   .header__navigations {
-    font-size: 0.9375vw;
-    line-height: 1.0938vw;
+    font-size: 18px;
+    line-height: 21px;
 
     ul {
       display: flex;
       align-items: center;
       li {
-        margin-left: 3.3854vw;
+        margin-left: 65px;
         &:first-child {
           margin-left: 0;
         }
@@ -189,9 +189,9 @@ export default Vue.extend({
           @extend .text--hidden;
           @extend .image--center;
           cursor: pointer;
-          margin-top: 0.4167vw;
-          width: 1.8229vw;
-          height: 1.8229vw;
+          margin-top: 8px;
+          width: 35px;
+          height: 35px;
           background-image: url("../../assets/images/search-icon.svg");
         }
         a {
@@ -216,7 +216,7 @@ export default Vue.extend({
   }
   // 공통
   .search__padding {
-    padding: 0 0.8333vw;
+    padding: 0 16px;
   }
   .search__width {
     max-width: 1200px;
@@ -225,7 +225,7 @@ export default Vue.extend({
   }
   .search__contents {
     position: relative;
-    padding-top: 0.6771vw;
+    padding-top: 13px;
 
     // 검색 창
     .search__input__container {
@@ -234,23 +234,23 @@ export default Vue.extend({
     }
     .search__input {
       width: 100%;
-
+      height: 58px;
       background: #f5f5f5;
-      box-shadow: inset -0.2083vw -0.2083vw 0.3125vw #ffffff,
-        inset 0.2083vw 0.2083vw 0.3125vw rgba(0, 0, 0, 0.17);
-      height: 3.0208vw;
-      border-radius: 1.9792vw;
+      box-shadow: inset -4px -4px 6px #ffffff,
+        inset 4px 4px 6px rgba(0, 0, 0, 0.17);
+      border-radius: 38px;
       position: relative;
       input {
-        padding: 0 2.1875vw 0 1.1458vw;
+        padding: 0 42px 0 22px;
         width: 100%;
         height: 100%;
         background: #f5f5f5;
-        box-shadow: inset -0.2083vw -0.2083vw 0.3125vw #ffffff,
-          inset 0.2083vw 0.2083vw 0.3125vw rgba(0, 0, 0, 0.17);
-        border-radius: 1.9792vw;
-        font-size: 1.0938vw;
-        line-height: 1.3021vw;
+        box-shadow: inset -4px -4px 6px #ffffff,
+          inset 4px 4px 6px rgba(0, 0, 0, 0.17);
+        border-radius: 38px;
+        caret-color: #5fac9a;
+        font-size: 21px;
+        line-height: 25px;
         color: #37444a;
       }
       .searchIcon {
@@ -258,10 +258,10 @@ export default Vue.extend({
         display: inline-block;
         position: absolute;
         top: 50%;
-        right: 0.6771vw;
-        width: 1.8229vw;
-        height: 1.8229vw;
-        margin-top: -0.7292vw;
+        right: 13px;
+        width: 35px;
+        height: 35px;
+        margin-top: -14px;
         cursor: pointer;
       }
     }
@@ -271,28 +271,28 @@ export default Vue.extend({
       @extend .search__padding;
       display: flex;
       flex-direction: column;
-      padding-bottom: 0.7813vw;
+      padding-bottom: 15px;
       ul {
-        margin-top: 0.2604vw;
+        margin-top: 5px;
         li {
           display: flex;
           align-items: center;
-          margin-top: 0.7813vw;
+          margin-top: 15px;
           cursor: pointer;
           span {
-            font-size: 0.9375vw;
-            line-height: 1.0938vw;
+            font-size: 18px;
+            line-height: 21px;
             color: #37444a;
           }
           img {
-            margin-left: 0.5208vw;
+            margin-left: 10px;
           }
         }
       }
     }
     // 경계선
     hr {
-      height: 0.0521vw;
+      height: 1px;
       border: none;
       margin: 0;
       color: #cccccc;
@@ -306,11 +306,11 @@ export default Vue.extend({
     .search__recommend {
       @extend .search__width;
       @extend .search__padding;
-      padding-top: 1.1979vw;
-      padding-bottom: 1.3542vw;
+      padding-top: 23px;
+      padding-bottom: 26px;
       h3 {
-        font-size: 0.7813vw;
-        line-height: 0.9375vw;
+        font-size: 15px;
+        line-height: 18px;
         color: #37444a;
       }
       .search__hashTags {
@@ -318,23 +318,22 @@ export default Vue.extend({
         flex-wrap: wrap;
         .search__hashTag {
           cursor: pointer;
-          margin-top: 1.1979vw;
-          width: 5.9375vw;
-          height: 2.1354vw;
-          border-radius: 1.7969vw;
+          margin-top: 23px;
+          width: 114px;
+          height: 41px;
+          border-radius: 34.5px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 0.9375vw;
-          line-height: 1.0938vw;
-
-          margin-right: 1.0938vw;
+          font-size: 18px;
+          line-height: 21px;
+          color: #5fac9a;
+          margin-right: 21px;
           background: #f5f5f5;
-          box-shadow: -0.3125vw -0.3125vw 0.9375vw #ffffff,
-            0.3125vw 0.3125vw 0.9375vw rgba(0, 0, 0, 0.17);
+          box-shadow: -6px -6px 18px #ffffff, 6px 6px 18px rgba(0, 0, 0, 0.17);
           &:hover {
-            box-shadow: inset 0.3125vw -0.3125vw 0.9375vw #ffffff,
-              inset 0.3125vw 0.3125vw 0.9375vw rgba(0, 0, 0, 0.17);
+            box-shadow: inset 6px -6px 18px #ffffff,
+              inset 6px 6px 18px rgba(0, 0, 0, 0.17);
           }
         }
       }

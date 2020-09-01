@@ -105,43 +105,39 @@ div#intro__contents {
 
       span {
         font-size: 2vw;
-        line-height: 2.1875vw;
+        line-height: 42px;
         color: #ffffff;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
     }
   }
   .intro__service {
-    padding: 3.9583vw 0;
+    padding: 76px 0;
     background: #fff;
     .intro__service__container {
       margin: 0 auto;
-      max-width: 62.1875vw;
+      max-width: 1194px;
       width: 100%;
       display: flex;
       justify-content: space-between;
       .intro__service__header {
         margin-right: 8vw;
         h3 {
-          font-size: 1.0938vw;
-          line-height: 1.3021vw;
+          font-size: 21px;
+          line-height: 25px;
           color: #333333;
-        }
-        img {
-          width: 7.0313vw;
-          height: 7.2917vw;
         }
       }
       .intro__service__content {
         h2 {
-          font-size: 1.0938vw;
-          line-height: 1.3021vw;
-          margin-bottom: 1.6146vw;
+          font-size: 21px;
+          line-height: 25px;
           color: #37444a;
+          margin-bottom: 31px;
         }
         h3 {
-          font-size: 0.7813vw;
-          line-height: 1.3021vw;
+          font-size: 15px;
+          line-height: 25px;
           color: #37444a;
         }
       }
@@ -149,17 +145,17 @@ div#intro__contents {
   }
 
   .intro__members {
-    padding: 4.6875vw 0;
+    padding: 90px 0;
     margin: 0 auto;
-    max-width: 62.1875vw;
+    max-width: 1194px;
     width: 100%;
     display: flex;
     .intro__members__header {
       margin-right: 8vw;
       word-break: keep-all;
       h3 {
-        font-size: 1.0938vw;
-        line-height: 1.3021vw;
+        font-size: 21px;
+        line-height: 25px;
         color: #333333;
       }
     }
@@ -172,11 +168,11 @@ div#intro__contents {
 
       .member__table__row {
         display: table-row;
-        padding: 1.4583vw;
+        padding: 28px;
         > div {
           border-top: 1px solid rgba(55, 68, 74, 0.32);
           display: table-cell;
-          padding: 1.0938vw;
+          padding: 21px;
           &.clear {
             border-top: none;
           }
@@ -188,8 +184,8 @@ div#intro__contents {
         }
 
         span {
-          font-size: 1.0938vw;
-          line-height: 1.3021vw;
+          font-size: 21px;
+          line-height: 25px;
           color: #37444a;
         }
         .job {
@@ -211,10 +207,6 @@ div#intro__contents {
         }
         .actions {
           cursor: pointer;
-          img {
-            width: 1.25vw;
-            height: 1.25vw;
-          }
         }
       }
     }

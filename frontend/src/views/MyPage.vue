@@ -50,7 +50,7 @@ export default Vue.extend({
 <style lang="scss">
 #myPage__contents {
   margin: 0 auto;
-  max-width: 62.1875vw;
+  max-width: 1194px;
   width: 100%;
 
   .profile__contents {
@@ -67,9 +67,8 @@ export default Vue.extend({
       align-items: center;
       justify-content: center;
       background: #f3f3f3;
-      box-shadow: 0.625vw 0.625vw 0.9375vw rgba(0, 0, 0, 0.15),
-        -0.625vw -0.625vw 0.9375vw #ffffff;
-      border-radius: 8.6458vw;
+      box-shadow: 12px 12px 18px rgba(0, 0, 0, 0.15), -12px -12px 18px #ffffff;
+      border-radius: 166px;
       img {
         width: 100%;
       }
@@ -81,8 +80,8 @@ export default Vue.extend({
           margin-bottom: 0;
         }
         > span {
-          font-size: 1.0938vw;
-          line-height: 1.3021vw;
+          font-size: 21px;
+          line-height: 25px;
           color: #333333;
         }
       }
@@ -90,20 +89,20 @@ export default Vue.extend({
         display: flex;
         align-items: center;
         .nameChangeBtn {
-          padding: 0.2604vw 0.7292vw;
-          border-radius: 0.625vw;
-          font-size: 0.7813vw;
-          line-height: 0.9375vw;
-          margin-left: 0.6771vw;
+          padding: 5px 14px;
           background: #37444a;
+          border-radius: 12px;
           border: none;
+          font-size: 15px;
+          line-height: 18px;
           color: #f5f5f5;
+          margin-left: 13px;
         }
       }
     }
   }
   .myTip__contents {
-    margin-bottom: 2.2917vw;
+    margin-bottom: 44px;
     .myTip__navigations {
       display: flex;
       justify-content: center;
@@ -117,8 +116,8 @@ export default Vue.extend({
           margin-right: 0;
         }
         span {
-          font-size: 1.0938vw;
-          line-height: 1.3021vw;
+          font-size: 21px;
+          line-height: 25px;
           color: #c7c7c7;
         }
         &.active {
@@ -133,7 +132,7 @@ export default Vue.extend({
             width: 100%;
             height: 0.58vh;
             background: #5fac9a;
-            border-radius: 0.2344vw;
+            border-radius: 4.5px;
           }
         }
       }
