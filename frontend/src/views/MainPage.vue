@@ -34,9 +34,7 @@ body {
   background: #f5f5f5;
 }
 div#tipList {
-  margin: 0 auto;
-  max-width: 1194px;
-  width: 100%;
+  @extend .container;
   margin-top: 44px;
 }
 </style>

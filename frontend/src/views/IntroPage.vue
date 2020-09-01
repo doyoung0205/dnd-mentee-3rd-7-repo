@@ -115,9 +115,7 @@ div#intro__contents {
     padding: 76px 0;
     background: #fff;
     .intro__service__container {
-      margin: 0 auto;
-      max-width: 1194px;
-      width: 100%;
+      @extend .container;
       display: flex;
       justify-content: space-between;
       .intro__service__header {
@@ -145,10 +143,8 @@ div#intro__contents {
   }
 
   .intro__members {
+    @extend .container;
     padding: 90px 0;
-    margin: 0 auto;
-    max-width: 1194px;
-    width: 100%;
     display: flex;
     .intro__members__header {
       margin-right: 8vw;

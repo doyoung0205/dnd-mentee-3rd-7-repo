@@ -111,8 +111,7 @@ export default Vue.extend({
   .main__carocel__comment {
     position: absolute;
     left: 50%;
-    width: 100%;
-    max-width: 1194px;
+    @extend .container;
     top: 50%;
     transform: translate(-50%, -50%);
     .cloud {

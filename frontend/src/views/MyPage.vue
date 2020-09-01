@@ -49,10 +49,7 @@ export default Vue.extend({
 
 <style lang="scss">
 #myPage__contents {
-  margin: 0 auto;
-  max-width: 1194px;
-  width: 100%;
-
+  @extend .container;
   .profile__contents {
     margin: 3.6vw 0;
     display: flex;

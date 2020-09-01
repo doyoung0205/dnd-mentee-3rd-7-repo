@@ -155,9 +155,7 @@ export default Vue.extend({
   width: 100%;
   height: 50px;
   .header__contents {
-    margin: 0 auto;
-    max-width: 1194px;
-    width: 100%;
+    @extend .container;
     height: 100%;
     display: flex;
     align-items: center;
@@ -194,6 +192,12 @@ export default Vue.extend({
           height: 35px;
           background-image: url("../../assets/images/search-icon.svg");
         }
+        @include mobileVersion {
+          &:not(.header__nav__item__search) {
+            display: none;
+          }
+        }
+
         a {
           color: #333333;
         }
