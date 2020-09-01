@@ -71,6 +71,18 @@ export default Vue.extend({
   background-color: #ffffff;
   top: 0;
   left: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  #signModal {
+    width: 438px;
+    height: 869px;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    top: 105.5px;
+  }
 }
 
 #signModal__header__wrap {

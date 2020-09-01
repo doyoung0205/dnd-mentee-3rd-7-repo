@@ -24,7 +24,8 @@
           <!-- 로그인 상태이지 않을 떄 -->
           <template v-else>
             <li class="header__nav__item__login">
-              <router-link to="">회원가입/로그인</router-link>
+              <button @click="showSignIn">로그인</button>
+              <button @click="showSignUp">회원가입</button>
             </li>
           </template>
           <li class="header__nav__item__search" @click="searchWindowOpen">
