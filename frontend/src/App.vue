@@ -16,6 +16,7 @@ export default Vue.extend({
     return {
       title: "그린이",
       titleTemplate: "%s | greene.netlify.app", // title 뒤에 붙일 공통된 이름 (주로 사이트이름)
+      link: [{ rel: "icon", href: "@/assets/images/favicon.ico" }],
       meta: [
         { property: "og:locale", content: "ko_KR" },
         { charset: "utf-8" },
