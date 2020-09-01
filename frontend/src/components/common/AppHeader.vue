@@ -189,7 +189,7 @@ export default Vue.extend({
           @extend .text--hidden;
           @extend .image--center;
           cursor: pointer;
-          margin-top: 8px;
+          margin-top: 0.4167vw;
           width: 1.8229vw;
           height: 1.8229vw;
           background-image: url("../../assets/images/search-icon.svg");
