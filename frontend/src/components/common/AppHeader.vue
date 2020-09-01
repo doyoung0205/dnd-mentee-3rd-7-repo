@@ -153,7 +153,7 @@ export default Vue.extend({
 #header {
   width: 100%;
   height: 50px;
-  background-color: #ffffff;
+  background: #f3f3f3;
   .header__contents {
     @extend .container;
     height: 100%;

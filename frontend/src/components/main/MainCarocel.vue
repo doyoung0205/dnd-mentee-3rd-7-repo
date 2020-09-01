@@ -2,49 +2,51 @@
   <div id="main__carocel">
     <span class="mobileHeader">오늘의 베스트 팁</span>
     <div class="swiper__container">
-      <swiper class="swiper" :options="swiperOption">
-        <swiper-slide>
-          <div class="main__carocel__item">
-            <div class="main__carocel__img">
-              <img src="../../assets/images/main-carocel1.png" alt />
+      <div class="swiper__shadow">
+        <swiper class="swiper" :options="swiperOption">
+          <swiper-slide>
+            <div class="main__carocel__item">
+              <div class="main__carocel__img">
+                <img src="../../assets/images/main-carocel1.png" alt />
+              </div>
+              <div class="main__carocel__comment">
+                <img
+                  class="cloud"
+                  src="../../assets/images/main-carocel-cloud.svg"
+                  alt=""
+                />
+                <h3>오늘의 베스트 팁</h3>
+                <h1>환경을 새각하는 한 걸음</h1>
+                <p>그린이와 함께 생활 속 유용 팁!</p>
+                <p>음식물 쓰레기 버리는 법에 대해 알아볼까요?</p>
+                <button>
+                  더 알아보기
+                </button>
+              </div>
             </div>
-            <div class="main__carocel__comment">
-              <img
-                class="cloud"
-                src="../../assets/images/main-carocel-cloud.svg"
-                alt=""
-              />
-              <h3>오늘의 베스트 팁</h3>
-              <h1>환경을 새각하는 한 걸음</h1>
-              <p>그린이와 함께 생활 속 유용 팁!</p>
-              <p>음식물 쓰레기 버리는 법에 대해 알아볼까요?</p>
-              <button>
-                더 알아보기
-              </button>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="main__carocel__item">
+              <div class="main__carocel__img">
+                <img src="../../assets/images/main-carocel1.png" alt />
+              </div>
+              <div class="main__carocel__comment">
+                <img
+                  class="cloud"
+                  src="../../assets/images/main-carocel-cloud.svg"
+                  alt=""
+                />
+                <h3>오늘의 베스트 팁</h3>
+                <h1>환경을 새각하는 한 걸음</h1>
+                <p>그린이와 함께 생활 속 유용 팁! 음식물 쓰레기</p>
+                <button>
+                  더 알아보기
+                </button>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="main__carocel__item">
-            <div class="main__carocel__img">
-              <img src="../../assets/images/main-carocel1.png" alt />
-            </div>
-            <div class="main__carocel__comment">
-              <img
-                class="cloud"
-                src="../../assets/images/main-carocel-cloud.svg"
-                alt=""
-              />
-              <h3>오늘의 베스트 팁</h3>
-              <h1>환경을 새각하는 한 걸음</h1>
-              <p>그린이와 함께 생활 속 유용 팁! 음식물 쓰레기</p>
-              <button>
-                더 알아보기
-              </button>
-            </div>
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
     <div id="swiper__indicate__contents"></div>
 
@@ -115,17 +117,27 @@ export default Vue.extend({
   .swiper__container {
     @include mobileVersion {
       padding: 0 16px;
-      filter: drop-shadow(-4px -4px 6px #ffffff),
-        drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.161));
+      border-radius: 9px;
+      .swiper__shadow {
+        border-radius: 9px;
+        background: #c4c4c4;
+        box-shadow: -4px -4px 6px #ffffff, 4px 4px 6px rgba(0, 0, 0, 0.161);
+      }
     }
   }
   .main__carocel__item {
     width: 100%;
+    border-radius: 9px;
     position: relative;
 
     .main__carocel__img {
       img {
         width: 100%;
+        @include mobileVersion {
+          width: 100%;
+          height: 191px;
+          border-radius: 9px;
+        }
       }
     }
   }

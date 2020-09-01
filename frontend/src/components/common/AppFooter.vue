@@ -158,7 +158,9 @@ export default Vue.extend({});
     height: 51px;
     display: flex;
     background: #ffffff;
-    filter: drop-shadow(0px 3px 15px rgba(0, 0, 0, 0.204));
+    background: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 25.5px;
 
     .footer__icon {
       @extend .mot2;
