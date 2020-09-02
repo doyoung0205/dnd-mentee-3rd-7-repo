@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import MainPage from "../views/MainPage.vue";
 import store from "@/store";
+import { footerNaviActiveIcon } from "@/api/type";
 
 Vue.use(VueRouter);
 
@@ -9,7 +10,10 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "MainPage",
-    component: MainPage
+    component: MainPage,
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.MAIN
+    }
   },
   {
     path: "/signup",
@@ -19,12 +23,18 @@ const routes: Array<RouteConfig> = [
   {
     path: "/intro",
     name: "Intro",
-    component: () => import("@/views/IntroPage.vue")
+    component: () => import("@/views/IntroPage.vue"),
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.INTRO
+    }
   },
   {
     path: "/mypage",
     name: "MyPage",
-    component: () => import("@/views/MyPage.vue")
+    component: () => import("@/views/MyPage.vue"),
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.MYPAGE
+    }
   }
 ];
 

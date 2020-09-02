@@ -419,6 +419,9 @@ export default Vue.extend({
     @include mobileVersion {
       width: 98px;
       min-width: 98px;
+      img {
+        border-radius: 0 14px 14px 0;
+      }
     }
     img {
       width: 100%;
