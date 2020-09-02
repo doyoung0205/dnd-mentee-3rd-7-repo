@@ -66,6 +66,7 @@ export default Vue.extend({
 @import "@/assets/styles/sign.scss";
 #signModal {
   width: 100%;
+  height: 100%;
   z-index: 9999;
   position: absolute;
   background-color: #ffffff;
@@ -77,11 +78,11 @@ export default Vue.extend({
 @media (min-width: 768px) {
   #signModal {
     width: 438px;
-    height: 869px;
+    height: 81vh;
     margin-left: auto;
     margin-right: auto;
     right: 0;
-    top: 105.5px;
+    top: 10vh;
   }
 }
 
