@@ -70,7 +70,9 @@ export default Vue.extend({});
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-right: 50px;
     @include mobileVersion {
+      margin-right: 21px;
       padding: 7px 27px 4px 16px;
       background: linear-gradient(
         270deg,
@@ -103,11 +105,9 @@ export default Vue.extend({});
   }
   // 추천 관련
   .tipList__associative__contents {
-    margin-left: 50px;
     display: flex;
     align-items: flex-end;
     @include mobileVersion {
-      margin-left: 21px;
     }
     h3 {
       font-size: 18px;

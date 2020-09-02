@@ -110,6 +110,7 @@ export default Vue.extend({
           line-height: 18px;
           color: #f5f5f5;
           margin-left: 13px;
+          word-break: keep-all;
           @include mobileVersion {
             font-weight: normal;
             font-size: 9px;

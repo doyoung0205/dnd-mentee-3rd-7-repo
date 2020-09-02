@@ -134,6 +134,9 @@ export default Vue.extend({
     isUserLogin() {
       return this.$store.getters.isLogin;
     }
+  },
+  created() {
+    //
   }
 });
 </script>
