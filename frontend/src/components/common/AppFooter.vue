@@ -70,12 +70,12 @@ export default Vue.extend({
     };
   },
   watch: {
-    // URL 변동을 감지
+    // URL 변동을 감지해서 route 에서 footerNaviActiveIcon 값 확인
     $route: function(to) {
-      console.log(
-        "to.meta.footerNaviActiveIcon;",
-        to.meta.footerNaviActiveIcon
-      );
+      // console.log(
+      //   "to.meta.footerNaviActiveIcon;",
+      //   to.meta.footerNaviActiveIcon
+      // );
       this.footerActiveItem = to.meta.footerNaviActiveIcon;
     }
   },
