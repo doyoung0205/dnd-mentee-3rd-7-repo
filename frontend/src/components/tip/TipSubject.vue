@@ -21,16 +21,30 @@ export default Vue.extend({});
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  @include mobileVersion {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
   h3 {
     font-size: 24px;
     line-height: 28px;
     color: #333333;
+    @include mobileVersion {
+      font-size: 13px;
+      line-height: 15px;
+    }
   }
   img {
     margin-top: 7px;
     width: 35px;
     height: 35px;
     cursor: pointer;
+    @include mobileVersion {
+      width: 9px;
+      height: 14px;
+      margin-top: 0;
+      margin-left: 6px;
+    }
   }
 }
 </style>

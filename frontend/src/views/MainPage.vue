@@ -32,11 +32,15 @@ export default Vue.extend({
 <style lang="scss">
 body {
   background: #f5f5f5;
+  @include mobileVersion {
+    background: #f3f3f3;
+  }
 }
 div#tipList {
-  margin: 0 auto;
-  max-width: 1194px;
-  width: 100%;
+  @extend .container;
   margin-top: 44px;
+  @include mobileVersion {
+    margin-top: 24px;
+  }
 }
 </style>

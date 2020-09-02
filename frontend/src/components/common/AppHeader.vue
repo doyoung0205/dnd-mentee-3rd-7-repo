@@ -104,7 +104,6 @@
 <script lang="ts">
 import Vue from "vue";
 import { deleteCookie } from "@/utils/cookies";
-
 const signModalNameSpace = "signModal/";
 export default Vue.extend({
   data() {
@@ -155,14 +154,16 @@ export default Vue.extend({
 #header {
   width: 100%;
   height: 50px;
+  background: #f3f3f3;
   .header__contents {
-    margin: 0 auto;
-    max-width: 1194px;
-    width: 100%;
+    @extend .container;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include mobileVersion {
+      justify-content: center;
+    }
   }
   .header__logo {
     @extend .text--hidden;
@@ -194,7 +195,17 @@ export default Vue.extend({
           width: 35px;
           height: 35px;
           background-image: url("../../assets/images/search-icon.svg");
+          @include mobileVersion {
+            position: absolute;
+            right: 16px;
+          }
         }
+        @include mobileVersion {
+          &:not(.header__nav__item__search) {
+            display: none;
+          }
+        }
+
         a {
           color: #333333;
         }
@@ -241,6 +252,9 @@ export default Vue.extend({
         inset 4px 4px 6px rgba(0, 0, 0, 0.17);
       border-radius: 38px;
       position: relative;
+      @include mobileVersion {
+        height: 44px;
+      }
       input {
         padding: 0 42px 0 22px;
         width: 100%;
@@ -279,14 +293,27 @@ export default Vue.extend({
           display: flex;
           align-items: center;
           margin-top: 15px;
+          @include mobileVersion {
+            &:not(:first-child) {
+              margin-top: 10px;
+            }
+          }
           cursor: pointer;
           span {
             font-size: 18px;
             line-height: 21px;
             color: #37444a;
+            @include mobileVersion {
+              font-size: 14px;
+              line-height: 16px;
+            }
           }
           img {
             margin-left: 10px;
+            @include mobileVersion {
+              width: 11px;
+              height: 11px;
+            }
           }
         }
       }
@@ -309,9 +336,17 @@ export default Vue.extend({
       @extend .search__padding;
       padding-top: 23px;
       padding-bottom: 26px;
+      @include mobileVersion {
+        padding-top: 17px;
+        padding-bottom: 20px;
+      }
       h3 {
         font-size: 15px;
         line-height: 18px;
+        @include mobileVersion {
+          font-size: 14px;
+          line-height: 16px;
+        }
         color: #37444a;
       }
       .search__hashTags {
@@ -332,6 +367,14 @@ export default Vue.extend({
           margin-right: 21px;
           background: #f5f5f5;
           box-shadow: -6px -6px 18px #ffffff, 6px 6px 18px rgba(0, 0, 0, 0.17);
+          @include mobileVersion {
+            width: 67px;
+            height: 27px;
+            font-size: 14px;
+            line-height: 16px;
+            margin-right: 8px;
+            margin-top: 17px;
+          }
           &:hover {
             box-shadow: inset 6px -6px 18px #ffffff,
               inset 6px 6px 18px rgba(0, 0, 0, 0.17);
