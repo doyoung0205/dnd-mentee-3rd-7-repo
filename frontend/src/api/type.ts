@@ -4,8 +4,8 @@ export interface AxiosResp {
 
 // AppFooter
 export enum footerNaviActiveIcon {
-  MAIN,
-  INTRO,
-  TIP,
-  MYPAGE
+  MAIN = "main",
+  INTRO = "intro",
+  TIP = "tip",
+  MYPAGE = "mypage"
 }
