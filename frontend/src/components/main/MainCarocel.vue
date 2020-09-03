@@ -122,12 +122,14 @@ export default Vue.extend({
         border-radius: 9px;
         background: #c4c4c4;
         box-shadow: -4px -4px 6px #ffffff, 4px 4px 6px rgba(0, 0, 0, 0.161);
+        .swiper-container {
+          border-radius: 9px;
+        }
       }
     }
   }
   .main__carocel__item {
     width: 100%;
-    border-radius: 9px;
     position: relative;
 
     .main__carocel__img {
@@ -136,7 +138,7 @@ export default Vue.extend({
         @include mobileVersion {
           width: 100%;
           height: 191px;
-          border-radius: 9px;
+          // border-radius: 9px;
         }
       }
     }
