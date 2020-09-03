@@ -681,7 +681,7 @@ $final-position: 40px;
       }
       .PWInputContainer {
         position: absolute;
-        top: $nickname-input-location;
+        top: 300px;
         width: 100%;
 
         .PWInputContainer__check {
@@ -719,7 +719,7 @@ $final-position: 40px;
         position: absolute;
         top: 544px;
         left: 0;
-        height: 6.4vh;
+        height: 46px;
       }
 
       .PasswordContainer {
