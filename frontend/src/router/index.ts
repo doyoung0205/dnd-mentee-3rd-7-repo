@@ -32,6 +32,11 @@ const routes: Array<RouteConfig> = [
     name: "WritePage",
     component: () => import("@/views/WritePage.vue")
   }
+  // {
+  //   path: "/wrtie",
+  //   name: "WritePage",
+  //   component: () => import("@/views/WritePage.vue")
+  // }
 ];
 
 const router = new VueRouter({

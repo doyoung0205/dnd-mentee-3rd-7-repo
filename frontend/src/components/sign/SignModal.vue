@@ -75,21 +75,24 @@ export default Vue.extend({
 
   .sign__container {
     background-color: #ffffff;
+    z-index: -1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
   }
 }
 
 @media (min-width: 768px) {
   #signModal {
-    background-color: (10, 10, 12, 0.5);
-  }
-
-  .sign__container {
-    width: 438px;
-    height: 81vh;
-    margin-left: auto;
-    margin-right: auto;
-    right: 0;
-    top: 10vh;
+    background-color: rgba(10, 10, 12, 0.5);
+    .sign__container {
+      width: 438px;
+      height: 81vh;
+      margin-left: auto;
+      margin-right: auto;
+      right: 0;
+      top: 10vh;
+    }
   }
 }
 

@@ -99,7 +99,7 @@ export default Vue.extend({
       try {
         // 비즈니스 로직
         const signInData: UserSignIn = {
-          username: this.email,
+          email: this.email,
           password: this.password
         };
         await this.$store.dispatch("SIGN_IN", signInData);
