@@ -129,7 +129,7 @@ export default Vue.extend({
 .LoginFormContainer {
   height: 100vh;
   .LoginFormContainer_HeaderText {
-    margin-top: 36vh;
+    margin-top: 265px;
     color: #2b4f46;
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     font-size: 16px;

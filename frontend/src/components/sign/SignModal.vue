@@ -88,7 +88,7 @@ export default Vue.extend({
 
 #signModal__header__wrap {
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 17px;
   z-index: 3333;
   .signModal__header__container {

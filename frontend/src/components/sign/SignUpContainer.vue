@@ -612,7 +612,7 @@ $nickname-input-location: 34vh;
     .RegisterContainer__character {
       position: absolute;
       top: 26.7vh;
-      left: 57vw;
+      left: 61%;
     }
 
     .RegisterContainer__character-shrink {
