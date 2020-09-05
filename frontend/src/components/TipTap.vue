@@ -17,14 +17,14 @@
           <font-awesome-icon icon="italic" />
         </button>
 
-        <!-- 
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.strike() }"
           @click="commands.strike"
         >
-          <icon name="strike" />
+          <font-awesome-icon icon="strikethrough" />
         </button>
+        <!-- 
 
         <button
           class="menubar__button"
@@ -136,11 +136,15 @@
 <script lang="ts">
 import Vue from "vue";
 import { Editor, EditorContent, EditorMenuBar } from "tiptap";
-import { Bold, Italic } from "tiptap-extensions";
+import { Bold, Italic, Strike } from "tiptap-extensions";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBold, faItalic } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBold,
+  faItalic,
+  faStrikethrough
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faBold, faItalic);
+library.add(faBold, faItalic, faStrikethrough);
 
 export default Vue.extend({
   // mounted() {
@@ -157,7 +161,7 @@ export default Vue.extend({
     return {
       editor: new Editor({
         content: "<p>This is just a boring paragraph</p>",
-        extensions: [new Bold(), new Italic()]
+        extensions: [new Bold(), new Italic(), new Strike()]
       })
     };
   },
