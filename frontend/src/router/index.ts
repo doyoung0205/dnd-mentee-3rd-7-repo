@@ -21,6 +21,16 @@ const routes: Array<RouteConfig> = [
     path: "/WritePage",
     name: "WritePage",
     component: () => import("@/views/WritePage.vue")
+  },
+  {
+    path: "/intro",
+    name: "Intro",
+    component: () => import("@/views/IntroPage.vue")
+  },
+  {
+    path: "/mypage",
+    name: "MyPage",
+    component: () => import("@/views/MyPage.vue")
   }
 ];
 

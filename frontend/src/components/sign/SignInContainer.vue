@@ -19,7 +19,10 @@
       <div class="LoginFormContainer_HeaderText">
         <span>오늘도 반가워요!</span>
       </div>
-      <form v-on:submit.prevent="onSubmit" class="LoginFormContainer__FormTag">
+      <form
+        v-on:submit.prevent="submitForm"
+        class="LoginFormContainer__FormTag"
+      >
         <div class="InputContainer">
           <label class="FormContainer__label LoginForm__Label" for="email"
             >이메일</label
@@ -100,6 +103,7 @@ export default Vue.extend({
           password: this.password
         };
         await this.$store.dispatch("SIGN_IN", signInData);
+        this.$store.commit("signModal/close");
       } catch (error) {
         // 에러 핸들링할 코드
         console.log(error.response.data);

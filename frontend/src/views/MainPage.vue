@@ -1,47 +1,46 @@
 <template>
-  <header>
-    <div class="navigations">
-      <!-- 1 -->
-      <template v-if="isUserLogin">
-        <span v-if="isUserLogin">by {{ $store.state.username }}</span>
-        <a href="javascript:;" @click="logoutUser" class="logout-button">
-          Logout
-        </a>
-      </template>
-      <!-- 2 -->
-      <template v-else>
-        <button @click="showSignIn">로그인</button>
-        <button @click="showSignUp">회원가입</button>
-      </template>
+  <div class="main">
+    <!-- 메인 캐러셀 -->
+    <MainCarocel></MainCarocel>
+    <!-- 실시간 인기 팁 -->
+    <div id="tipList">
+      <TipSubjectVue></TipSubjectVue>
+      <TipSearchOptionVue></TipSearchOptionVue>
+      <TipList></TipList>
     </div>
-  </header>
+  </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import { deleteCookie } from "@/utils/cookies";
+import MainCarocel from "../components/main/MainCarocel.vue";
+import TipList from "../components/tip/TipList.vue";
+import TipSubjectVue from "../components/tip/TipSubject.vue";
+import TipSearchOptionVue from "../components/tip/TipSearchOption.vue";
 
-const signModalNameSpace = "signModal/";
 export default Vue.extend({
-  methods: {
-    showSignIn() {
-      this.$store.commit(`${signModalNameSpace}showSignIn`);
-    },
-    showSignUp() {
-      this.$store.commit(`${signModalNameSpace}showSignUp`);
-    },
-    logoutUser() {
-      this.$store.commit("clearUsername");
-      this.$store.commit("clearToken");
-      deleteCookie("greene_auth");
-      deleteCookie("greene_user");
-    }
+  components: {
+    MainCarocel,
+    TipList,
+    TipSubjectVue,
+    TipSearchOptionVue
   },
-  computed: {
-    isUserLogin() {
-      return this.$store.getters.isLogin;
-    }
-  }
+  methods: {},
+  computed: {}
 });
 </script>
 
-<style></style>
+<style lang="scss">
+body {
+  background: #f5f5f5;
+  @include mobileVersion {
+    background: #f3f3f3;
+  }
+}
+div#tipList {
+  @extend .container;
+  margin-top: 44px;
+  @include mobileVersion {
+    margin-top: 24px;
+  }
+}
+</style>
