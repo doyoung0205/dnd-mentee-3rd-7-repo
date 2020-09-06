@@ -5,7 +5,7 @@
         <input
           id="formContainer__title"
           type="text"
-          v-model="title"
+          v-model="tipData.title"
           placeholder="제목"
         />
         <button class="formContainer__button" @click="write">
@@ -50,6 +50,8 @@
 import Vue from "vue";
 import TipTap from "@/components/TipTap.vue";
 import Tags from "@/components/Tags.vue";
+import { TipData, HashTag } from "@/api/tip/type";
+import { WriteTip } from "@/api/tip";
 
 export default Vue.extend({
   components: {
@@ -58,13 +60,24 @@ export default Vue.extend({
   },
   data() {
     return {
-      title: ""
+      tipData: {
+        title: "",
+        content: "",
+        thumbnail: "",
+        hashtags: [] as HashTag[]
+      } as TipData
     };
   },
   methods: {
-    write() {
-      console.log((this.$refs.contentInput as any).getContent());
-      console.log((this.$refs.tags as any).getTags());
+    async write() {
+      this.tipData.content = (this.$refs.contentInput as any).getContent();
+      const tags = (this.$refs.tags as any).getTags();
+      tags.forEach((tag: string, idx: number) => {
+        const tip = { id: idx, name: tag };
+        this.tipData.hashtags.push(tip);
+      });
+
+      console.log(await WriteTip(this.tipData));
     }
   }
 });
