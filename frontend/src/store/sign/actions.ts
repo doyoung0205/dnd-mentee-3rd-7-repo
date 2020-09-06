@@ -15,10 +15,10 @@ export const actions: ActionTree<SignState, RootState> = {
     console.log("SIGN_IN");
     console.log(data.access);
     commit("setToken", data.access);
-    commit("setUsername", userSignInData.username);
+    //commit("setUsername", userSignInData.username);
     saveAuthToCookie(data.access);
     saveRefreshToLocal(data.refresh);
-    saveUserToCookie(userSignInData.username);
+    //saveUserToCookie(userSignInData.username);
     return data;
   }
 };

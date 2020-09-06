@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
 import { RootState } from "./types";
 import { signModal } from "./signModal/index";
+import { loadingModal } from "./loadingModal/index";
 import { sign } from "./sign/index";
 
 Vue.use(Vuex);
@@ -13,6 +14,7 @@ const store: StoreOptions<RootState> = {
   },
   modules: {
     signModal,
+    loadingModal,
     sign
   }
 };

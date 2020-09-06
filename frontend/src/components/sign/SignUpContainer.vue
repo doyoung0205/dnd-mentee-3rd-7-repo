@@ -418,14 +418,14 @@ export default Vue.extend({
       try {
         await signUp(this.userData);
         const signInData: UserSignIn = {
-          username: this.userData.username,
+          email: this.userData.email,
           password: this.userData.password
         };
         await this.$store.dispatch("SIGN_IN", signInData);
-        this.$store.commit("signModal/close");
       } catch (error) {
         console.log("error", error);
       }
+      this.$store.commit("signModal/close");
 
       this.initForm();
     },
@@ -457,6 +457,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 $email-input-location: 71vh;
 $nickname-input-location: 34vh;
+$final-position: 40px;
 
 .slide-left-leave-active,
 .go-up-leave-active {
@@ -514,30 +515,33 @@ $nickname-input-location: 34vh;
     position: fixed;
     width: 100%;
     top: -30vh;
-    // left: 0;
-    left: 28vw;
+    left: 50%;
+    transform: translateX(-50%);
     transform: scale(2);
     visibility: hidden;
     z-index: 1;
   }
   .ImageContainer__Light {
     position: absolute;
-    left: 10vw;
-    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 28px + $final-position;
     opacity: 0;
     z-index: -1;
   }
   .ImageContainer__Leaf {
     position: absolute;
-    top: 18vh;
-    left: 46vw;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 68px + $final-position;
     opacity: 0;
   }
 
   .ImageContainer__Hand {
     position: absolute;
-    top: 40vh;
-    left: 28vw;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 229px + $final-position;
     opacity: 0;
   }
 
@@ -547,8 +551,9 @@ $nickname-input-location: 34vh;
   }
   .ImageContainer__Earth-drop {
     position: absolute;
-    top: 23vh;
-    left: 28vw;
+    top: 107px + $final-position;
+    left: 50%;
+    transform: translateX(-50%);
     transition: all 0.5s ease;
   }
 
@@ -574,45 +579,45 @@ $nickname-input-location: 34vh;
   }
 
   .ImageContainer__spoon {
-    top: 11vh;
-    left: 62vw;
-    transform: rotate(-90deg);
+    right: 100px;
+    top: 71px;
+    transform: rotate(-64deg);
   }
 
   .ImageContainer__straw {
-    top: 15vh;
-    left: 22vw;
+    top: 100px;
+    left: 89px;
   }
 
   .ImageContainer__bottle {
-    top: 5vh;
-    left: 41vw;
+    top: 50px;
+    right: 150px;
   }
 
   .ImageContainer__shampoo {
-    top: 20vh;
-    left: 43vw;
+    top: 150px;
+    left: 180px;
   }
   .ImageContainer__BigBottle {
-    top: 0;
-    left: 73vw;
+    top: 3px;
+    right: 87px;
   }
 
   .ImageContainer__fork {
-    top: 6vh;
-    left: 87vw;
+    top: 44px;
+    right: 13px;
   }
   .ImageContainer__pet {
     top: 92px;
-    left: 67vw;
+    right: 0;
   }
 
   .Main {
     height: 100%;
     .RegisterContainer__character {
       position: absolute;
-      top: 26.7vh;
-      left: 57vw;
+      top: 180px;
+      left: 61%;
     }
 
     .RegisterContainer__character-shrink {
@@ -621,14 +626,15 @@ $nickname-input-location: 34vh;
       animation: transform 2s ease-in;
     }
     .RegisterContainer__character-final_position {
-      top: 10.7vh;
-      left: 25vw;
-      animation: transform 0.5s ease-in;
+      left: 50%;
+      transform: scale(0.5) translateX(-144%);
+      top: 19px + $final-position;
+      animation: all 0.5s ease-in;
     }
     .TextContainer {
       position: absolute;
-      top: 43vh;
-      left: 10.8vw;
+      top: 274px;
+      left: 39px;
       .TextContainer_text {
         text-align: left;
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
@@ -661,7 +667,7 @@ $nickname-input-location: 34vh;
 
       .EmailInputContainer {
         position: absolute;
-        top: 72vh;
+        top: 449px;
         width: 100%;
         .FormContainer__EmailInput {
           background-color: rgba(255, 255, 255, 0.51);
@@ -675,7 +681,7 @@ $nickname-input-location: 34vh;
       }
       .PWInputContainer {
         position: absolute;
-        top: $nickname-input-location;
+        top: 300px;
         width: 100%;
 
         .PWInputContainer__check {
@@ -711,9 +717,9 @@ $nickname-input-location: 34vh;
 
       .RegisterFormContainer__button {
         position: absolute;
-        top: 87vh;
+        top: 544px;
         left: 0;
-        height: 6.4vh;
+        height: 46px;
       }
 
       .PasswordContainer {
@@ -739,7 +745,7 @@ $nickname-input-location: 34vh;
       }
 
       .FinalTextContainer__Text {
-        top: 66vh;
+        top: 451px;
         position: relative;
         margin: 0;
         font-size: 20px;
@@ -748,6 +754,7 @@ $nickname-input-location: 34vh;
         line-height: 1.9;
         letter-spacing: 0.4px;
         text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        text-align: center;
         color: #39675d;
       }
       .FinalTextContainer__Text-white {
