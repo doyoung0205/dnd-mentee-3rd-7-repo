@@ -12,10 +12,8 @@ import { UserSignIn } from "@/api/sign/type";
 export const actions: ActionTree<SignState, RootState> = {
   async SIGN_IN({ commit }, userSignInData: UserSignIn) {
     const { data } = await signIn(userSignInData);
-    console.log("SIGN_IN");
-    console.log(data.access);
     commit("setToken", data.access);
-    //commit("setUsername", userSignInData.username);
+    commit("setUsername", userSignInData.email);
     saveAuthToCookie(data.access);
     saveRefreshToLocal(data.refresh);
     //saveUserToCookie(userSignInData.username);
