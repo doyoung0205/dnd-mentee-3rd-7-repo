@@ -1,5 +1,5 @@
 <template>
-  <div class="editor">
+  <div class="editor" @click="toggleIMG">
     <editor-menu-bar v-slot="{ commands, isActive }" :editor="editor">
       <div class="menubar">
         <button
@@ -24,14 +24,13 @@
         >
           <font-awesome-icon icon="strikethrough" />
         </button>
-        <!-- 
 
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.underline() }"
           @click="commands.underline"
         >
-          <icon name="underline" />
+          <font-awesome-icon icon="underline" />
         </button>
 
         <button
@@ -39,9 +38,10 @@
           :class="{ 'is-active': isActive.code() }"
           @click="commands.code"
         >
-          <icon name="code" />
+          <font-awesome-icon icon="code" />
         </button>
 
+        <!-- 
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.paragraph() }"
@@ -128,7 +128,6 @@
         </button> -->
       </div>
     </editor-menu-bar>
-
     <editor-content class="editor__content" :editor="editor" />
   </div>
 </template>
@@ -136,22 +135,26 @@
 <script lang="ts">
 import Vue from "vue";
 import { Editor, EditorContent, EditorMenuBar } from "tiptap";
-import { Bold, Italic, Strike } from "tiptap-extensions";
+import {
+  Bold,
+  Italic,
+  Strike,
+  Underline,
+  Code,
+  Image
+} from "tiptap-extensions";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBold,
   faItalic,
-  faStrikethrough
+  faStrikethrough,
+  faUnderline,
+  faCode
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faBold, faItalic, faStrikethrough);
+library.add(faBold, faItalic, faStrikethrough, faUnderline, faCode);
 
 export default Vue.extend({
-  // mounted() {
-  //   this.editor = new Editor({
-  //     content: '<p>This is just a boring paragraph</p>'
-  //   })
-  // },
   components: {
     EditorContent,
     EditorMenuBar,
@@ -159,19 +162,63 @@ export default Vue.extend({
   },
   data() {
     return {
+      thumbnail: "",
       editor: new Editor({
         content: "<p>This is just a boring paragraph</p>",
-        extensions: [new Bold(), new Italic(), new Strike()]
+        editorProps: {},
+        extensions: [
+          new Bold(),
+          new Italic(),
+          new Strike(),
+          new Underline(),
+          new Code(),
+          new Image()
+        ]
       })
     };
   },
   beforeDestroy() {
     // Always destroy your editor instance when it's no longer needed
     this.editor.destroy();
+  },
+  methods: {
+    getContent: function() {
+      return this.editor.getHTML();
+    },
+    getThumbnail: function() {
+      return this.thumbnail;
+    },
+    toggleIMG(event: any) {
+      if (event.target.classList.contains("img-selected")) {
+        //대표 이미지를 클릭한 경우
+        event.target.classList.toggle("img-selected");
+        this.thumbnail = "";
+        return;
+      }
+      const imgs = document.querySelectorAll(".img-selected"); //대표 말고 다른 이미지를 클릭한 경우
+      imgs.forEach(e => {
+        e.classList.toggle("img-selected");
+      });
+      if (event.target.tagName === "IMG") {
+        event.target.classList.toggle("img-selected");
+        this.thumbnail = event.target.outerHTML;
+      }
+    }
   }
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/styles/tiptap/sass/main.scss";
+.editor {
+  height: 60vh;
+}
+.editor p {
+  font-weight: 400;
+}
+
+.img-selected {
+  border: 2px solid greenyellow;
+  border-raidus: 1px;
+}
 </style>
