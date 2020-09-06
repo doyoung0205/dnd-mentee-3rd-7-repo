@@ -66,16 +66,39 @@ export default Vue.extend({
 @import "@/assets/styles/sign.scss";
 #signModal {
   width: 100%;
+  height: 100%;
   z-index: 9999;
   position: absolute;
-  background-color: #ffffff;
   top: 0;
   left: 0;
+  overflow: hidden;
+
+  .sign__container {
+    background-color: #ffffff;
+    z-index: -1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #signModal {
+    background-color: rgba(10, 10, 12, 0.5);
+    .sign__container {
+      width: 438px;
+      height: 81vh;
+      margin-left: auto;
+      margin-right: auto;
+      right: 0;
+      top: 10vh;
+    }
+  }
 }
 
 #signModal__header__wrap {
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 17px;
   z-index: 3333;
   .signModal__header__container {

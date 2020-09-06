@@ -13,7 +13,8 @@ export function setInterceptors(instance: AxiosInstance) {
         (sign.state as SignState).token
       );
 
-      config.headers.Authorization = (sign.state as SignState).token;
+      config.headers.Authorization =
+        "Bearer " + (sign.state as SignState).token;
       return config;
     },
     function(error) {

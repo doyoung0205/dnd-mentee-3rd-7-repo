@@ -20,9 +20,9 @@ import Vue from "vue";
 
 export default Vue.extend({
   components: {
-    SignModal,
     AppHeader,
     AppFooter,
+    SignModal,
     LoadingModal
   }
 });

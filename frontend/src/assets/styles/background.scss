@@ -1,3 +1,7 @@
+$modal-width: 438px;
+$modal-height: 869px;
+
+
 .IMGBLOCK {
     z-index: -1;
     position: absolute;
@@ -7,8 +11,7 @@
     z-index: -1;
     width: 50vw;
     height: 50vh;
-    margin-right: 0;
-    margin-left: 50vw;
+    left:55vw;
     position: absolute;
     background-position: -21px -212px;
     background-repeat: no-repeat;
@@ -40,11 +43,24 @@
   
   .IMGBLOCK__Character {
     z-index: -1;
-    width: 50vw;
-    height: 50vh;
+    width: 100vw;
+    height: 376px;
     position: absolute;
-    margin-left: 25vw;
+    left:0;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("../../assets/images/group_404.svg");
   }
+
+  @media (min-width: 768px) 
+{
+  .IMGBLOCK__RightCorner{
+    left:200px;
+  }
+  .IMGBLOCK__Character 
+  {
+    
+    width: $modal-width;
+  }
+
+}
