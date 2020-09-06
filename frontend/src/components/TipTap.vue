@@ -202,6 +202,7 @@ export default Vue.extend({
       if (event.target.tagName === "IMG") {
         event.target.classList.toggle("img-selected");
         this.thumbnail = event.target.outerHTML;
+        console.log(event.target.src);
       }
     }
   }

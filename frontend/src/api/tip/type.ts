@@ -7,5 +7,6 @@ export interface TipData {
   title: string;
   content: string;
   thumbnail: string;
+  user:number;
   hashtags: HashTag[];
 }

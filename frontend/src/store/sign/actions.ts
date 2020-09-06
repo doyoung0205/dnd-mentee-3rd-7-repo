@@ -13,6 +13,8 @@ export const actions: ActionTree<SignState, RootState> = {
   async SIGN_IN({ commit }, userSignInData: UserSignIn) {
     const { data } = await signIn(userSignInData);
     commit("setToken", data.access);
+
+    console.log('userSignInData.email',userSignInData.email)
     commit("setUsername", userSignInData.email);
     saveAuthToCookie(data.access);
     saveRefreshToLocal(data.refresh);
