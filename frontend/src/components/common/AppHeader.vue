@@ -18,12 +18,12 @@
           <!-- 로그인 상태일 떄 -->
           <template v-if="isUserLogin">
             <li class="header__nav__item__myPage">
-              <router-link to="/mypage">이페이지</router-link>
+              <router-link to="/mypage">마이페이지</router-link>
             </li>
           </template>
           <!-- 로그인 상태이지 않을 떄 -->
           <template v-else>
-            <li class="header__nav__item__login">
+            <li class="header__nav__item__login" @click="showSignIn">
               <router-link to="">회원가입/로그인</router-link>
             </li>
           </template>
