@@ -25,7 +25,6 @@
       "scripthost"
     ]
   },
-  "files": ["./typedefs/tiptap.d.ts", "./typedefs/tiptap-extensions.d.ts"],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
