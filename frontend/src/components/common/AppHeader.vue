@@ -23,8 +23,8 @@
           </template>
           <!-- 로그인 상태이지 않을 떄 -->
           <template v-else>
-            <li class="header__nav__item__login">
-              <router-link to="">회원가입/로그인 </router-link>
+            <li class="header__nav__item__login" @click="showSignIn">
+              <router-link to="">회원가입/로그인</router-link>
             </li>
           </template>
           <li class="header__nav__item__search" @click="searchWindowOpen">
