@@ -79,8 +79,7 @@ export default Vue.extend({
       tags.forEach((tag: string, idx: number) => {
         const tip = { id: idx, name: tag };
         this.tipData.hashtags.push(tip);
-      });
-
+      })
       console.log(await WriteTip(this.tipData));
     }
   }
