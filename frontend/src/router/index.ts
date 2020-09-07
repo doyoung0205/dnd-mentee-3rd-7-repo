@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import MainPage from "../views/MainPage.vue";
+import TipPage from "../views/TipPage.vue";
 import store from "@/store";
 
 Vue.use(VueRouter);
@@ -17,9 +18,14 @@ const routes: Array<RouteConfig> = [
     component: () => import("@/views/SignUpPage.vue")
   },
   {
+    path: "/tip",
+    name: "TipPage",
+    component: () => import("@/views/TipPage.vue")
+  },
+  {
     path: "/tip/write",
     name: "WritePage",
-    component: () => import("@/views/WritePage.vue"),
+    component: () => import("@/views/WritePage.vue")
   },
   {
     path: "/intro",

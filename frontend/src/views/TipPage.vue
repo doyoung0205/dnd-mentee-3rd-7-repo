@@ -1,0 +1,56 @@
+<template>
+  <div class="contianer">
+    <div class="TipContainer">
+      <section class="TipContainer__header">
+        제목제목제목
+      </section>
+      <TipComment />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from "vue";
+import TipTap from "@/components/TipTap.vue";
+import Tags from "@/components/Tags.vue";
+import TipComment from "@/components/tip/TipComment.vue";
+import { TipData, HashTag } from "@/api/tip/type";
+import { WriteTip } from "@/api/tip";
+import { getAuthFromCookie } from "@/utils/cookies";
+
+export default Vue.extend({
+  components: {
+    TipComment
+    // Tags
+  },
+  data() {
+    return {
+      tipData: {
+        title: "",
+        content: "",
+        user: 0,
+        thumbnail: "",
+        hashtags: [] as HashTag[]
+      } as TipData
+    };
+  },
+  methods: {
+    async write() {
+      this.tipData.content = (this.$refs.contentInput as any).getContent();
+      this.tipData.user = VueJwtDecode.decode(getAuthFromCookie()).user_id;
+      const tags = (this.$refs.tags as any).getTags();
+      tags.forEach((tag: string, idx: number) => {
+        const tip = { id: idx, name: tag };
+        this.tipData.hashtags.push(tip);
+      });
+
+      console.log(await WriteTip(this.tipData));
+    }
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+@import "@/assets/styles/tip";
+@import "../assets/styles/tiptap/sass/main.scss";
+</style>
