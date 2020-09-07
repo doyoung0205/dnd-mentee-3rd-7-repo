@@ -1,7 +1,7 @@
 .TipContainer {
     position: absolute;
     width: 62vw;
-    height: 86vh;
+    min-height: 86vh;
     left: 19vw;
     top: 80px;
     padding: 35px;
@@ -14,6 +14,10 @@
       display: flex;
       flex-direction: row;
       border-bottom: 1px solid #c4c4c4;
+    }
+
+    .TipContainer__header-noBorder{
+        border-bottom:none;
     }
   }
   

@@ -1,10 +1,15 @@
 <template>
   <div class="contianer">
     <div class="TipContainer">
-      <section class="TipContainer__header">
+      <section class="TipContainer__header TipContainer__header-noBorder">
         제목제목제목
       </section>
-      <TipComment />
+      <section id="TipContainer__content"></section>
+      <section id="TipComment__section">
+        <header id="TipComment__number">댓글 2</header>
+        <TipComment />
+        <TipComment />
+      </section>
     </div>
   </div>
 </template>
@@ -36,8 +41,6 @@ export default Vue.extend({
   },
   methods: {
     async write() {
-      this.tipData.content = (this.$refs.contentInput as any).getContent();
-      this.tipData.user = VueJwtDecode.decode(getAuthFromCookie()).user_id;
       const tags = (this.$refs.tags as any).getTags();
       tags.forEach((tag: string, idx: number) => {
         const tip = { id: idx, name: tag };
@@ -53,4 +56,22 @@ export default Vue.extend({
 <style lang="scss" scoped>
 @import "@/assets/styles/tip";
 @import "../assets/styles/tiptap/sass/main.scss";
+
+#TipComment__section {
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+#TipContainer__content {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#TipComment__number {
+  margin-bottom: 1em;
+}
 </style>

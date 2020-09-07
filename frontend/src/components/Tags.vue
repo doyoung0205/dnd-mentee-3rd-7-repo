@@ -53,8 +53,6 @@ export default Vue.extend({
 .tagContainer {
   display: flex;
   flex-direction: row;
-  bottom: 12vh;
-  position: absolute;
 
   .tag-input__header {
     display: flex;
