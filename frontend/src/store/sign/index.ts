@@ -4,11 +4,16 @@ import { actions } from "./actions";
 import { mutations } from "./mutations";
 import { SignState } from "./types";
 import { RootState } from "../types";
-import { getAuthFromCookie, getUserFromCookie } from "@/utils/cookies";
+import {
+  getAuthFromCookie,
+  getUserFromCookie,
+  getUserIdFromCookie
+} from "@/utils/cookies";
 
 export const state: SignState = {
   username: getUserFromCookie() || "",
-  token: getAuthFromCookie() || ""
+  token: getAuthFromCookie() || "123",
+  userId: getUserIdFromCookie() || "0"
 };
 
 const namespaced = false;
