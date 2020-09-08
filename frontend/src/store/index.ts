@@ -4,6 +4,7 @@ import { RootState } from "./types";
 import { signModal } from "./signModal/index";
 import { loadingModal } from "./loadingModal/index";
 import { sign } from "./sign/index";
+import { tip } from "./tip/index";
 
 Vue.use(Vuex);
 
@@ -15,7 +16,8 @@ const store: StoreOptions<RootState> = {
   modules: {
     signModal,
     loadingModal,
-    sign
+    sign,
+    tip
   }
 };
 
