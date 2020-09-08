@@ -17,6 +17,17 @@ function getAuthFromCookie() {
   );
 }
 
+function saveUserIdToCookie(value: string) {
+  document.cookie = `greene_userId=${value}`;
+}
+
+function getUserIdFromCookie() {
+  return document.cookie.replace(
+    /(?:(?:^|.*;\s*)greene_userId\s*=\s*([^;]*).*$)|^.*$/,
+    "$1"
+  );
+}
+
 function getUserFromCookie() {
   return document.cookie.replace(
     /(?:(?:^|.*;\s*)greene_user\s*=\s*([^;]*).*$)|^.*$/,
@@ -31,6 +42,8 @@ function deleteCookie(value: string) {
 export {
   saveAuthToCookie,
   saveRefreshToLocal,
+  saveUserIdToCookie,
+  getUserIdFromCookie,
   saveUserToCookie,
   getAuthFromCookie,
   getUserFromCookie,
