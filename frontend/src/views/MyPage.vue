@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <tip-list></tip-list>
+    <TipList :tips="[]"></TipList>
   </div>
 </template>
 
@@ -43,7 +43,11 @@ export default Vue.extend({
     TipList
   },
   methods: {},
-  computed: {}
+  computed: {},
+  created() {
+    // user 정보 가져오기
+    //
+  }
 });
 </script>
 

@@ -14,5 +14,9 @@ export const getters: GetterTree<TipState, RootState> = {
   isEmptyTipList(state): boolean {
     const { results } = state;
     return results.length === 0;
+  },
+  isMoveScroll(state): boolean {
+    const { views } = state;
+    return views.isMoveScroll;
   }
 };

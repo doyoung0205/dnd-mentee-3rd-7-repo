@@ -8,12 +8,9 @@ export function setInterceptors(instance: AxiosInstance) {
     function(config: AxiosRequestConfig) {
       // Do something before request is sent
       // console.log(config);
-      console.log(
-        "(sign.state as SignState).token;",
-        (sign.state as SignState).token
-      );
 
-      config.headers.Authorization = (sign.state as SignState).token;
+      config.headers.Authorization =
+        "Bearer " + (sign.state as SignState).token;
       return config;
     },
     function(error) {

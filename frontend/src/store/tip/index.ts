@@ -15,7 +15,10 @@ export const state: TipState = {
     query: ""
   } as TipSearchOption,
   history: [],
-  recommendHashTags: []
+  recommendHashTags: [],
+  views: {
+    isMoveScroll: false
+  }
 };
 
 const namespaced = true;

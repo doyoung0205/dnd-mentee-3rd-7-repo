@@ -1,106 +1,116 @@
 <template>
   <!-- HEADER -->
-  <header id="header">
-    <div class="header__contents">
-      <router-link to="/">
-        <div class="header__logo">
-          로고이미지
+  <div id="header__container" :class="{ active: setHeaderFixed }">
+    <div class="fixed__padding"></div>
+    <header id="header">
+      <div class="header__contents">
+        <router-link to="/">
+          <div class="header__logo">
+            로고이미지
+          </div>
+        </router-link>
+        <div class="header__navigations">
+          <ul>
+            <li class="header__nav__item__intro">
+              <router-link to="/intro">그린이소개</router-link>
+            </li>
+            <li class="header__nav__item__tip">
+              <router-link to="">팁쓰기</router-link>
+            </li>
+            <!-- 로그인 상태일 떄 -->
+            <template v-if="isUserLogin">
+              <li class="header__nav__item__myPage">
+                <router-link to="/mypage">마이페이지</router-link>
+              </li>
+            </template>
+            <!-- 로그인 상태이지 않을 떄 -->
+            <template v-else>
+              <li class="header__nav__item__login" @click="showSignIn">
+                <router-link to="">회원가입/로그인</router-link>
+              </li>
+            </template>
+            <li class="header__nav__item__search" @click="searchWindowOpen">
+              <router-link to=""> 검색이미지</router-link>
+            </li>
+          </ul>
         </div>
-      </router-link>
-      <div class="header__navigations">
-        <ul>
-          <li class="header__nav__item__intro">
-            <router-link to="/intro">그린이소개</router-link>
-          </li>
-          <li class="header__nav__item__tip">
-            <router-link to="">팁쓰기</router-link>
-          </li>
-          <!-- 로그인 상태일 떄 -->
-          <template v-if="isUserLogin">
-            <li class="header__nav__item__myPage">
-              <router-link to="/mypage">마이페이지</router-link>
-            </li>
-          </template>
-          <!-- 로그인 상태이지 않을 떄 -->
-          <template v-else>
-            <li class="header__nav__item__login" @click="showSignIn">
-              <router-link to="">회원가입/로그인</router-link>
-            </li>
-          </template>
-          <li class="header__nav__item__search" @click="searchWindowOpen">
-            <router-link to=""> 검색이미지</router-link>
-          </li>
-        </ul>
-      </div>
-      <div id="search" v-if="isSearching">
-        <div class="search__overlay" @click="searchWindowClose"></div>
-        <div class="search__contents__container">
-          <div class="search__contents">
-            <div class="search__input__container">
-              <div class="search__input">
-                <input
-                  type="text"
-                  v-model="query"
-                  @keypress.enter="searchTipsBySearchEvent"
-                />
-                <img
-                  class="searchIcon"
-                  src="../../assets/images/search-icon.svg"
-                  alt=""
-                  @click="searchTipsBySearchEvent"
-                />
-              </div>
-            </div>
-            <div class="search__history">
-              <ul>
-                <li
-                  v-for="history in this.$store.state.tip.history"
-                  :key="'history_' + history.id"
-                >
-                  <span v-text="history.query">쓰레기통</span>
-                  <img
-                    src="../../assets/images/deleteBtn.svg"
-                    alt=""
-                    class="sarch__delete__btn"
+        <div id="search" v-if="isSearching">
+          <div class="search__overlay" @click="searchWindowClose"></div>
+          <div class="search__contents__container">
+            <div class="search__contents">
+              <div class="search__input__container">
+                <div class="search__input">
+                  <input
+                    type="text"
+                    v-model="query"
+                    @keypress.enter="searchTipsBySearchEvent"
                   />
-                </li>
-              </ul>
-            </div>
-            <!-- <hr /> -->
-            <div
-              class="search__recommend__container"
-              v-if="this.$store.state.tip.recommendHashTags.length > 0"
-            >
-              <div class="search__recommend">
-                <h3 class="search_comment">추천 해시태그로 검색해 보세요</h3>
-                <div class="search__hashTags">
-                  <div
-                    class="search__hashTag"
-                    v-for="hashTag in this.$store.state.tip.recommendHashTags"
-                    :key="'header_hashTag_' + hashTag.id"
-                    v-text="hashTag.name"
-                    @click="searchTipsByHashTagEvent(hashTag.name)"
-                  ></div>
+                  <img
+                    class="searchIcon"
+                    src="../../assets/images/search-icon.svg"
+                    alt=""
+                    @click="searchTipsBySearchEvent"
+                  />
+                </div>
+              </div>
+              <div class="search__history">
+                <ul>
+                  <li
+                    v-for="history in this.$store.state.tip.history"
+                    :key="'history_' + history.id"
+                  >
+                    <span
+                      v-text="history.query"
+                      @click="searchTipsByHashTagEvent(history.query)"
+                      >쓰레기통</span
+                    >
+                    <img
+                      src="../../assets/images/deleteBtn.svg"
+                      alt=""
+                      class="sarch__delete__btn"
+                      @click="deleteHistoryById(history.id)"
+                    />
+                  </li>
+                </ul>
+              </div>
+              <!-- <hr /> -->
+              <div
+                class="search__recommend__container"
+                v-if="this.$store.state.tip.recommendHashTags.length > 0"
+              >
+                <div class="search__recommend">
+                  <h3 class="search_comment">추천 해시태그로 검색해 보세요</h3>
+                  <div class="search__hashTags">
+                    <div
+                      class="search__hashTag"
+                      v-for="(hashTag, index) in this.$store.state.tip
+                        .recommendHashTags"
+                      :key="'header_hashTag_' + index + hashTag.id"
+                      v-text="hashTag.name"
+                      @click="searchTipsByHashTagEvent(hashTag.name)"
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
 import { deleteCookie } from "@/utils/cookies";
-import { searchTipsByQuery } from "@/use/useSearch";
+import { moveToTipList, searchTipsByQuery } from "@/use/useSearch";
 const signModalNameSpace = "signModal/";
 
 export default Vue.extend({
   data() {
     return {
       isSearching: false,
-      query: ""
+      query: "",
+      setHeaderFixed: false
     };
   },
   methods: {
@@ -135,7 +145,10 @@ export default Vue.extend({
      */
     async initSearchHistories() {
       // 과거 데이터 조회
-      await this.$store.dispatch("tip/FETCH_HISOTRIES_BY_USER_ID");
+      if (this.$store.getters.isLogin) {
+        const userId = this.$store.getters["getUserId"];
+        await this.$store.dispatch("tip/FETCH_HISOTRIES_BY_USER_ID", userId);
+      }
     },
 
     /* ========================  팁 검색 관련 ======================== */
@@ -145,10 +158,49 @@ export default Vue.extend({
       searchTipsByQuery(this.$store, this.query);
       // input 초기화
       this.query = "";
+      this.afterSearchTips();
     },
     // 해시태그 로 검색하는 함수
     async searchTipsByHashTagEvent(hashTagName: string) {
-      searchTipsByQuery(this.$store, hashTagName);
+      await searchTipsByQuery(this.$store, hashTagName);
+      this.afterSearchTips();
+    },
+    //
+    afterSearchTips() {
+      this.searchWindowClose();
+
+      if (!this.isMainPage()) {
+        this.goMainPage();
+      } else {
+        moveToTipList();
+      }
+    },
+    // 메인페이지 인지 확인하는 함수
+    isMainPage(): boolean {
+      return this.$route.name === "MainPage";
+    },
+    // 메인페이지로 이동하는 함수
+    goMainPage() {
+      this.$store.commit("tip/setMoveScroll", true);
+      this.$router.push("/");
+    },
+
+    /* ========================  과거 데이터 관련 ======================== */
+    async deleteHistoryById(historyId: number) {
+      await this.$store.dispatch("tip/DELETE_HISTORY_BY_ID", historyId);
+    },
+
+    /* ========================  HEADER VIEW 관련 ======================== */
+    fixedHeaderCheck() {
+      const headerDiv = document.getElementById("header");
+      if (window.scrollY > headerDiv!.offsetHeight) {
+        this.setHeaderFixed = true;
+      } else {
+        this.setHeaderFixed = false;
+      }
+    },
+    handleScroll() {
+      this.fixedHeaderCheck();
     }
   },
   computed: {
@@ -157,10 +209,20 @@ export default Vue.extend({
     }
   },
   async created() {
+    // data
     await this.initHashTags();
+    console.log("this.$store.getters.isLogin", this.$store.getters.isLogin);
     if (this.$store.getters.isLogin) {
       this.initSearchHistories();
     }
+
+    // event
+    this.fixedHeaderCheck();
+    window.addEventListener("scroll", this.handleScroll);
+  },
+
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 });
 </script>
@@ -177,63 +239,100 @@ export default Vue.extend({
   background-repeat: no-repeat;
 }
 /* ============================= HEADER  ============================= */
-#header {
-  width: 100%;
-  height: 50px;
-  background: #f3f3f3;
-  .header__contents {
-    @extend .container;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @include mobileVersion {
-      justify-content: center;
+#header__container {
+  &.active {
+    .fixed__padding {
+      display: block;
+      height: 50px;
+      width: 100%;
+    }
+    #header {
+      top: 0;
+      position: fixed;
+      z-index: 220;
+      background-color: #5fac9a;
+      .header__logo {
+        background-image: url("../../assets/images/whiteLogo.svg");
+      }
+      .header__navigations {
+        //
+        ul {
+          //
+          li {
+            //
+            &.header__nav__item__search {
+              background-image: url("../../assets/images/whiteSearchIcon.svg");
+            }
+            a {
+              color: #ffffff;
+            }
+          }
+        }
+      }
     }
   }
-  .header__logo {
-    @extend .text--hidden;
-    @extend .image--center;
-    width: 60px;
-    height: 21px;
-    cursor: pointer;
-    background-image: url("../../assets/images/logo.svg");
+  .fixed__padding {
+    display: none;
   }
+  #header {
+    width: 100%;
+    height: 50px;
+    background: #f3f3f3;
 
-  .header__navigations {
-    font-size: 18px;
-    line-height: 21px;
-
-    ul {
+    .header__contents {
+      @extend .container;
+      height: 100%;
       display: flex;
       align-items: center;
-      li {
-        margin-left: 65px;
-        &:first-child {
-          margin-left: 0;
-        }
-        // 검색이미지
-        &.header__nav__item__search {
-          @extend .text--hidden;
-          @extend .image--center;
-          cursor: pointer;
-          margin-top: 8px;
-          width: 35px;
-          height: 35px;
-          background-image: url("../../assets/images/search-icon.svg");
-          @include mobileVersion {
-            position: absolute;
-            right: 16px;
-          }
-        }
-        @include mobileVersion {
-          &:not(.header__nav__item__search) {
-            display: none;
-          }
-        }
+      justify-content: space-between;
+      @include mobileVersion {
+        justify-content: center;
+      }
+    }
+    .header__logo {
+      @extend .text--hidden;
+      @extend .image--center;
+      width: 60px;
+      height: 21px;
+      cursor: pointer;
+      background-image: url("../../assets/images/logo.svg");
+    }
 
-        a {
-          color: #333333;
+    .header__navigations {
+      font-size: 18px;
+      line-height: 21px;
+
+      ul {
+        display: flex;
+        align-items: center;
+        li {
+          margin-left: 65px;
+          &:first-child {
+            margin-left: 0;
+          }
+          // 검색이미지
+          &.header__nav__item__search {
+            @extend .text--hidden;
+            @extend .image--center;
+            cursor: pointer;
+            margin-top: 8px;
+            width: 35px;
+            height: 35px;
+            background-image: url("../../assets/images/search-icon.svg");
+            @include mobileVersion {
+              position: absolute;
+              right: 16px;
+            }
+          }
+          @include mobileVersion {
+            &:not(.header__nav__item__search) {
+              display: none;
+            }
+          }
+
+          a {
+            color: #333333;
+          }
         }
       }
     }
