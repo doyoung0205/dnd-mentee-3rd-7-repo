@@ -74,12 +74,15 @@ export default Vue.extend({
   methods: {
     async write() {
       this.tipData.content = (this.$refs.contentInput as any).getContent();
+      this.tipData.thumbnail = (this.$refs.contentInput as any).getThumbnail();
       this.tipData.user = VueJwtDecode.decode(getAuthFromCookie()).user_id;
       const tags = (this.$refs.tags as any).getTags();
       tags.forEach((tag: string, idx: number) => {
         const tip = { id: idx, name: tag };
         this.tipData.hashtags.push(tip);
-      })
+      });
+
+      console.log(this.tipData);
       console.log(await WriteTip(this.tipData));
     }
   }

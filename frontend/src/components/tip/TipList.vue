@@ -1,35 +1,38 @@
 <template>
   <div class="tipList__contents">
-    <div class="tip__item">
-      <div class="tip__txt">
-        <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
-        <span class="tip__previewContent"
-          >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
-          기저귀버리실때ㄹ기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을
-          가르쳐드릴 기저귀버리실때ㄹ 기저귀버리실때 팁을 가르쳐드릴
-          기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때ㄹ 기저귀버리실때 팁을
-          가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때ㄹ
-          기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
-          기저귀버리실때ㄹ 기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을
-          가르쳐드릴 기저귀버리실때ㄹ 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
-        </span>
-        <div class="tip__info__contents">
-          <span class="tip__writer">닉네임</span>
-          <span class="tip__createdAt">2020.08.03</span>
-          <span class="tip__heartCount">
-            <img src="../../assets/images/heart.svg" alt="좋아요 수 " />
-            23</span
-          >
-          <span class="tip__commentCount">
-            <img src="../../assets/images/comment.svg" alt="댓글 수 " />
-            23</span
-          >
+    <router-link :to="{ name: 'TipPage', params: { id: 2 } }">
+      <div class="tip__item">
+        <div class="tip__txt">
+          <h3 class="tip__subject">기저귀 버리실때 팁!</h3>
+          <span class="tip__previewContent"
+            >기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
+            기저귀버리실때ㄹ기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을
+            가르쳐드릴 기저귀버리실때ㄹ 기저귀버리실때 팁을 가르쳐드릴
+            기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때ㄹ 기저귀버리실때 팁을
+            가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때ㄹ
+            기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을 가르쳐드릴
+            기저귀버리실때ㄹ 기저귀버리실때 팁을 가르쳐드릴 기저귀버리실때 팁을
+            가르쳐드릴 기저귀버리실때ㄹ 가르쳐드릴 기저귀버리실때 팁을
+            가르쳐드릴
+          </span>
+          <div class="tip__info__contents">
+            <span class="tip__writer">닉네임</span>
+            <span class="tip__createdAt">2020.08.03</span>
+            <span class="tip__heartCount">
+              <img src="../../assets/images/heart.svg" alt="좋아요 수 " />
+              23</span
+            >
+            <span class="tip__commentCount">
+              <img src="../../assets/images/comment.svg" alt="댓글 수 " />
+              23</span
+            >
+          </div>
+        </div>
+        <div class="tip__img">
+          <img src="@/assets/images/dummy.png" alt="" />
         </div>
       </div>
-      <div class="tip__img">
-        <img src="@/assets/images/dummy.png" alt="" />
-      </div>
-    </div>
+    </router-link>
     <div class="tip__item">
       <div class="tip__txt">
         <h3 class="tip__subject">기저귀 버리실때 팁!</h3>

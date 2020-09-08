@@ -201,8 +201,10 @@ export default Vue.extend({
       });
       if (event.target.tagName === "IMG") {
         event.target.classList.toggle("img-selected");
-        this.thumbnail = event.target.outerHTML;
-        console.log(event.target.src);
+        // console.log("this.thumbnail", event.target);
+
+        // console.log("this.thumbnail", event.target.src);
+        this.thumbnail = event.target.src; //event.target.outerHTML;
       }
     }
   }

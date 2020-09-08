@@ -19,6 +19,12 @@
     .TipContainer__header-noBorder{
         border-bottom:none;
     }
+    
+    .TipContainer__header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
   }
   
   @media screen and (max-width: 375px) {

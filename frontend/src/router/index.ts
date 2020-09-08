@@ -20,6 +20,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/tip",
     name: "TipPage",
+    props: true,
     component: () => import("@/views/TipPage.vue")
   },
   {
