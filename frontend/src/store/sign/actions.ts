@@ -9,11 +9,18 @@ import {
 import { signIn } from "@/api/sign/index";
 import { UserSignIn } from "@/api/sign/type";
 
+import JwtDecode from "jwt-decode";
+
 export const actions: ActionTree<SignState, RootState> = {
   async SIGN_IN({ commit }, userSignInData: UserSignIn) {
     const { data } = await signIn(userSignInData);
-    commit("setToken", data.access);
+
+    const accessToken = data.access;
+    commit("setToken", accessToken);
     commit("setUsername", userSignInData.email);
+
+    const decodedToken = JwtDecode(accessToken) as DecodedToken;
+
     saveAuthToCookie(data.access);
     saveRefreshToLocal(data.refresh);
     //saveUserToCookie(userSignInData.username);
