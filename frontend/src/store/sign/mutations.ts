@@ -8,11 +8,11 @@ export const mutations: MutationTree<SignState> = {
   clearUsername(state) {
     state.username = "";
   },
-  setUserID(state, userId) {
+  setUserId(state, userId) {
     state.userId = userId;
   },
   clearUserID(state) {
-    state.userId = 0;
+    state.userId = "0";
   },
   setToken(state, token) {
     state.token = token;
