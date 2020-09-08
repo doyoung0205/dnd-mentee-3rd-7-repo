@@ -52,8 +52,9 @@ import VueJwtDecode from "vue-jwt-decode";
 import TipTap from "@/components/TipTap.vue";
 import Tags from "@/components/Tags.vue";
 import { TipData, HashTag } from "@/api/tip/type";
-import { WriteTip } from "@/api/tip";
+import { WriteTip, submitImg } from "@/api/tip";
 import { getAuthFromCookie } from "@/utils/cookies";
+import { dataURLtoFile, makeFormData } from "@/utils/files";
 
 export default Vue.extend({
   components: {
@@ -65,7 +66,7 @@ export default Vue.extend({
       tipData: {
         title: "",
         content: "",
-        user:0,
+        user: 0,
         thumbnail: "",
         hashtags: [] as HashTag[]
       } as TipData
@@ -73,13 +74,41 @@ export default Vue.extend({
   },
   methods: {
     async write() {
-      this.tipData.content = (this.$refs.contentInput as any).getContent();
-      this.tipData.user = VueJwtDecode.decode(getAuthFromCookie()).user_id
+      //this.tipData.thumbnail = (this.$refs.contentInput as any).getThumbnail();
+      this.tipData.user = 102; // VueJwtDecode.decode(getAuthFromCookie()).user_id;
+
       const tags = (this.$refs.tags as any).getTags();
       tags.forEach((tag: string, idx: number) => {
         const tip = { id: idx, name: tag };
         this.tipData.hashtags.push(tip);
-      })
+      });
+
+      const content = document.querySelector(
+        ".editor__content .ProseMirror"
+      ) as HTMLDivElement;
+      const imgs = content.querySelectorAll("img");
+      const user = String(this.tipData.user);
+
+      for (const img of imgs) {
+        const file = dataURLtoFile(img.src);
+        const formData = makeFormData(file, user);
+        const response = await submitImg(formData);
+        img.src = response.data.file;
+        if (img.classList.contains("img-selected")) {
+          this.tipData.thumbnail = img.src;
+        }
+      }
+
+      if (!this.tipData.thumbnail) {
+        delete this.tipData["thumbnail"];
+      }
+
+      this.tipData.content = content.innerHTML;
+
+      console.log(this.tipData);
+
+      // this.tipData.thumbnail = fileName;
+
       console.log(await WriteTip(this.tipData));
     }
   }

@@ -195,14 +195,13 @@ export default Vue.extend({
         this.thumbnail = "";
         return;
       }
-      const imgs = document.querySelectorAll(".img-selected"); //대표 말고 다른 이미지를 클릭한 경우
-      imgs.forEach(e => {
-        e.classList.toggle("img-selected");
-      });
       if (event.target.tagName === "IMG") {
+        const imgs = document.querySelectorAll(".img-selected"); //대표 말고 다른 이미지를 클릭한 경우
+        imgs.forEach(e => {
+          e.classList.toggle("img-selected");
+        });
         event.target.classList.toggle("img-selected");
-        this.thumbnail = event.target.outerHTML;
-        console.log(event.target.src);
+        this.thumbnail = event.target.src;
       }
     }
   }

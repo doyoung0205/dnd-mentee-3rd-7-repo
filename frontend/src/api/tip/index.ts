@@ -2,13 +2,13 @@ import { instance } from "../index";
 import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
 import { AxiosPromise } from "axios";
 import { tipInstacne } from "../index";
-import { TipData } from "./type";
+import { TipData, ImgData, ImgResponse } from "./type";
 
 //  TIP 조회
 export function fetchTips(
   tipSearchOption: TipSearchOption
 ): AxiosPromise<Tips> {
-  return instance.get("tip/", {
+  return instance.get("tip", {
     params: tipSearchOption
   });
 }
@@ -31,7 +31,16 @@ export function fetchRecommendHashTags(): AxiosPromise<HashTags> {
 }
 
 export function WriteTip(tip: TipData) {
-  return tipInstacne.post("/", tip, {
+  return tipInstacne.post("/tip", tip, {
+    withCredentials: true
+  });
+}
+
+export function submitImg(img: FormData): Promise<ImgResponse> {
+  return tipInstacne.post("/file", img, {
+    headers: {
+      "Content-Type": "multipart/form-data"
+    },
     withCredentials: true
   });
 }
