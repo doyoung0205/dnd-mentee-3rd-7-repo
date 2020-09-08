@@ -3,26 +3,17 @@
     <!-- 메인 캐러셀 -->
     <MainCarocel></MainCarocel>
     <!-- 실시간 인기 팁 -->
-    <div id="tipList">
-      <TipSubjectVue></TipSubjectVue>
-      <TipSearchOptionVue></TipSearchOptionVue>
-      <TipList></TipList>
-    </div>
+    <MainTipContainer></MainTipContainer>
   </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import MainCarocel from "../components/main/MainCarocel.vue";
-import TipList from "../components/tip/TipList.vue";
-import TipSubjectVue from "../components/tip/TipSubject.vue";
-import TipSearchOptionVue from "../components/tip/TipSearchOption.vue";
-
+import MainCarocel from "@/components/main/MainCarocel.vue";
+import MainTipContainer from "@/components/tip/MainTipContaier.vue";
 export default Vue.extend({
   components: {
     MainCarocel,
-    TipList,
-    TipSubjectVue,
-    TipSearchOptionVue
+    MainTipContainer
   },
   methods: {},
   computed: {}

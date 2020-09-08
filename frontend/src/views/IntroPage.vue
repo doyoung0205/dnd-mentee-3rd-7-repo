@@ -121,6 +121,9 @@ div#intro__contents {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      display: flex;
+      width: 100%;
+      justify-content: center;
 
       span {
         font-size: 36px;

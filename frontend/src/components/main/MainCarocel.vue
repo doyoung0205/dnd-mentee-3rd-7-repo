@@ -152,8 +152,14 @@ export default Vue.extend({
     transform: translate(-50%, -50%);
     .cloud {
       margin-bottom: 14px;
+
       @include mobileVersion {
         display: none;
+      }
+      @include tablet {
+        margin-bottom: 13px;
+        width: 51px;
+        height: 27px;
       }
     }
     h3 {
@@ -163,6 +169,11 @@ export default Vue.extend({
       margin-bottom: 21px;
       @include mobileVersion {
         display: none;
+      }
+      @include tablet {
+        font-size: 17px;
+        line-height: 19px;
+        margin-bottom: 11px;
       }
     }
     h1 {
@@ -175,6 +186,10 @@ export default Vue.extend({
         line-height: 25px;
         margin-bottom: 17px;
       }
+      @include tablet {
+        font-size: 36px;
+        line-height: 41px;
+      }
     }
     p {
       font-size: 18px;
@@ -183,6 +198,11 @@ export default Vue.extend({
       @include mobileVersion {
         font-size: 11px;
         line-height: 13px;
+      }
+      @include tablet {
+        font-size: 14px;
+        line-height: 160%;
+        /* or 22px */
       }
     }
     button {
@@ -218,6 +238,17 @@ export default Vue.extend({
           width: 6px;
           height: 4px;
           right: 10px;
+        }
+      }
+      @include tablet {
+        margin-top: 24px;
+        padding: 15px 55px 16px 49px;
+        font-size: 18px;
+        line-height: 20px;
+        &::after {
+          width: 13px;
+          height: 8px;
+          right: 25px;
         }
       }
     }
@@ -259,6 +290,9 @@ export default Vue.extend({
 
   #swiper__navigation {
     @include mobileVersion {
+      display: none;
+    }
+    @include tablet {
       display: none;
     }
     img {
