@@ -1,9 +1,11 @@
 import Vue from "vue";
 import Vuex, { StoreOptions } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 import { RootState } from "./types";
 import { signModal } from "./signModal/index";
 import { loadingModal } from "./loadingModal/index";
 import { sign } from "./sign/index";
+import { tip } from "./tip/index";
 
 Vue.use(Vuex);
 
@@ -15,8 +17,10 @@ const store: StoreOptions<RootState> = {
   modules: {
     signModal,
     loadingModal,
-    sign
-  }
+    sign,
+    tip
+  },
+  plugins: [createPersistedState()]
 };
 
 export default new Vuex.Store<RootState>(store);

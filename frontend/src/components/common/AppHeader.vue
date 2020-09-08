@@ -28,7 +28,7 @@
             </li>
           </template>
           <li class="header__nav__item__search" @click="searchWindowOpen">
-            <router-link to="">검색이미지</router-link>
+            <router-link to=""> 검색이미지</router-link>
           </li>
         </ul>
       </div>
@@ -38,34 +38,26 @@
           <div class="search__contents">
             <div class="search__input__container">
               <div class="search__input">
-                <input type="text" />
+                <input
+                  type="text"
+                  v-model="query"
+                  @keypress.enter="searchTipsBySearchEvent"
+                />
                 <img
                   class="searchIcon"
                   src="../../assets/images/search-icon.svg"
                   alt=""
+                  @click="searchTipsBySearchEvent"
                 />
               </div>
             </div>
             <div class="search__history">
               <ul>
-                <li>
-                  <span>쓰레기통</span>
-                  <img
-                    src="../../assets/images/deleteBtn.svg"
-                    alt=""
-                    class="sarch__delete__btn"
-                  />
-                </li>
-                <li>
-                  <span>티백 쓰레기</span>
-                  <img
-                    src="../../assets/images/deleteBtn.svg"
-                    alt=""
-                    class="sarch__delete__btn"
-                  />
-                </li>
-                <li>
-                  <span>홍합</span>
+                <li
+                  v-for="history in this.$store.state.tip.history"
+                  :key="'history_' + history.id"
+                >
+                  <span v-text="history.query">쓰레기통</span>
                   <img
                     src="../../assets/images/deleteBtn.svg"
                     alt=""
@@ -75,22 +67,20 @@
               </ul>
             </div>
             <!-- <hr /> -->
-            <div class="search__recommend__container">
+            <div
+              class="search__recommend__container"
+              v-if="this.$store.state.tip.recommendHashTags.length > 0"
+            >
               <div class="search__recommend">
                 <h3 class="search_comment">추천 해시태그로 검색해 보세요</h3>
                 <div class="search__hashTags">
-                  <div class="search__hashTag">
-                    #키워드
-                  </div>
-                  <div class="search__hashTag">
-                    #키워드
-                  </div>
-                  <div class="search__hashTag">
-                    #키워드
-                  </div>
-                  <div class="search__hashTag">
-                    #키워드
-                  </div>
+                  <div
+                    class="search__hashTag"
+                    v-for="hashTag in this.$store.state.tip.recommendHashTags"
+                    :key="'header_hashTag_' + hashTag.id"
+                    v-text="hashTag.name"
+                    @click="searchTipsByHashTagEvent(hashTag.name)"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -103,11 +93,14 @@
 <script lang="ts">
 import Vue from "vue";
 import { deleteCookie } from "@/utils/cookies";
+import { searchTipsByQuery } from "@/use/useSearch";
 const signModalNameSpace = "signModal/";
+
 export default Vue.extend({
   data() {
     return {
-      isSearching: false
+      isSearching: false,
+      query: ""
     };
   },
   methods: {
@@ -120,6 +113,7 @@ export default Vue.extend({
     logoutUser() {
       this.$store.commit("clearUsername");
       this.$store.commit("clearToken");
+
       deleteCookie("greene_auth");
       deleteCookie("greene_user");
     },
@@ -128,11 +122,44 @@ export default Vue.extend({
     },
     searchWindowClose() {
       this.isSearching = false;
+    },
+    /**
+     * 추천 키워드 관련
+     */
+    async initHashTags() {
+      // 추천 키워드 내용 조회
+      await this.$store.dispatch("tip/FETCH_RECOMMEND_HASH_TAGS");
+    },
+    /**
+     * 과거 데이터 관련
+     */
+    async initSearchHistories() {
+      // 과거 데이터 조회
+      await this.$store.dispatch("tip/FETCH_HISOTRIES_BY_USER_ID");
+    },
+
+    /* ========================  팁 검색 관련 ======================== */
+
+    // 검색어 엔터 & 검색 아이콘 클릭시 검색하는 함수
+    async searchTipsBySearchEvent() {
+      searchTipsByQuery(this.$store, this.query);
+      // input 초기화
+      this.query = "";
+    },
+    // 해시태그 로 검색하는 함수
+    async searchTipsByHashTagEvent(hashTagName: string) {
+      searchTipsByQuery(this.$store, hashTagName);
     }
   },
   computed: {
     isUserLogin() {
       return this.$store.getters.isLogin;
+    }
+  },
+  async created() {
+    await this.initHashTags();
+    if (this.$store.getters.isLogin) {
+      this.initSearchHistories();
     }
   }
 });

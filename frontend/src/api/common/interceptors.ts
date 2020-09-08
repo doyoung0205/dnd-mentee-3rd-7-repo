@@ -58,25 +58,5 @@ export function setInterceptors(instance: AxiosInstance) {
       return Promise.reject(error);
     }
   );
-
-  // instance.interceptors.response.use(
-  //   function(response) {
-  //     // Any status code that lie within the range of 2xx cause this function to trigger
-  //     // Do something with response data
-  //     return response;
-  //   },
-  //   async function(error) {
-  //     const originalRequest = error.config;
-  //     if (error.response.status === 403 && !originalRequest._retry) {
-  //       originalRequest._retry = true;
-  //       const access_token = await refreshAccessToken();
-  //       axios.defaults.headers.common["Authorization"] =
-  //         "Bearer " + access_token;
-  //       return axiosApiInstance(originalRequest);
-  //     }
-  //     return Promise.reject(error);
-  //   }
-  // );
-
   return instance;
 }
