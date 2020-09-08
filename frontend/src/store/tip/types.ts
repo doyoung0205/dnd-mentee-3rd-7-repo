@@ -12,21 +12,21 @@ export interface Tip {
   id: number;
   title: string;
   content: string;
-  like: number;
+  number_of_likes: number;
   thumbnail: string;
   user: number;
   username: string;
   hashtags: HashTag[];
-  number_comments: 1;
+  number_of_comments: number;
   date_created: string;
   date_modified: string;
 }
-
+export type TipArray = Tip[];
 export interface HashTag {
   id: number;
   name: string;
 }
-
+export type HashTags = HashTag[];
 export interface TipSearchOption {
   page: number;
   query: string;

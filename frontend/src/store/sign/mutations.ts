@@ -9,7 +9,7 @@ export const mutations: MutationTree<SignState> = {
     state.username = "";
   },
   setToken(state, token) {
-    state.token = token;
+    state.token = "Bearer " + token;
   },
   clearToken(state) {
     state.token = "";

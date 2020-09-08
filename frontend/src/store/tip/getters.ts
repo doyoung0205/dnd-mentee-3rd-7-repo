@@ -5,7 +5,14 @@ import { RootState } from "../types";
 export const getters: GetterTree<TipState, RootState> = {
   getTipSearchOptions(state): TipSearchOption {
     const { tipSearchOption } = state;
-    console.log("?", tipSearchOption);
     return tipSearchOption;
+  },
+  hasNextTipList(state): boolean {
+    const { next } = state;
+    return next != null;
+  },
+  isEmptyTipList(state): boolean {
+    const { results } = state;
+    return results.length === 0;
   }
 };

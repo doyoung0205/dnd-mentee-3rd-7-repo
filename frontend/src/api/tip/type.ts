@@ -1,14 +1,13 @@
-import { AxiosResp } from "../type";
 import { Tip } from "@/store/tip/types";
 
-export interface TipListResp extends AxiosResp {
+export interface TipListResp {
   count: number;
   next: string;
   previous: string;
   results: Tip[];
 }
 
-export interface HistoryResp extends AxiosResp {
+export interface HistoryResp {
   id: number;
   query: string;
   date_created: string;

@@ -1,27 +1,19 @@
 <template>
   <div class="tipList__searchOption__contents">
     <div class="tipList__search__contents">
-      <div class="tipList__searchTerm">
-        <span>#검색어</span>
+      <div class="tipList__searchTerm" v-if="(tipSearchOptions.query = '')">
+        <span v-text="tipSearchOptions.query">#검색어</span>
         <img src="../../assets/images/x_white.svg" alt="검색어 취소 버튼" />
       </div>
       <div class="tipList__associative__contents">
-        <h3 class="">추천</h3>
+        <h3 class="" v-if="!isEmptyRecommendHashTags">추천</h3>
         <div class="tagList">
-          <div class="tag__item">
-            <span>#키워드</span>
-          </div>
-          <div class="tag__item">
-            <span>#키워드</span>
-          </div>
-          <div class="tag__item">
-            <span>#키워드</span>
-          </div>
-          <div class="tag__item">
-            <span>#키워드</span>
-          </div>
-          <div class="tag__item">
-            <span>#키워드</span>
+          <div
+            class="tag__item"
+            v-for="recommendHashTag in recommendHashTags"
+            :key="recommendHashTag.id"
+          >
+            <span v-text="recommendHashTag.name">#키워드</span>
           </div>
         </div>
       </div>
@@ -30,8 +22,31 @@
 </template>
 
 <script lang="ts">
+import { HashTags, TipSearchOption } from "@/store/tip/types";
 import Vue from "vue";
-export default Vue.extend({});
+export default Vue.extend({
+  props: {
+    tipSearchOptions: {
+      type: Object as () => TipSearchOption,
+      default() {
+        return {
+          query: "",
+          page: 1
+        };
+      }
+    },
+    recommendHashTags: {
+      type: Array as () => HashTags,
+      default: []
+    }
+  },
+  computed: {
+    isEmptyRecommendHashTags() {
+      const recommendHashTagsLength = this.$props.recommendHashTags.length;
+      return recommendHashTagsLength == 0;
+    }
+  }
+});
 </script>
 
 <style lang="scss">
