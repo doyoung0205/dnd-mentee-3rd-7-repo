@@ -24,7 +24,7 @@ export const mutations: MutationTree<TipState> = {
     state.results = state.results.concat(results);
   },
   updateQuery(state, query: string) {
-    console.log("query", query);
+    // console.log("query", query);
     state.tipSearchOption.query = query;
   },
   nextPage(state) {
@@ -38,7 +38,7 @@ export const mutations: MutationTree<TipState> = {
     state.recommendHashTags = hashTags;
   },
   setHistories(state, histories: Histories) {
-    console.log("setHistories");
+    // console.log("setHistories");
     state.history = histories;
   },
   setMoveScroll(state, flag: boolean) {

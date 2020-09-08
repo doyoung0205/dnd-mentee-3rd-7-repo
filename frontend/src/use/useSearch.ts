@@ -11,7 +11,7 @@ export async function searchTipsByQuery(
   store.commit("tip/updateQuery", query);
   store.commit("tip/initPage");
   const tipSearchOptions = store.getters["tip/getTipSearchOptions"];
-  console.log("tipSearchOptions", tipSearchOptions);
+  // console.log("tipSearchOptions", tipSearchOptions);
 
   // 팁 리스트 조회하기
   await store.dispatch("tip/FETCH_TIPS", tipSearchOptions);

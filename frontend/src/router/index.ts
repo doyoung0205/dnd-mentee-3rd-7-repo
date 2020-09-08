@@ -31,12 +31,18 @@ const routes: Array<RouteConfig> = [
   {
     path: "/mypage",
     name: "MyPage",
-    component: () => import("@/views/MyPage.vue")
+    component: () => import("@/views/MyPage.vue"),
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.MYPAGE
+    }
   },
   {
-    path: "/WritePage",
+    path: "/writePage",
     name: "WritePage",
-    component: () => import("@/views/WritePage.vue")
+    component: () => import("@/views/WritePage.vue"),
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.TIP
+    }
   }
   // {
   //   path: "/wrtie",

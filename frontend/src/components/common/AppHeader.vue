@@ -211,7 +211,7 @@ export default Vue.extend({
   async created() {
     // data
     await this.initHashTags();
-    console.log("this.$store.getters.isLogin", this.$store.getters.isLogin);
+    // console.log("this.$store.getters.isLogin", this.$store.getters.isLogin);
     if (this.$store.getters.isLogin) {
       this.initSearchHistories();
     }

@@ -15,7 +15,7 @@ export default Vue.extend({
   metaInfo(): MetaInfo {
     return {
       title: "그린이",
-      titleTemplate: "%s | greene.netlify.app", // title 뒤에 붙일 공통된 이름 (주로 사이트이름)
+      titleTemplate: "%s | https://greene.netlify.app/", // title 뒤에 붙일 공통된 이름 (주로 사이트이름)
       link: [{ rel: "icon", href: "@/assets/images/favicon.ico" }],
       meta: [
         { property: "og:locale", content: "ko_KR" },
@@ -40,12 +40,12 @@ export default Vue.extend({
         { property: "og:type", content: "website" },
         {
           property: "og:url",
-          content: "greene.netlify.app",
+          content: "https://greene.netlify.app/",
           vmid: "og:url"
         },
         {
           property: "og:image",
-          content: "greene.netlify.app/public/img/main-carocel1.png",
+          content: "https://greene.netlify.app//public/img/openGraph.png",
           vmid: "og:image"
         },
 
@@ -53,7 +53,7 @@ export default Vue.extend({
         { name: "twitter:card", content: "summary" },
         {
           name: "twitter:site",
-          content: "greene.netlify.app"
+          content: "https://greene.netlify.app/"
         },
         { name: "twitter:title", content: "그린이" },
         {
@@ -64,7 +64,7 @@ export default Vue.extend({
         // { name: "twitter:creator", content: "@alligatorio" },
         {
           name: "twitter:image:src",
-          content: "greene.netlify.app/public/img/main-carocel1.png"
+          content: "https://greene.netlify.app//public/img/openGraph.png"
         },
         // // Google / Schema.org markup:
         { itemprop: "name", content: "그린이" },
@@ -74,7 +74,7 @@ export default Vue.extend({
         },
         {
           itemprop: "image",
-          content: "greene.netlify.app/public/img/main-carocel1.png"
+          content: "https://greene.netlify.app//public/img/openGraph.png"
         }
       ]
     };
