@@ -1,14 +1,26 @@
 <template>
   <div id="commentContainer">
     <div class="comment__content">
-      <div class="comment__username"><p>그린이</p></div>
-      <div class="comment__main">댓굴댓굴</div>
+      <div class="comment__username">
+        <p>{{ comment.username }}</p>
+      </div>
+      <div class="comment__main">{{ comment.content }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {};
+import Vue from "vue";
+import { Tip } from "@/store/tip/types";
+export default Vue.extend({
+  props: {
+    comment: {
+      type: Object as () => Tip,
+      required: true,
+      default: {}
+    }
+  }
+});
 </script>
 
 <style lang="scss">

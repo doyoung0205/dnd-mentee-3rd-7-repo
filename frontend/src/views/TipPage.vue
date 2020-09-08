@@ -4,13 +4,22 @@
       <section
         class="TipContainer__header TipContainer__header-center TipContainer__header-noBorder"
       >
-        <div><span>제목제목제목</span></div>
-        <div><span>글쓴이</span><span>2020.08.10</span></div>
+        <div>
+          <span>{{ data.title }}</span>
+        </div>
+        <div>
+          <span>{{ data.username }}</span
+          ><span>{{ data.date_created }}</span>
+        </div>
       </section>
-      <section id="TipContainer__content"></section>
+      <section id="TipContainer__content">
+        {{ data.content }}
+      </section>
       <section id="TipComment__section">
         <header id="TipComment__header">
-          <span class="TipComment__number">댓글 2</span>
+          <span class="TipComment__number"
+            >댓글 {{ data.number_of_comments }}</span
+          >
           <div>
             <svg
               width="23"
@@ -55,8 +64,16 @@
             </svg>
           </div>
         </header>
-        <TipComment />
-        <TipComment />
+
+        <div
+          class="comment__item"
+          v-for="comment in comments"
+          :key="'comment' + comment.id"
+        >
+          <TipComment :comment="comment" />
+        </div>
+
+        <tip-comment-form :post="data.id" />
       </section>
     </div>
   </div>
@@ -67,42 +84,30 @@ import Vue from "vue";
 import TipTap from "@/components/TipTap.vue";
 import Tags from "@/components/Tags.vue";
 import TipComment from "@/components/tip/TipComment.vue";
+import TipCommentForm from "@/components/tip/TipCommentForm.vue";
 import { TipData, HashTag } from "@/api/tip/type";
-import { WriteTip, GetTip } from "@/api/tip";
+import { Tip } from "@/store/tip/types";
+import { WriteTip, GetTip, GetTipComments } from "@/api/tip";
 import { getAuthFromCookie } from "@/utils/cookies";
 
 export default Vue.extend({
   components: {
-    TipComment
+    TipComment,
+    TipCommentForm
     // Tags
   },
   data() {
     return {
-      id: "",
-      tipData: {
-        title: "",
-        content: "",
-        user: 0,
-        thumbnail: "",
-        hashtags: [] as HashTag[]
-      } as TipData
+      data: {} as Tip,
+      comments: {} as Tip
     };
   },
   async created() {
-    this.id = this.$route.params.id;
-    console.log(await GetTip(this.id));
+    const id = this.$route.params.id;
+    this.data = (await GetTip(id)).data;
+    this.comments = (await GetTipComments(id)).data;
   },
-  methods: {
-    async write() {
-      const tags = (this.$refs.tags as any).getTags();
-      tags.forEach((tag: string, idx: number) => {
-        const tip = { id: idx, name: tag };
-        this.tipData.hashtags.push(tip);
-      });
-
-      console.log(await WriteTip(this.tipData));
-    }
-  }
+  methods: {}
 });
 </script>
 
@@ -112,7 +117,7 @@ export default Vue.extend({
 
 #TipComment__section {
   margin: 0 auto;
-  overflow-y: scroll;
+  //overflow-y: scroll;
 }
 
 #TipContainer__content {

@@ -1,7 +1,7 @@
 <template>
   <div class="tips__contents" v-if="tips != null">
-    <router-link :to="{ name: 'TipPage', params: { id: 2 } }">
-      <div class="tip__item" v-for="tip in tips" :key="'tip_' + tip.id">
+    <div class="tip__item" v-for="tip in tips" :key="'tip_' + tip.id">
+      <router-link :to="{ name: 'TipPage', params: { id: tip.id } }">
         <div class="tip__txt">
           <h3 class="tip__subject" v-text="tip.title">기저귀 버리실때 팁!</h3>
           <span class="tip__previewContent" v-text="tip.content"> </span>
@@ -22,8 +22,9 @@
         </div>
         <div class="tip__img">
           <img :src="tip.thumbnail" alt="" />
-        </div></div
-    ></router-link>
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
