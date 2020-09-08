@@ -21,7 +21,8 @@ export interface Tip {
   date_created: string;
   date_modified: string;
 }
-export type TipArray = Tip[];
+
+export type Tips = Tip[];
 export interface HashTag {
   id: number;
   name: string;
@@ -38,6 +39,7 @@ export interface History {
   date_created: string;
   user: number;
 }
+export type Histories = History[];
 
 export interface RecommendHashTag {
   id: number;

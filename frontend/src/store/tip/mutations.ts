@@ -1,10 +1,10 @@
 import { MutationTree } from "vuex";
-import { TipState } from "./types";
-import { TipListResp } from "@/api/tip/type";
+import { TipState, HashTags, Histories } from "./types";
+import { TipFetchResp } from "@/api/tip/type";
 
 export const mutations: MutationTree<TipState> = {
-  setTipListResp(state, tipListResp: TipListResp) {
-    console.log("setTipListResp");
+  setTips(state, tipListResp: TipFetchResp) {
+    console.log("TipFetchResp");
     const { count, next, previous, results } = tipListResp;
     console.log("count", count);
     console.log("state", state);
@@ -12,5 +12,17 @@ export const mutations: MutationTree<TipState> = {
     state.next = next;
     state.previous = previous;
     state.results = results;
+  },
+  updateQuery(state, query: string) {
+    console.log("query", query);
+    state.tipSearchOption.query = query;
+  },
+  setRecommendHashTags(state, hashTags: HashTags) {
+    console.log("setRecommendHashTags");
+    state.recommendHashTags = hashTags;
+  },
+  setHistories(state, histories: Histories) {
+    console.log("setHistories");
+    state.history = histories;
   }
 };

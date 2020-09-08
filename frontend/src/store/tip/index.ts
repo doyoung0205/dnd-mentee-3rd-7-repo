@@ -2,14 +2,14 @@ import { Module } from "vuex";
 import { getters } from "./getters";
 import { actions } from "./actions";
 import { mutations } from "./mutations";
-import { TipState, TipSearchOption, TipArray } from "./types";
+import { TipState, TipSearchOption, Tips } from "./types";
 import { RootState } from "../types";
 
 export const state: TipState = {
   count: 0,
   next: "",
   previous: "",
-  results: [] as TipArray,
+  results: [] as Tips,
   tipSearchOption: {
     page: 1,
     query: ""

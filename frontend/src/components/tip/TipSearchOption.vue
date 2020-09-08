@@ -1,17 +1,22 @@
 <template>
   <div class="tipList__searchOption__contents">
     <div class="tipList__search__contents">
-      <div class="tipList__searchTerm" v-if="(tipSearchOptions.query = '')">
+      <div class="tipList__searchTerm" v-if="tipSearchOptions.query != ''">
         <span v-text="tipSearchOptions.query">#검색어</span>
-        <img src="../../assets/images/x_white.svg" alt="검색어 취소 버튼" />
+        <img
+          src="../../assets/images/x_white.svg"
+          alt="검색어 취소 버튼"
+          @click="clearSearchWordEvent"
+        />
       </div>
       <div class="tipList__associative__contents">
         <h3 class="" v-if="!isEmptyRecommendHashTags">추천</h3>
         <div class="tagList">
           <div
             class="tag__item"
-            v-for="recommendHashTag in recommendHashTags"
-            :key="recommendHashTag.id"
+            v-for="(recommendHashTag, index) in recommendHashTags"
+            :key="'recommendHashTag_' + index + recommendHashTag.id"
+            @click="searchTipsByHashTagEvent(recommendHashTag.name)"
           >
             <span v-text="recommendHashTag.name">#키워드</span>
           </div>
@@ -38,6 +43,15 @@ export default Vue.extend({
     recommendHashTags: {
       type: Array as () => HashTags,
       default: []
+    }
+  },
+  methods: {
+    clearSearchWordEvent() {
+      this.$emit("searchTipsByQuery", "");
+    },
+    // 해시태그로 검색하는 함수
+    searchTipsByHashTagEvent(hashTagName: string) {
+      this.$emit("searchTipsByQuery", hashTagName);
     }
   },
   computed: {

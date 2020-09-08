@@ -1,15 +1,8 @@
-import { Tip } from "@/store/tip/types";
+import { Tips } from "@/store/tip/types";
 
-export interface TipListResp {
+export interface TipFetchResp {
   count: number;
-  next: string;
-  previous: string;
-  results: Tip[];
-}
-
-export interface HistoryResp {
-  id: number;
-  query: string;
-  date_created: string;
-  user: number;
+  next: string; //"http://193.122.121.53/api/tip/?page=3";
+  previous: string; //"http://193.122.121.53/api/tip/";
+  results: Tips;
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="tipList__contents" v-if="tipList != null">
-    <div class="tip__item" v-for="tip in tipList" :key="'tip_' + tip.id">
+  <div class="tips__contents" v-if="tips != null">
+    <div class="tip__item" v-for="tip in tips" :key="'tip_' + tip.id">
       <div class="tip__txt">
         <h3 class="tip__subject" v-text="tip.title">기저귀 버리실때 팁!</h3>
         <span class="tip__previewContent" v-text="tip.content"> </span>
@@ -27,22 +27,14 @@
 </template>
 
 <script lang="ts">
-import { TipArray } from "@/store/tip/types";
+import { Tips } from "@/store/tip/types";
 import Vue from "vue";
 export default Vue.extend({
   props: {
-    tipList: {
-      type: Array as () => TipArray,
+    tips: {
+      type: Array as () => Tips,
       required: true
     }
-  },
-  data() {
-    return {
-      dummyBackgroundImg: require(`@/assets/images/dummy.png`)
-    };
-  },
-  created() {
-    console.log("tipList", this.$props.tipList);
   }
 });
 </script>
