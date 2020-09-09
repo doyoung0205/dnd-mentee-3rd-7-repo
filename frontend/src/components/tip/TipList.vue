@@ -46,7 +46,20 @@ export default Vue.extend({
   methods: {
     goDetailTip(tipId: string) {
       this.$router.push({ path: `/tip/${tipId}` });
+    },
+    handleScroll() {
+      //window height + window scrollY 값이 document height보다 클 경우,
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        //실행할 로직 (콘텐츠 추가)
+        this.$emit("nextPage");
+      }
     }
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 });
 </script>
