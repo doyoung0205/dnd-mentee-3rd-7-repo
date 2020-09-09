@@ -1,3 +1,5 @@
+import { instance, instanceWithAuth } from "../index";
+import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
 import { tipInstacne } from "../index";
 import { TipData, TipDataResp } from "./type";
 import { instance } from "../index";
@@ -43,12 +45,12 @@ export function fetchTips(
 export function fetchHistoriesByUserId(
   userId: number
 ): AxiosPromise<Histories> {
-  return instance.get(`/user/${userId}/histories`);
+  return instanceWithAuth.get(`/user/${userId}/histories`);
 }
 
 // 과거 조회 데이터 삭제하기
 export function deleteHistoryByUserId(userId: number): AxiosPromise<{}> {
-  return instance.delete(`history/${userId}`);
+  return instanceWithAuth.delete(`history/${userId}`);
 }
 
 // 추천 검색어들 조회

@@ -12,6 +12,8 @@ import {
 } from "swiper/core";
 import getAwesomeSwiper from "vue-awesome-swiper/dist/exporter";
 import VueMeta from "vue-meta";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/all";
 
 // Swiper modules
 SwiperClass.use([Pagination, Mousewheel, Autoplay, Navigation]);
@@ -25,6 +27,8 @@ Vue.use(VueMeta, {
   // 태그를 관찰하기 위해 추가하는 속성 이름 vue-meta
   attribute: "data-vue-meta"
 });
+
+gsap.registerPlugin(ScrollToPlugin);
 
 Vue.config.productionTip = false;
 

@@ -20,9 +20,10 @@
             >
           </div>
         </div>
-        <div class="tip__img">
-          <img :src="tip.thumbnail" alt="" />
-        </div>
+      </div>
+      <div class="tip__img">
+        <img :src="tip.thumbnail" v-if="tip.thumbnail" alt="" />
+      </div>
       </router-link>
     </div>
   </div>
@@ -37,6 +38,21 @@ export default Vue.extend({
       type: Array as () => Tips,
       required: true
     }
+  },
+  methods: {
+    handleScroll() {
+      //window height + window scrollY 값이 document height보다 클 경우,
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        //실행할 로직 (콘텐츠 추가)
+        this.$emit("nextPage");
+      }
+    }
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 });
 </script>
@@ -99,6 +115,9 @@ export default Vue.extend({
     font-size: 21px;
     line-height: 25px;
     color: #272727;
+    @extend .line-clamp;
+    -webkit-line-clamp: 1;
+    height: 30px;
     @include mobileVersion {
       font-size: 14px;
       line-height: 16px;
@@ -118,7 +137,7 @@ export default Vue.extend({
     word-break: break-all;
     @include mobileVersion {
       -webkit-line-clamp: 1;
-      height: 24px;
+      height: 22px;
       font-size: 12px;
       line-height: 14px;
       margin-top: 9px;
