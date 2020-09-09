@@ -140,16 +140,6 @@ export default Vue.extend({
       // 추천 키워드 내용 조회
       await this.$store.dispatch("tip/FETCH_RECOMMEND_HASH_TAGS");
     },
-    /**
-     * 과거 데이터 관련
-     */
-    async initSearchHistories() {
-      // 과거 데이터 조회
-      if (this.$store.getters.isLogin) {
-        const userId = this.$store.getters["getUserId"];
-        await this.$store.dispatch("tip/FETCH_HISOTRIES_BY_USER_ID", userId);
-      }
-    },
 
     /* ========================  팁 검색 관련 ======================== */
 
@@ -211,10 +201,6 @@ export default Vue.extend({
   async created() {
     // data
     await this.initHashTags();
-    // console.log("this.$store.getters.isLogin", this.$store.getters.isLogin);
-    if (this.$store.getters.isLogin) {
-      this.initSearchHistories();
-    }
 
     // event
     this.fixedHeaderCheck();

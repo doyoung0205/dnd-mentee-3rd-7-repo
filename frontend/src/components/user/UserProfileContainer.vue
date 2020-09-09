@@ -39,9 +39,9 @@ export default Vue.extend({
       this.$router.push("/");
     },
     initStoreRelatedToUsers() {
-      this.$store.commit("clearHistories");
+      this.$store.commit("tip/clearHistories");
       this.$store.commit("clearSignState");
-      this.$store.commit("clearUserState");
+      this.$store.commit("user/clearUserState");
     }
   },
   computed: {},

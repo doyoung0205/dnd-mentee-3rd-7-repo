@@ -24,7 +24,7 @@ export const actions: ActionTree<TipState, RootState> = {
   async FETCH_HISOTRIES_BY_USER_ID({ commit }, userId: number) {
     // getters.
     const { data } = await fetchHistoriesByUserId(userId);
-    // console.log("FETCH_HISOTRIES_BY_USER_ID RESULT :: ", data);
+    console.log("FETCH_HISOTRIES_BY_USER_ID RESULT :: ", data);
     commit("setHistories", data);
     return data;
   },

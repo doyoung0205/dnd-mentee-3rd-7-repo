@@ -104,6 +104,7 @@ export default Vue.extend({
         };
         await this.$store.dispatch("SIGN_IN", signInData);
         this.$store.commit("signModal/close");
+        this.initSearchHistories();
       } catch (error) {
         // 에러 핸들링할 코드
         console.log(error.response.data);
@@ -112,12 +113,23 @@ export default Vue.extend({
         this.initForm();
       }
     },
+
     initForm() {
       this.email = "";
       this.password = "";
     },
     showSignUp() {
       this.$emit("showSignUp");
+    },
+    /**
+     * 과거 데이터 관련
+     */
+    async initSearchHistories() {
+      // 과거 데이터 조회
+      if (this.$store.getters.isLogin) {
+        const userId = this.$store.getters["getUserId"];
+        await this.$store.dispatch("tip/FETCH_HISOTRIES_BY_USER_ID", userId);
+      }
     }
   }
 });
