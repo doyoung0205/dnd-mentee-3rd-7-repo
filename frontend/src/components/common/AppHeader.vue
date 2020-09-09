@@ -15,7 +15,7 @@
               <router-link to="/intro">그린이소개</router-link>
             </li>
             <li class="header__nav__item__tip">
-              <router-link to="">팁쓰기</router-link>
+              <router-link to="/tip/write">팁쓰기</router-link>
             </li>
             <!-- 로그인 상태일 떄 -->
             <template v-if="isUserLogin">

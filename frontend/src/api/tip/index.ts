@@ -2,14 +2,6 @@ import { instance, instanceWithAuth } from "../index";
 import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
 import { tipInstacne } from "../index";
 import { TipData, TipDataResp } from "./type";
-import { instance } from "../index";
-import {
-  TipSearchOption,
-  HashTags,
-  Histories,
-  Tips,
-  Tip
-} from "@/store/tip/types";
 import { AxiosPromise } from "axios";
 
 // 팁작성 API

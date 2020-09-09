@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import MainPage from "../views/MainPage.vue";
-import TipPage from "../views/TipPage.vue";
 import store from "@/store";
 import { footerNaviActiveIcon } from "@/api/type";
 
@@ -22,15 +21,21 @@ const routes: Array<RouteConfig> = [
     component: () => import("@/views/SignUpPage.vue")
   },
   {
-    path: "/tip",
+    path: "/tip/:id",
     name: "TipPage",
     props: true,
-    component: () => import("@/views/TipPage.vue")
+    component: () => import("@/views/TipPage.vue"),
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.TIP
+    }
   },
   {
     path: "/tip/write",
     name: "WritePage",
-    component: () => import("@/views/WritePage.vue")
+    component: () => import("@/views/WritePage.vue"),
+    meta: {
+      footerNaviActiveIcon: footerNaviActiveIcon.TIP
+    }
   },
   {
     path: "/intro",
@@ -46,14 +51,6 @@ const routes: Array<RouteConfig> = [
     component: () => import("@/views/MyPage.vue"),
     meta: {
       footerNaviActiveIcon: footerNaviActiveIcon.MYPAGE
-    }
-  },
-  {
-    path: "/writePage",
-    name: "WritePage",
-    component: () => import("@/views/WritePage.vue"),
-    meta: {
-      footerNaviActiveIcon: footerNaviActiveIcon.TIP
     }
   }
 ];
