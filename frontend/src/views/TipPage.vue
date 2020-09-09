@@ -35,6 +35,8 @@
             </svg>
 
             <svg
+              @click="like"
+              class="svg-hover"
               width="23"
               height="21"
               viewBox="0 0 23 21"
@@ -88,7 +90,10 @@ import TipCommentForm from "@/components/tip/TipCommentForm.vue";
 import { TipData, HashTag } from "@/api/tip/type";
 import { Tip } from "@/store/tip/types";
 import { WriteTip, GetTip, GetTipComments } from "@/api/tip";
+import { LikeTip } from "@/api/like";
 import { getAuthFromCookie } from "@/utils/cookies";
+import { sign } from "@/store/sign/index";
+import { SignState } from "@/store/sign/types";
 
 export default Vue.extend({
   components: {
@@ -107,7 +112,12 @@ export default Vue.extend({
     this.data = (await GetTip(id)).data;
     this.comments = (await GetTipComments(id)).data;
   },
-  methods: {}
+  methods: {
+    async like() {
+      const user = (sign.state as SignState).userId;
+      console.log(await LikeTip({ user: Number(user), post: this.data.id }));
+    }
+  }
 });
 </script>
 
@@ -115,6 +125,9 @@ export default Vue.extend({
 @import "@/assets/styles/tip";
 @import "../assets/styles/tiptap/sass/main.scss";
 
+.svg-hover {
+  cursor: pointer;
+}
 #TipComment__section {
   margin: 0 auto;
   //overflow-y: scroll;

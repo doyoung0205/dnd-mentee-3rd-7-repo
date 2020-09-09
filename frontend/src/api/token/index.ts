@@ -5,11 +5,11 @@ import { UserData } from "../sign/type";
 
 // 회원가입 API
 export function getToken(userData: UserData): Promise<TokenResp> {
-  return instance.post("token/", userData, {
+  return instance.post("token", userData, {
     withCredentials: true
   });
 }
 
 export function getRefToken(tokenData: TokenRef): Promise<TokenResp> {
-  return instance.post("token/refresh/", tokenData);
+  return instance.post("token/refresh", tokenData);
 }
