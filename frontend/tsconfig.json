@@ -25,6 +25,7 @@
       "scripthost"
     ]
   },
+    "files": ["./typedefs/vue-jwt-decode.d.ts","./typedefs/tiptap.d.ts", "./typedefs/tiptap-extensions.d.ts"],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -35,5 +36,4 @@
   "exclude": [
     "node_modules"
   ],
-  "files": ["./typedefs/tiptap.d.ts", "./typedefs/tiptap-extensions.d.ts"],
 }

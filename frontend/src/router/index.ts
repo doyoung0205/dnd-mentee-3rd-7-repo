@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import MainPage from "../views/MainPage.vue";
+import TipPage from "../views/TipPage.vue";
 import store from "@/store";
 import { footerNaviActiveIcon } from "@/api/type";
 
@@ -19,6 +20,17 @@ const routes: Array<RouteConfig> = [
     path: "/signup",
     name: "Singup",
     component: () => import("@/views/SignUpPage.vue")
+  },
+  {
+    path: "/tip",
+    name: "TipPage",
+    props: true,
+    component: () => import("@/views/TipPage.vue")
+  },
+  {
+    path: "/tip/write",
+    name: "WritePage",
+    component: () => import("@/views/WritePage.vue")
   },
   {
     path: "/intro",
@@ -44,11 +56,6 @@ const routes: Array<RouteConfig> = [
       footerNaviActiveIcon: footerNaviActiveIcon.TIP
     }
   }
-  // {
-  //   path: "/wrtie",
-  //   name: "WritePage",
-  //   component: () => import("@/views/WritePage.vue")
-  // }
 ];
 
 const router = new VueRouter({
@@ -58,7 +65,7 @@ const router = new VueRouter({
 });
 
 const signModalNameSpace = "signModal/";
-const restrictPaths = ["/write"];
+const restrictPaths = ["/tip/write"];
 
 router.beforeEach((to, from, next) => {
   const isLogin = store.getters.isLogin;

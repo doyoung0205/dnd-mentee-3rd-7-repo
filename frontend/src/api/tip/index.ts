@@ -1,7 +1,36 @@
-// // 로그인, 회원 가입, (ex) 회원 탈퇴
 import { instance, instanceWithAuth } from "../index";
 import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
+import { tipInstacne } from "../index";
+import { TipData, TipDataResp } from "./type";
+import { instance } from "../index";
+import {
+  TipSearchOption,
+  HashTags,
+  Histories,
+  Tips,
+  Tip
+} from "@/store/tip/types";
 import { AxiosPromise } from "axios";
+
+// 팁작성 API
+export function WriteTip(tip: TipData) {
+  return tipInstacne.post("", tip, {
+    withCredentials: true
+  });
+}
+
+// 팁조회 API
+export function GetTip(id: string): Promise<TipDataResp> {
+  return tipInstacne.get(`/${id}`, {
+    withCredentials: true
+  });
+}
+
+export function GetTipComments(id: string): Promise<TipDataResp> {
+  return tipInstacne.get(`/${id}/comments`, {
+    withCredentials: true
+  });
+}
 
 //  TIP 조회
 export function fetchTips(

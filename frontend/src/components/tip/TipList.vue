@@ -1,27 +1,30 @@
 <template>
   <div class="tips__contents" v-if="tips != null">
     <div class="tip__item" v-for="tip in tips" :key="'tip_' + tip.id">
-      <div class="tip__txt">
-        <h3 class="tip__subject" v-text="tip.title">기저귀 버리실때 팁!</h3>
-        <span class="tip__previewContent" v-text="tip.content"> </span>
-        <div class="tip__info__contents">
-          <span class="tip__writer" v-text="tip.username">닉네임</span>
-          <span class="tip__createdAt" v-text="tip.date_created"
-            >2020.08.03</span
-          >
-          <span class="tip__heartCount">
-            <img src="../../assets/images/heart.svg" alt="좋아요 수 " />
-            {{ tip.number_of_likes }}</span
-          >
-          <span class="tip__commentCount">
-            <img src="../../assets/images/comment.svg" alt="댓글 수 " />
-            {{ tip.number_of_comments }}</span
-          >
+      <router-link :to="{ name: 'TipPage', params: { id: tip.id } }">
+        <div class="tip__txt">
+          <h3 class="tip__subject" v-text="tip.title">기저귀 버리실때 팁!</h3>
+          <span class="tip__previewContent" v-text="tip.content"> </span>
+          <div class="tip__info__contents">
+            <span class="tip__writer" v-text="tip.username">닉네임</span>
+            <span class="tip__createdAt" v-text="tip.date_created"
+              >2020.08.03</span
+            >
+            <span class="tip__heartCount">
+              <img src="../../assets/images/heart.svg" alt="좋아요 수 " />
+              {{ tip.number_of_likes }}</span
+            >
+            <span class="tip__commentCount">
+              <img src="../../assets/images/comment.svg" alt="댓글 수 " />
+              {{ tip.number_of_comments }}</span
+            >
+          </div>
         </div>
       </div>
       <div class="tip__img">
         <img :src="tip.thumbnail" v-if="tip.thumbnail" alt="" />
       </div>
+      </router-link>
     </div>
   </div>
 </template>

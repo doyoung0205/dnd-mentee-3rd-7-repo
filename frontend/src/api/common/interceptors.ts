@@ -1,13 +1,35 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
 import { SignState } from "@/store/sign/types";
 import { sign } from "@/store/sign/index";
+import { getRefToken } from "@/api/token";
+import { TokenRef, DecodedToken } from "@/api/token/type";
+import JwtDecode from "jwt-decode";
+import {
+  getAuthFromCookie,
+  saveAuthToCookie,
+  saveRefreshToLocal
+} from "@/utils/cookies";
 
 export function setInterceptors(instance: AxiosInstance) {
   // Add a request interceptor
   instance.interceptors.request.use(
-    function(config: AxiosRequestConfig) {
+    async function(config: AxiosRequestConfig) {
       // Do something before request is sent
       // console.log(config);
+
+      const token = (sign.state as SignState).token;
+      const decodedToken = JwtDecode(token) as DecodedToken;
+      const now = new Date().toString();
+      const expDate = new Date(decodedToken["exp"] * 1000).toString();
+
+      if (expDate < now) {
+        const refreshToken = localStorage.getItem("refreshToken");
+        const data = { refresh: refreshToken } as TokenRef;
+        const newToken = await getRefToken(data);
+
+        saveAuthToCookie(newToken.data.access);
+        saveRefreshToLocal(newToken.data.refresh);
+      }
 
       config.headers.Authorization =
         "Bearer " + (sign.state as SignState).token;
