@@ -36,15 +36,14 @@ export const actions: ActionTree<TipState, RootState> = {
     return data;
   },
   async NEXT_TIP_LIST({ commit, getters }) {
-    const tipSearchOptions = getters.getTipSearchOptions;
-    tipSearchOptions.page = tipSearchOptions.page + 1;
-    // console.log(" tipSearchOptions", tipSearchOptions);
-
     try {
+      commit("nextPage");
+
+      const tipSearchOptions = getters.getTipSearchOptions;
+      // console.log(" pageNum :", getters.getTipSearchOptions.page);
       const { data } = await fetchTips(tipSearchOptions);
       // console.log("NEXT_TIP_LIST RESULT :: ", data);
 
-      commit("nextPage");
       commit("addTips", data);
     } catch (error) {
       console.log("error", error);
