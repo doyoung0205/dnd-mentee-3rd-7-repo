@@ -17,6 +17,12 @@
       <div class="user__id" v-text="this.$store.state.user.userInfo.email">
         <span>Tjstos13</span>
       </div>
+      <div class="logout__wrap">
+        <button class="logout__btn">
+          <span>로그아웃</span>
+          <img src="@/assets/images/arrow737373.svg" alt="" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -109,6 +115,29 @@ export default Vue.extend({
             line-height: 10px;
             padding: 2px 7px;
             margin-left: 9px;
+          }
+        }
+      }
+      .logout__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: inherit;
+        padding: 0;
+        span {
+          font-size: 15px;
+          line-height: 15px;
+          color: #737373;
+          @include mobileVersion {
+            font-size: 12px;
+            line-height: 15px;
+          }
+        }
+        img {
+          @include mobileVersion {
+            width: 19px;
+            height: 19px;
           }
         }
       }

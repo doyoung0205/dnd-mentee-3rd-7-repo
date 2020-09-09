@@ -21,7 +21,6 @@ export default Vue.extend({
   methods: {},
   computed: {},
   created() {
-    // user 정보 가져오기
     //
   }
 });
