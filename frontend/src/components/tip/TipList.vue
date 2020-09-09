@@ -112,6 +112,9 @@ export default Vue.extend({
     font-size: 21px;
     line-height: 25px;
     color: #272727;
+    @extend .line-clamp;
+    -webkit-line-clamp: 1;
+    height: 30px;
     @include mobileVersion {
       font-size: 14px;
       line-height: 16px;
@@ -131,7 +134,7 @@ export default Vue.extend({
     word-break: break-all;
     @include mobileVersion {
       -webkit-line-clamp: 1;
-      height: 24px;
+      height: 22px;
       font-size: 12px;
       line-height: 14px;
       margin-top: 9px;
