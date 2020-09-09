@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import { instance } from "../index";
 import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
 import { AxiosPromise } from "axios";
-import { tipInstacne } from "../index";
-import { TipData, ImgData, ImgResponse } from "./type";
-=======
 import { instance, instanceWithAuth } from "../index";
-import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
 import { tipInstacne } from "../index";
-import { TipData, TipDataResp } from "./type";
-import { AxiosPromise } from "axios";
+import { TipData, TipDataResp, ImgDataResp } from "./type";
 
 // 팁작성 API
 export function WriteTip(tip: TipData) {
@@ -30,7 +23,6 @@ export function GetTipComments(id: string): Promise<TipDataResp> {
     withCredentials: true
   });
 }
->>>>>>> feat/detail
 
 //  TIP 조회
 export function fetchTips(
@@ -57,15 +49,8 @@ export function deleteHistoryByUserId(userId: number): AxiosPromise<{}> {
 export function fetchRecommendHashTags(): AxiosPromise<HashTags> {
   return instance.get("/hashtag/recommend-hashtags");
 }
-<<<<<<< HEAD
 
-export function WriteTip(tip: TipData) {
-  return tipInstacne.post("/tip", tip, {
-    withCredentials: true
-  });
-}
-
-export function submitImg(img: FormData): Promise<ImgResponse> {
+export function submitImg(img: FormData): Promise<ImgDataResp> {
   return tipInstacne.post("/file", img, {
     headers: {
       "Content-Type": "multipart/form-data"
@@ -73,5 +58,3 @@ export function submitImg(img: FormData): Promise<ImgResponse> {
     withCredentials: true
   });
 }
-=======
->>>>>>> feat/detail

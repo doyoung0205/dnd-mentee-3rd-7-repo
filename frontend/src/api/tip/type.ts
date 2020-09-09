@@ -1,7 +1,6 @@
 import { Tips, Tip } from "@/store/tip/types";
 import { AxiosResponse } from "axios";
 
-
 export interface TipFetchResp {
   count: number;
   next: string; //"http://193.122.121.53/api/tip/?page=3";
@@ -23,11 +22,7 @@ export interface TipFetchResp {
 export interface TipData {
   title: string;
   content: string;
-<<<<<<< HEAD
   thumbnail?: string;
-=======
-  thumbnail: string;
->>>>>>> feat/detail
   user: number;
   hashtags: HashTag[];
 }
@@ -42,6 +37,10 @@ export interface ImgRespData {
   file: string;
   user: number;
   id: number;
+}
+
+export interface ImgDataResp extends AxiosResponse {
+  data: ImgRespData;
 }
 
 export interface TipDataResp extends AxiosResponse {
