@@ -18,7 +18,7 @@
         <span>Tjstos13</span>
       </div>
       <div class="logout__wrap">
-        <button class="logout__btn">
+        <button class="logout__btn" @click="logout">
           <span>로그아웃</span>
           <img src="@/assets/images/arrow737373.svg" alt="" />
         </button>
@@ -32,7 +32,18 @@ import Vue from "vue";
 
 export default Vue.extend({
   components: {},
-  methods: {},
+  methods: {
+    logout() {
+      // dispatcher
+      this.initStoreRelatedToUsers();
+      this.$router.push("/");
+    },
+    initStoreRelatedToUsers() {
+      this.$store.commit("clearHistories");
+      this.$store.commit("clearSignState");
+      this.$store.commit("clearUserState");
+    }
+  },
   computed: {},
   created() {
     const isEmptyUserInfo = this.$store.getters["user/isEmptyUserInfo"];

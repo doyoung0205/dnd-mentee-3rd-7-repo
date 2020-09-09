@@ -43,5 +43,8 @@ export const mutations: MutationTree<TipState> = {
   },
   setMoveScroll(state, flag: boolean) {
     state.views.isMoveScroll = flag;
+  },
+  clearHistories(state) {
+    state.history = [] as Histories;
   }
 };
