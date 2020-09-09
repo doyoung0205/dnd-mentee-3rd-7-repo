@@ -11,5 +11,10 @@ export const mutations: MutationTree<UserState> = {
   },
   setUserCreatedTips(state, userCreatedTips: Tips) {
     state.userCreatedTips = userCreatedTips;
+  },
+  clearUserState(state) {
+    state.userInfo = {} as UserInfo;
+    state.userStoredTips = [] as Tips;
+    state.userCreatedTips = [] as Tips;
   }
 };
