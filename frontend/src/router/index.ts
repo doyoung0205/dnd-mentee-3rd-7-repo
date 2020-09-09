@@ -62,7 +62,7 @@ const router = new VueRouter({
 });
 
 const signModalNameSpace = "signModal/";
-const restrictPaths = ["/tip/write"];
+const restrictPaths = ["/tip/write", "/mypage"];
 
 router.beforeEach((to, from, next) => {
   const isLogin = store.getters.isLogin;
