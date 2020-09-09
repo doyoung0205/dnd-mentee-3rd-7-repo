@@ -16,10 +16,7 @@ export function setInterceptors(instance: AxiosInstance) {
     async function(config: AxiosRequestConfig) {
       // Do something before request is sent
       // console.log(config);
-      console.log(
-        "(sign.state as SignState).token;",
-        (sign.state as SignState).token
-      );
+
       const token = (sign.state as SignState).token;
       const decodedToken = JwtDecode(token) as DecodedToken;
       const now = new Date().toString();
@@ -57,6 +54,5 @@ export function setInterceptors(instance: AxiosInstance) {
       return Promise.reject(error);
     }
   );
-
   return instance;
 }

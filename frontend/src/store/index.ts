@@ -6,6 +6,7 @@ import { signModal } from "./signModal/index";
 import { loadingModal } from "./loadingModal/index";
 import { sign } from "./sign/index";
 import { tip } from "./tip/index";
+import { user } from "./user/index";
 
 Vue.use(Vuex);
 
@@ -18,7 +19,8 @@ const store: StoreOptions<RootState> = {
     signModal,
     loadingModal,
     sign,
-    tip
+    tip,
+    user
   },
   plugins: [createPersistedState()]
 };

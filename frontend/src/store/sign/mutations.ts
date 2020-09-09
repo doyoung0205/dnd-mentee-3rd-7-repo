@@ -19,5 +19,10 @@ export const mutations: MutationTree<SignState> = {
   },
   clearToken(state) {
     state.token = "";
+  },
+  clearSignState(state) {
+    state.token = "";
+    state.userId = "";
+    state.username = "";
   }
 };

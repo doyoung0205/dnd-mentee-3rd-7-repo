@@ -5,5 +5,8 @@ import { RootState } from "../types";
 export const getters: GetterTree<SignState, RootState> = {
   isLogin(state) {
     return state.username !== "";
+  },
+  getUserId(state) {
+    return state.userId;
   }
 };

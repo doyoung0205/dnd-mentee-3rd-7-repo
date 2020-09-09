@@ -6,6 +6,9 @@ export interface TipState {
   tipSearchOption: TipSearchOption;
   history: History[];
   recommendHashTags: RecommendHashTag[];
+  views: {
+    isMoveScroll: boolean;
+  };
 }
 
 export interface Tip {

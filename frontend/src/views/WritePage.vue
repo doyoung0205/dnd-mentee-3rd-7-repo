@@ -1,14 +1,14 @@
 <template>
   <div class="contianer">
-    <div class="formContainer">
-      <section class="formContainer__header">
+    <div class="TipContainer">
+      <section class="TipContainer__header">
         <input
-          id="formContainer__title"
+          id="TipContainer__title"
           type="text"
           v-model="tipData.title"
           placeholder="제목"
         />
-        <button class="formContainer__button" @click="write">
+        <button class="TipContainer__button" @click="write">
           <span class="button__text">
             발행
           </span>
@@ -116,43 +116,18 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.formContainer {
-  position: absolute;
-  width: 62vw;
-  height: 86vh;
-  left: 19vw;
-  top: 80px;
-  padding: 35px;
-
+@import "@/assets/styles/tip";
+#TipContainer__title {
   background: #f3f3f3;
-  box-shadow: 10px 10px 15px rgba(55, 68, 74, 0.15), -10px -10px 15px #ffffff;
-  border-radius: 14px;
-
-  .formContainer__header {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid #c4c4c4;
-  }
-
-  #formContainer__title {
-    background: #f3f3f3;
-  }
-  .formContainer__button {
-    border: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: auto;
-    &:hover {
-      cursor: pointer;
-    }
-  }
 }
-
-@media screen and (max-width: 375px) {
-  .formContainer {
-    left: 4vw;
-    width: 92vw;
+.TipContainer__button {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  &:hover {
+    cursor: pointer;
   }
 }
 </style>

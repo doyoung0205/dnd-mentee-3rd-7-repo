@@ -16,22 +16,22 @@
   </div>
 </template>
 <script lang="ts">
-/**
- * eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk5NDY4OTMzLCJqdGkiOiIzYTJiNzM3OThmMzc0OGJmYTAyYjE4NTZkYjA5OWY5MCIsInVzZXJfaWQiOjF9.9uNiHIJcHIUL_2cLXxC0A4MJz4RToVk58Ic-Ocx0mTg
- */
 import Vue from "vue";
 import TipList from "@/components/tip/TipList.vue";
 import TipSubjectVue from "@/components/tip/TipSubject.vue";
 import TipSearchOptionVue from "@/components/tip/TipSearchOption.vue";
-import { searchTipsByQuery } from "@/use/useSearch";
-// import { Tips, TipSearchOption } from "@/store/tip/types";
-// import { TipFetchResp } from "@/api/tip/type";
-// const TIP_NAMESPACENAME = "tip/";
+import { moveToTipList, searchTipsByQuery } from "@/use/useSearch";
+
 export default Vue.extend({
   components: {
     TipList,
     TipSubjectVue,
     TipSearchOptionVue
+  },
+  data() {
+    return {
+      isTipLoading: false
+    };
   },
   methods: {
     // 검색어 엔터 & 검색 아이콘 클릭시 검색하는 함수
@@ -39,8 +39,18 @@ export default Vue.extend({
       searchTipsByQuery(this.$store, query);
       // input 초기화
     },
-    nextPage() {
-      //
+    async nextPage() {
+      // 다음페이지가 있는지 확인
+      if (this.isTipLoading) {
+        return false;
+      }
+
+      if (this.$store.getters["tip/hasNextTipList"]) {
+        this.isTipLoading = true;
+        await this.$store.dispatch("tip/NEXT_TIP_LIST");
+        this.isTipLoading = false;
+      }
+      // 다음 페이지에 대한 데이터 조회 및 저장
     }
   },
   computed: {},
@@ -49,6 +59,15 @@ export default Vue.extend({
     if (this.$store.getters["tip/isEmptyTipList"]) {
       // TIP 내용 조회
       await this.$store.dispatch("tip/FETCH_TIPS", {});
+    }
+  },
+  async mounted() {
+    // 스크롤 움직이여야 하는지 채크
+    if (this.$store.getters["tip/isMoveScroll"]) {
+      // TIP 내용 조회
+      await moveToTipList();
+
+      this.$store.commit("tip/setMoveScroll", false);
     }
   }
 });
@@ -65,7 +84,8 @@ div#tips {
   @extend .container;
   margin-top: 44px;
   @include mobileVersion {
-    margin-top: 24px;
+    margin-top: 0;
+    padding-top: 24px;
   }
 }
 </style>

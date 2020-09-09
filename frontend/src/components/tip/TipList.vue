@@ -1,6 +1,11 @@
 <template>
   <div class="tips__contents" v-if="tips != null">
-    <div class="tip__item" v-for="tip in tips" :key="'tip_' + tip.id">
+    <div
+      class="tip__item"
+      v-for="tip in tips"
+      :key="'tip_' + tip.id"
+      @click="goDetailTip(tip.id)"
+    >
       <div class="tip__txt">
         <h3 class="tip__subject" v-text="tip.title">기저귀 버리실때 팁!</h3>
         <span class="tip__previewContent" v-text="tip.content"> </span>
@@ -22,6 +27,8 @@
       <div class="tip__img">
         <img :src="tip.thumbnail" alt="" />
       </div>
+      <router-link :to="{ name: 'TipPage', params: { id: tip.id } }">
+      </router-link>
     </div>
   </div>
 </template>
@@ -35,6 +42,24 @@ export default Vue.extend({
       type: Array as () => Tips,
       required: true
     }
+  },
+  methods: {
+    goDetailTip(tipId: string) {
+      this.$router.push({ path: `/tip/${tipId}` });
+    },
+    handleScroll() {
+      //window height + window scrollY 값이 document height보다 클 경우,
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        //실행할 로직 (콘텐츠 추가)
+        this.$emit("nextPage");
+      }
+    }
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 });
 </script>
@@ -74,6 +99,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: column;
     padding: 21px 43px;
+    width: 100%;
     @include mobileVersion {
       padding: 8px 11px;
     }
@@ -97,6 +123,9 @@ export default Vue.extend({
     font-size: 21px;
     line-height: 25px;
     color: #272727;
+    @extend .line-clamp;
+    -webkit-line-clamp: 1;
+    height: 30px;
     @include mobileVersion {
       font-size: 14px;
       line-height: 16px;
@@ -116,7 +145,7 @@ export default Vue.extend({
     word-break: break-all;
     @include mobileVersion {
       -webkit-line-clamp: 1;
-      height: 24px;
+      height: 22px;
       font-size: 12px;
       line-height: 14px;
       margin-top: 9px;

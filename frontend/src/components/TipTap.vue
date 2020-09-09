@@ -211,7 +211,7 @@ export default Vue.extend({
 <style lang="scss">
 @import "../assets/styles/tiptap/sass/main.scss";
 .editor {
-  height: 60vh;
+  min-height: 60vh;
 }
 .editor p {
   font-weight: 400;
