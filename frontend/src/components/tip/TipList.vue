@@ -99,6 +99,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: column;
     padding: 21px 43px;
+    width: 100%;
     @include mobileVersion {
       padding: 8px 11px;
     }
