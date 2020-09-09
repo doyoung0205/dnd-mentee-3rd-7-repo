@@ -106,7 +106,6 @@ export default Vue.extend({
         this.$store.commit("signModal/close");
       } catch (error) {
         // 에러 핸들링할 코드
-        console.log(error.response.data);
         this.logMessage = error.response.data;
       } finally {
         this.initForm();

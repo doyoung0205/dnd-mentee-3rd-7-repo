@@ -1,0 +1,35 @@
+.TipContainer {
+    position: absolute;
+    width: 62vw;
+    min-height: 86vh;
+    left: 19vw;
+    top: 80px;
+    padding: 35px;
+  
+    background: #f3f3f3;
+    box-shadow: 10px 10px 15px rgba(55, 68, 74, 0.15), -10px -10px 15px #ffffff;
+    border-radius: 14px;
+  
+    .TipContainer__header {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid #c4c4c4;
+    }
+
+    .TipContainer__header-noBorder{
+        border-bottom:none;
+    }
+    
+    .TipContainer__header-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+  }
+  
+  @media screen and (max-width: 375px) {
+    .TipContainer {
+      left: 4vw;
+      width: 92vw;
+    }
+  }
