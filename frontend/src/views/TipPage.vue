@@ -108,7 +108,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      data: {} as Tip,
+      data: { id: 0 } as Tip,
       comments: {} as Tip
     };
   },

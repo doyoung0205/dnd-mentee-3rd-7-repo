@@ -45,7 +45,7 @@ export default Vue.extend({
   },
   methods: {
     goDetailTip(tipId: string) {
-      this.$router.push({ path: `/tip/${tipId}` });
+      this.$router.push({ path: `/tip/detail/${tipId}` });
     },
     handleScroll() {
       //window height + window scrollY 값이 document height보다 클 경우,

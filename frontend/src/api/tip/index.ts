@@ -2,8 +2,8 @@ import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
 import { AxiosPromise } from "axios";
 import { instance, instanceWithAuth } from "../index";
 import { tipInstacne } from "../index";
-import { TipData, TipDataResp, ImgDataResp } from "./type";
-
+import { TipData, TipDataResp } from "./type";
+import { ImgRespData, ImgDataResp } from "@/api/file/type";
 // 팁작성 API
 export function WriteTip(tip: TipData) {
   return tipInstacne.post("", tip, {

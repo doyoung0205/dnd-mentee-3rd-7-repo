@@ -52,7 +52,8 @@ import VueJwtDecode from "vue-jwt-decode";
 import TipTap from "@/components/TipTap.vue";
 import Tags from "@/components/Tags.vue";
 import { TipData, HashTag } from "@/api/tip/type";
-import { WriteTip, submitImg } from "@/api/tip";
+import { WriteTip } from "@/api/tip";
+import { submitImg } from "@/api/file";
 import { getAuthFromCookie } from "@/utils/cookies";
 import { dataURLtoFile, makeFormData } from "@/utils/files";
 
@@ -107,9 +108,12 @@ export default Vue.extend({
 
       console.log(this.tipData);
 
-      // this.tipData.thumbnail = fileName;
-
-      console.log(await WriteTip(this.tipData));
+      try {
+        const result = await WriteTip(this.tipData);
+      } catch (error) {
+        console.log(error);
+      }
+      this.$router.push({ name: "MainPage" });
     }
   }
 });

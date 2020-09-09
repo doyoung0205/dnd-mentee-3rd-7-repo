@@ -219,6 +219,6 @@ export default Vue.extend({
 
 .img-selected {
   border: 2px solid greenyellow;
-  border-raidus: 1px;
+  border-radius: 1px;
 }
 </style>

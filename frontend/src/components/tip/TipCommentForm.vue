@@ -19,7 +19,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      data: { content: "", user: 102, post: 0 }
+      data: { content: "", user: 0, post: 0 }
     };
   },
   methods: {
