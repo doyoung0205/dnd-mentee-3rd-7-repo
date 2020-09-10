@@ -33,6 +33,12 @@ export function setInterceptors(instance: AxiosInstance) {
 
       config.headers.Authorization =
         "Bearer " + (sign.state as SignState).token;
+
+      console.log(
+        "(sign.state as SignState).token",
+        "Bearer " + (sign.state as SignState).token
+      );
+
       return config;
     },
     function(error) {

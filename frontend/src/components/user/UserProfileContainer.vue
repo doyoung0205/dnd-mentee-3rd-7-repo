@@ -28,15 +28,27 @@
 </template>
 
 <script lang="ts">
+import { tokenLiackList } from "@/api/token";
+import { TokenRef } from "@/api/token/type";
 import Vue from "vue";
 
 export default Vue.extend({
   components: {},
   methods: {
-    logout() {
-      // dispatcher
-      this.initStoreRelatedToUsers();
-      this.$router.push("/");
+    async logout() {
+      try {
+        // 현재 토큰 블랙리스트에 추가
+        const refreshToken = localStorage.getItem("refreshToken");
+        await tokenLiackList({
+          refresh: refreshToken
+        } as TokenRef);
+        // 유저랑 관련된 STORE 초기화
+        this.initStoreRelatedToUsers();
+        // 메인페이지로 이동
+        this.$router.push("/");
+      } catch (error) {
+        console.log("error", error);
+      }
     },
     initStoreRelatedToUsers() {
       this.$store.commit("tip/clearHistories");
