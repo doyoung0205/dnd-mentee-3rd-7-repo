@@ -4,12 +4,17 @@
       <section
         class="TipContainer__header TipContainer__header-center TipContainer__header-noBorder"
       >
-        <div>
+        <div class="TipContainer__title">
           <span>{{ data.title }}</span>
         </div>
         <div>
           <span>{{ data.username }}</span
           ><span>{{ data.date_created }}</span>
+        </div>
+        <div class="tag-input">
+          <div v-for="tag in data.hashtags" :key="tag" class="tag-input__tag">
+            #{{ tag.name }}
+          </div>
         </div>
       </section>
       <section id="TipContainer__content">
@@ -103,7 +108,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      data: {} as Tip,
+      data: { id: 0 } as Tip,
       comments: {} as Tip
     };
   },
@@ -128,6 +133,23 @@ export default Vue.extend({
 .svg-hover {
   cursor: pointer;
 }
+
+.tag-input__tag {
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+  background: linear-gradient(
+      0deg,
+      rgba(55, 68, 74, 0.09),
+      rgba(55, 68, 74, 0.09)
+    ),
+    #f3f3f3;
+  border-radius: 34.5px;
+  margin-top: 10px;
+  line-height: 30px;
+  padding: 0 5px;
+}
+
 #TipComment__section {
   margin: 0 auto;
   //overflow-y: scroll;

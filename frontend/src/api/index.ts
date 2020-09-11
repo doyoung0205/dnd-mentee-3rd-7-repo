@@ -22,6 +22,7 @@ export const sign = createInstanceWithAuth("sign");
 export const tipInstacne = createInstanceWithAuth("tip");
 export const commentInstacne = createInstanceWithAuth("comment");
 export const likeInstacne = createInstanceWithAuth("like");
+export const fileInstacne = createInstanceWithAuth("file");
 
 // CREATE - posts
 // POST - posts

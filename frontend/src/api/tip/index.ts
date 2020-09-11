@@ -1,9 +1,9 @@
-import { instance, instanceWithAuth } from "../index";
 import { TipSearchOption, HashTags, Histories, Tips } from "@/store/tip/types";
+import { AxiosPromise } from "axios";
+import { instance, instanceWithAuth } from "../index";
 import { tipInstacne } from "../index";
 import { TipData, TipDataResp } from "./type";
-import { AxiosPromise } from "axios";
-
+import { ImgRespData, ImgDataResp } from "@/api/file/type";
 // 팁작성 API
 export function WriteTip(tip: TipData) {
   return tipInstacne.post("", tip, {
@@ -48,4 +48,13 @@ export function deleteHistoryByUserId(userId: number): AxiosPromise<{}> {
 // 추천 검색어들 조회
 export function fetchRecommendHashTags(): AxiosPromise<HashTags> {
   return instance.get("/hashtag/recommend-hashtags");
+}
+
+export function submitImg(img: FormData): Promise<ImgDataResp> {
+  return tipInstacne.post("/file", img, {
+    headers: {
+      "Content-Type": "multipart/form-data"
+    },
+    withCredentials: true
+  });
 }
