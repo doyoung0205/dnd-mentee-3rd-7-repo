@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://greene.netlify.app/sitemap.xml

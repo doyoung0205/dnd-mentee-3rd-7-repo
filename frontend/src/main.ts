@@ -15,25 +15,30 @@ import VueMeta from "vue-meta";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/all";
 
-// Swiper modules
-SwiperClass.use([Pagination, Mousewheel, Autoplay, Navigation]);
+Vue.config.productionTip = false;
 
 // Global use
 Vue.use(getAwesomeSwiper(SwiperClass));
-
 Vue.use(VueMeta, {
-  // 컴포넌트 옵션 이름 변경 (예: 'head')asd
   keyName: "metaInfo",
-  // 태그를 관찰하기 위해 추가하는 속성 이름 vue-meta
   attribute: "data-vue-meta"
 });
 
+/** ============================ 플러그인 ============================ */
+// Swiper modules
+SwiperClass.use([Pagination, Mousewheel, Autoplay, Navigation]);
+// gsap
 gsap.registerPlugin(ScrollToPlugin);
-
-Vue.config.productionTip = false;
+// prerenderEvent
+const prerenderEventName = "prerender-event";
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  mounted: function() {
+    this.$nextTick(function() {
+      document.dispatchEvent(new Event(prerenderEventName));
+    });
+  }
 }).$mount("#app");

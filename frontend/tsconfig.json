@@ -25,13 +25,13 @@
       "scripthost"
     ]
   },
-    "files": ["./typedefs/vue-jwt-decode.d.ts","./typedefs/tiptap.d.ts", "./typedefs/tiptap-extensions.d.ts"],
+  "files": ["./typedefs/vue-jwt-decode.d.ts","./typedefs/tiptap.d.ts", "./typedefs/tiptap-extensions.d.ts"],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/utils/error-parser.js"
+    "tests/**/*.tsx", "src/utils/error-parser.js", "src/router/routes.js"
   ],
   "exclude": [
     "node_modules"
