@@ -417,17 +417,19 @@ export default Vue.extend({
       //const { data } = await signUp(userData);
       try {
         await signUp(this.userData);
-        const signInData: UserSignIn = {
-          email: this.userData.email,
-          password: this.userData.password
-        };
-        await this.$store.dispatch("SIGN_IN", signInData);
+        // const signInData: UserSignIn = {
+        //   email: this.userData.email,
+        //   password: this.userData.password
+        // };
+        // await this.$store.dispatch("SIGN_IN", signInData);
       } catch (error) {
         console.log("error", error);
       }
-      this.$store.commit("signModal/close");
 
       this.initForm();
+      setTimeout(() => {
+        this.$store.commit("signModal/close");
+      }, 1500);
     },
     initForm(): void {
       this.userData.email = "";

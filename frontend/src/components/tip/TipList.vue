@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="tip__img">
-        <img :src="tip.thumbnail" alt="" />
+        <img v-if="tip.thumbnail !== ''" :src="tip.thumbnail" alt="" />
       </div>
       <router-link :to="{ name: 'TipPage', params: { id: tip.id } }">
       </router-link>
